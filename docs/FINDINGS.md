@@ -149,3 +149,14 @@ logged once instead of every frame.
 1920x1080 -> 3840x2160 ran with it. One "not found" right at the first 50% frame (a single
 fallback frame on the switch). 0.1.4: ps04c20211 added as kTonemapPs2 (the structural match stays
 as a fallback).
+
+## FSR test (2026-11-14, 0.1.4, RenoDX on)
+
+FSR 3.1.6 (runtime offers 3.1.6, 2.3.4) ran native AA 3840x2160 and 2561x1440 / 2227x1252 /
+1920x1080 -> 3840x2160, no errors; Auto switched back to DLSS. Exposure auto, no reactive mask.
+
+Found in the same log: the 0.1.3 structural tonemap match fired on pseb1e43cf (bloom downsample)
+and ps133ccce0, alternating, for ~4 s (some scene where the chain order differs; the pass that
+actually tonemaps there wasn't ps25016cc3). 0.1.5: the match must be the full-screen draw right
+after the bloom composite, reading the TAA output at t0 and writing another target of its size.
+Also one "tonemap not found" fallback earlier in that run.

@@ -2109,15 +2109,25 @@ void UpscalerBeforeDraw(command_list* cl) {
     }
 }
 
-// The tonemap by its place in the chain: the first full-screen draw after the bloom composite
-// that reads the TAA output at t0. Its shader id depends on RenoDX (ps25016cc3 is RenoDX's
-// replacement; with RenoDX off the game's own tonemap has another id, 0.1.2 test).
-bool MaybeTonemap(command_list* cl, ListState& s, uint32_t id) {
+// The tonemap by its place in the chain: the full-screen draw right after the bloom composite
+// (nothing in between), reading the TAA output at t0 and writing another target of the same size.
+// Its shader id depends on RenoDX (ps25016cc3 is RenoDX's replacement, ps04c20211 the game's own);
+// this catches other permutations. 0.1.3 matched any later reader of the TAA output and took the
+// bloom downsample (pseb1e43cf) and ps133ccce0 for it in some scenes: hence "right after".
+std::atomic<bool> g_afterBloom{false};  // the last full-screen draw was the bloom composite
+
+bool MaybeTonemap(command_list* cl, ListState& s, uint32_t id, bool afterBloom) {
+    if (!afterBloom) return false;
     {
         std::lock_guard<std::mutex> lock(g_resMutex);
         if (!g_up.active || !g_up.bloomDone || g_up.tonemapDone || !g_up.taaOut.handle) return false;
     }
-    if (PixelSrv(cl->get_device(), s.graphics, kTonemapColor) != g_up.taaOut) return false;
+    device* dev = cl->get_device();
+    if (PixelSrv(dev, s.graphics, kTonemapColor) != g_up.taaOut) return false;
+    const resource target = ViewResource(s.rtvs[0]);
+    if (!target.handle || target == g_up.taaOut) return false;
+    const resource_desc td = dev->get_resource_desc(target), ad = dev->get_resource_desc(g_up.taaOut);
+    if (td.texture.width != ad.texture.width || td.texture.height != ad.texture.height) return false;
     static std::atomic<uint32_t> logged{0};
     if (logged.exchange(id) != id) Log("tonemap found by its place in the chain: ps%08x", id);
     return OnTonemap(cl, s);
@@ -2135,6 +2145,7 @@ bool UpscalerOnDraw(command_list* cl, uint32_t vertices, uint32_t instances) {
     const uint32_t id = PipelinePs(s->pipe);
     if (id == kTaaPs) GiveFrameGen(cl, *s);
     if (id == kOutputPs) NoteOutputPass(cl, *s, vertices, instances);
+    const bool afterBloom = g_afterBloom.exchange(id == kBloomPs);
     if (!g_set.enabled) return false;
     switch (id) {
         case kTaaPs: return OnTaa(cl, *s);
@@ -2143,7 +2154,7 @@ bool UpscalerOnDraw(command_list* cl, uint32_t vertices, uint32_t instances) {
         case kTonemapPs2: return OnTonemap(cl, *s);
         case kSharpenPs: return OnSharpen(cl, *s);
         case kCopyPs: return OnCopy(cl, *s);
-        default: return MaybeTonemap(cl, *s, id);
+        default: return MaybeTonemap(cl, *s, id, afterBloom);
     }
 }
 
