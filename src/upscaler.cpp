@@ -1753,7 +1753,12 @@ pipeline BlitPipeline(device* dev, format fmt) {
 
 bool OnCopy(command_list* cl, ListState& s) {
     std::lock_guard<std::mutex> lock(g_resMutex);
-    if (!g_up.active || !g_up.tonemapDone || !g_up.final || !g_up.final->srv.handle) return false;
+    if (g_up.active && !g_up.tonemapDone) {  // e.g. the tonemap shader has another id (RenoDX off?)
+        g_up.active = false;
+        Fail("tonemap pass not found while upscaling: game's upscaling used (capture a frame for the log)");
+        return false;
+    }
+    if (!g_up.active || !g_up.final || !g_up.final->srv.handle) return false;
     Texture& src = *g_up.final;
     device* dev = cl->get_device();
     const resource target = ViewResource(s.rtvs[0]);
