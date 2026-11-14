@@ -212,3 +212,11 @@ format 24, briefly to **3840x2097** (render height) and back; contexts recreated
 as SDR (ReShade enum 1), so FSR FG was set up SDR. Exclusive fullscreen on. Cause not known yet.
 User: the ReShade overlay was tripled too, so the fault is at presentation (FSR's swapchain / the
 real swapchain or display mode), not in the generated frames or our inputs.
+Borderless (RenoDX on) and exclusive fullscreen with RenoDX off: columns in both. So not exclusive
+fullscreen or RenoDX. The game creates its swapchain R8G8B8A8_UNORM (format 28), BufferCount 3,
+flags 0x842, and only later ResizeBuffers to format 24 (RE7, where FSR FG works, to check). FSR HUD
+composite not used (no composite texture logged). Log: docs/captures/fsrfg-3columns-renodx-off.log.
+
+Same log: tonemap matched by place again on ps133ccce0 (38.8 s) and ps79ea970b (48.1 s): g_afterBloom
+survived into the next frame when a chain ended after the bloom. 0.3.1: cleared on every draw and
+dispatch.

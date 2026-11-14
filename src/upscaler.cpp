@@ -2165,7 +2165,14 @@ bool g_samplerStatsLogged = false;
 
 }  // namespace
 
+// The last GPU operation was the bloom composite (or the glare after it): the tonemap is matched by
+// its place only right after it. Cleared by every other draw and dispatch: 0.1.6 cleared it only on
+// full-screen draws, so when a chain ended after the bloom the flag survived into the next frame
+// and the first pass reading the old TAA output (ps133ccce0, before the TAA) was taken for the tonemap.
+std::atomic<bool> g_afterBloom{false};
+
 bool UpscalerOnDispatch(command_list* cl) {
+    g_afterBloom = false;
     ListState* s = State(cl);
     if (!s) return false;
     RunPending(cl, *s, false);
@@ -2186,7 +2193,8 @@ void EndRedirect(command_list* cl, ListState& s) {
     RestoreTargets(cl, s);
 }
 
-void UpscalerBeforeDraw(command_list* cl) {
+void UpscalerBeforeDraw(command_list* cl) {  // indexed and indirect draws
+    g_afterBloom = false;
     if (ListState* s = State(cl)) {
         RunPending(cl, *s, false);
         EndRedirect(cl, *s);
@@ -2199,7 +2207,6 @@ void UpscalerBeforeDraw(command_list* cl) {
 // Its shader id depends on RenoDX (ps25016cc3 is RenoDX's replacement, ps04c20211 the game's own);
 // this catches other permutations. 0.1.3 matched any later reader of the TAA output and took the
 // bloom downsample (pseb1e43cf) and ps133ccce0 for it in some scenes: hence "right after".
-std::atomic<bool> g_afterBloom{false};  // the last full-screen draw was the bloom composite
 
 bool MaybeTonemap(command_list* cl, ListState& s, uint32_t id, bool afterBloom) {
     if (!afterBloom) return false;
@@ -2224,6 +2231,7 @@ bool UpscalerOnDraw(command_list* cl, uint32_t vertices, uint32_t instances) {
     RunPending(cl, *s, false);
     EndRedirect(cl, *s);
     if (vertices != 3 || instances != 1) {
+        g_afterBloom = false;
         SnapshotBeforeHud(cl, *s);
         return false;
     }
