@@ -98,7 +98,7 @@ constexpr uint32_t kFinalCs = 0x00000007;    // no compute stretch in DMC5
 constexpr uint32_t kOutputPs = 0xca880db5;   // output to the back buffer (RenoDX's HDR output)
 constexpr int kToggleHotkey = VK_F9;
 constexpr bool kRayTracing = false;  // no ray tracing on PC: Ray Reconstruction / reflection settings hidden
-constexpr bool kFrameGenUi = false;  // frame generation not wired up for DMC5 yet (0.1.x: DLSS only)
+constexpr bool kFrameGenUi = true;   // frame generation (DLSS-G / FSR FG) shown; HUD-free picture from before the first HUD draw
 
 // SceneInfo (cb0 of the TAA and tonemap shaders), as float indices.
 constexpr int kViewProj = 0;           // row_major float4x4, byte 0
