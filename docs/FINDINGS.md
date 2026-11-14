@@ -193,3 +193,8 @@ averages W down (blit.hlsl PsDown) into the game's render-size target for its bl
 skips the game's draw. Bloom, glare and the tonemap follow the "scene" image (g_up.scene /
 sceneOut: the TAA output or the DoF target). Frames with an unknown pass between TAA and tonemap
 still fall back to the game's upscaling.
+
+0.2.0 test (2026-11-14): log "depth of field drawn at output size (3840x2160)", glare into the
+scene image, DLSS 1920x1080 -> 3840x2160 through the opening cutscene. User: looked right. Left:
+one "unknown pass" fallback during startup (logos/loading at 3728x2097) and the single
+"tonemap not found" frame at a scene change.
