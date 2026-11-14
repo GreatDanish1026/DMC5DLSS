@@ -71,25 +71,26 @@ using namespace reshade::api;
 namespace rd {
 namespace {
 
-// Devil May Cry 5 shaders: NOT KNOWN YET (0.0.x probe; RE2's names/registers kept as the starting
-// guess, ids are dummies so nothing is redirected). To be filled from docs/FINDINGS.md.
-constexpr uint32_t kTaaPs = 0x00000003;      // PreTonemap2_PS: t1 depth, t2 colour, t3 history, t4 velocity
-constexpr uint32_t kTaaDepth = 1, kTaaColor = 2, kTaaMotion = 4;
-// The TAA's EffectMaskTex (t0, r8): where the game makes its TAA trust the current frame
-// (history weight AABlend - ResponsiveAARate * mask): particles and other effects. -1: none.
-constexpr int kTaaMask = 0;
-constexpr uint32_t kBloomPs = 0x00000004;    // NewFinal
-constexpr bool kBloomIntoTaaOnly = false;     // (RE7's bloom shader also draws its smaller levels)
-constexpr uint32_t kTonemapPs = 0x00000005;  // LDRPostProcess_WithTonemap (colour t0)
-constexpr uint32_t kTonemapPs2 = 0x00000006;  // the same pass in the other post-processing format: RE3 uses
-                                              // d127432d at 100% (rgba16f), 0936c4dc below it (r11g11b10f)
+// Devil May Cry 5's shaders (docs/FINDINGS.md). The post chain is the DX11 RE2 build's: TAA, bloom
+// and tonemap at render size, then a pixel-shader stretch to output size (which also writes the
+// output-size depth), the HUD, and the game's sharpening at output size (after the HUD, masked).
+constexpr uint32_t kTaaPs = 0x321bf06e;      // PreTonemap2_PS maths: t0 depth, t1 colour, t2 history, t3 velocity
+constexpr uint32_t kTaaDepth = 0, kTaaColor = 1, kTaaMotion = 3;
+// No EffectMaskTex in DMC5's TAA. -1: none.
+constexpr int kTaaMask = -1;
+constexpr uint32_t kBloomPs = 0x629a5b35;    // bloom composite (cbSoftBloom), additive into the TAA output
+constexpr bool kBloomIntoTaaOnly = true;      // only its draw into the TAA output
+constexpr uint32_t kTonemapPs = 0x25016cc3;  // tonemap (colour t0; RenoDX replaces it)
+constexpr uint32_t kTonemapPs2 = 0x00000006;  // none seen yet in another post format
 constexpr uint32_t kTonemapColor = 0;
-constexpr uint32_t kCopyPs = 1;               // CopyImageWithDepthPS: not used in RE2
-constexpr uint32_t kSharpenPs = 2;            // Sharpness_PS: not used in RE2
+constexpr uint32_t kCopyPs = 0xaff99b25;      // stretch: t0 depth, t1 SrcImage -> output size colour + SV_Depth
+constexpr uint32_t kSharpenPs = 2;            // the game's sharpen (psae40e1ff) runs at output size: left alone
 constexpr bool kSharpenOptional = true;
-constexpr uint32_t kFinalCs = 0x00000007;    // CAS_CS: FidelityFX CAS, stretches (and sharpens) to output size, u0
-constexpr uint32_t kOutputPs = 0x00000008;   // the HUD texture (t0) -> back buffer (RenoDX's HDR output)
+constexpr uint32_t kFinalCs = 0x00000007;    // no compute stretch in DMC5
+constexpr uint32_t kOutputPs = 0xca880db5;   // output to the back buffer (RenoDX's HDR output)
 constexpr int kToggleHotkey = VK_F9;
+constexpr bool kRayTracing = false;  // no ray tracing on PC: Ray Reconstruction / reflection settings hidden
+constexpr bool kFrameGenUi = false;  // frame generation not wired up for DMC5 yet (0.1.x: DLSS only)
 
 // SceneInfo (cb0 of the TAA and tonemap shaders), as float indices.
 constexpr int kViewProj = 0;           // row_major float4x4, byte 0
@@ -97,7 +98,7 @@ constexpr int kProjElement0 = 40;      // byte 160: x scale, y scale, jitter x, 
 constexpr int kPrevViewProj = 72;      // byte 288
 constexpr int kScreenSize = 92;        // byte 368: width, height, 1 / width, 1 / height
 constexpr int kNearPlane = 98;         // byte 392: cameraNearPlane
-constexpr int kSceneInfoFloats = 132;  // 528 bytes
+constexpr int kSceneInfoFloats = 128;  // 512 bytes in DMC5 (528 in the DX12 RE2)
 constexpr uint32_t kSceneInfoSlot = 768;  // 256-byte aligned
 constexpr uint32_t kSceneInfoSlots = 192;
 
@@ -113,7 +114,9 @@ struct Settings {
     bool upscale = true;   // below the output size: DLSS to output size (else DLAA at render size)
     bool sharpen = true;   // the game's sharpening at output size when upscaling
     bool textureDetail = true;  // negative mip bias on material samplers (applied at game start)
-    bool gameExposure = true;   // DLSS/FSR get the colour's real exposure (1.0) instead of guessing it
+    // DLSS/FSR get the colour's real exposure (1.0) instead of guessing it. Off by default: in
+    // RE2DLSS-DX11 (same engine generation) it made characters' dithered fades see-through.
+    bool gameExposure = false;
     float sharpness = 0;        // extra sharpening after DLSS/FSR (RCAS), 0 = off
     bool fullResReflections = false;  // REFramework script: ray traced reflections at full resolution
     bool effectMask = true;     // DLSS/FSR get the TAA's effect mask (games that have one)
@@ -160,6 +163,7 @@ void LoadSettings() {
     if (g_set.rrPreset != 0 && (g_set.rrPreset < 4 || g_set.rrPreset > 6)) g_set.rrPreset = 0;
     reshade::get_config_value(nullptr, RD_PRODUCT, "RrDenoise", g_set.rrDenoise);
     if (g_set.rrDenoise < 0 || g_set.rrDenoise > 2) g_set.rrDenoise = 0;
+    if (!kRayTracing) g_set.rr = false, g_set.fullResReflections = false;
 }
 
 void SaveSettings() {
@@ -2282,8 +2286,8 @@ void UpscalerOverlay() {
             changed = true;
         Help("Extra sharpening of the upscaled image (AMD's RCAS, contrast-adaptive: crisper edges without "
              "halos). 0 = off. For DLSS and Ray Reconstruction it runs after them; for FSR it's FSR's own.");
-        ImGui::SeparatorText("Ray tracing");
-        {
+        if (kRayTracing) {
+            ImGui::SeparatorText("Ray tracing");
             ImGui::BeginDisabled(ResolvedTech() == Tech::Fsr);
             if (ImGui::Checkbox("Ray Reconstruction", &g_set.rr)) {
                 changed = true;
@@ -2317,15 +2321,17 @@ void UpscalerOverlay() {
             ImGui::EndDisabled();
         }
         ImGui::EndDisabled();
-        changed |= ImGui::Checkbox("Full-resolution reflections", &g_set.fullResReflections);
-        Help("Ray traces reflections at the full render resolution instead of the game's reduced one: sharper "
-             "reflections, especially with Ray Reconstruction, at a GPU cost. Needs REFramework (the bundled "
-             "DMC5DLSS.lua sets it) and the game's ray tracing on.");
-        if (g_set.fullResReflections) {
-            const int now = RtResolutionNow();
-            ImGui::TextDisabled("Reflections now: %s", now == 0 ? "full resolution" : now == 1 ? "half resolution" : "unknown (is REFramework running?)");
+        if (kRayTracing) {
+            changed |= ImGui::Checkbox("Full-resolution reflections", &g_set.fullResReflections);
+            Help("Ray traces reflections at the full render resolution instead of the game's reduced one: sharper "
+                 "reflections, especially with Ray Reconstruction, at a GPU cost. Needs REFramework (the bundled "
+                 "DMC5DLSS.lua sets it) and the game's ray tracing on.");
+            if (g_set.fullResReflections) {
+                const int now = RtResolutionNow();
+                ImGui::TextDisabled("Reflections now: %s", now == 0 ? "full resolution" : now == 1 ? "half resolution" : "unknown (is REFramework running?)");
+            }
         }
-        DrawFrameGenSettings();
+        if (kFrameGenUi) DrawFrameGenSettings();
         ImGui::EndTabItem();
     }
     if (ImGui::BeginTabItem("Status")) {
@@ -2346,7 +2352,7 @@ void UpscalerOverlay() {
                                 static_cast<unsigned long long>(g_rt.rrFrames), static_cast<unsigned long long>(g_rt.skipped),
                                 static_cast<unsigned long long>(g_rt.copied));
         }
-        DrawFrameGenStatus();
+        if (kFrameGenUi) DrawFrameGenStatus();
         ImGui::EndTabItem();
     }
     if (ImGui::BeginTabItem("Advanced")) {
@@ -2362,12 +2368,15 @@ void UpscalerOverlay() {
         changed |= ImGui::Checkbox("Use the game's exposure", &g_set.gameExposure);
         Help("Tells DLSS and FSR the picture's real exposure instead of letting them estimate it: steadier "
              "brightness and less ghosting when the lighting changes. DLSS and FSR 3.1 only: FSR 4 measures its own.");
-        changed |= ImGui::Checkbox("Use the game's effect mask", &g_set.effectMask);
-        Help("The mask the game makes for its own anti-aliasing (particles, fire, sparks, other effects): "
-             "DLSS and FSR 3.1 trust the current frame more there, against ghosting and smearing.");
+        if (kTaaMask >= 0) {
+            changed |= ImGui::Checkbox("Use the game's effect mask", &g_set.effectMask);
+            Help("The mask the game makes for its own anti-aliasing (particles, fire, sparks, other effects): "
+                 "DLSS and FSR 3.1 trust the current frame more there, against ghosting and smearing.");
+        }
         changed |= ImGui::Checkbox("Sharper textures at lower render resolutions", &g_set.textureDetail);
         Help("A mip bias of log2(render scale) on the game's material textures, as NVIDIA recommends. It follows "
              "the render resolution as it changes, without a restart.");
+        if (kRayTracing) {
         ImGui::SeparatorText("Ray Reconstruction testing");
         ImGui::SetNextItemWidth(ControlWidth() * 1.4f);
         if (ImGui::Combo("Game's ray tracing denoiser", &g_set.rrDenoise, kRrDenoiseNames, 3)) {
@@ -2386,7 +2395,8 @@ void UpscalerOverlay() {
             Log("diagnosis: show guide %s", kGuideViewNames[g_set.guideView]);
         Help("Shows one of the surface pictures Ray Reconstruction gets from the game in place of the image:\n"
              "surface colour, reflectivity, normals or roughness. For checking; off at each launch.");
-        DrawFrameGenAdvanced();
+        }
+        if (kFrameGenUi) DrawFrameGenAdvanced();
         ImGui::SeparatorText("Development");
         changed |= ImGui::Checkbox("Flip jitter X", &g_set.flipJitterX);
         ImGui::SameLine();
