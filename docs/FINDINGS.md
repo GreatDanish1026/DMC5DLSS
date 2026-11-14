@@ -113,3 +113,15 @@ but on D3D12, so it needs no new hook core.
 7. Hide the ray tracing / Ray Reconstruction UI (no RT on PC). Leave frame generation and FSR off
    until DLSS works. FSR should then work as-is (D3D12); FG needs the HUD found first.
 8. Test in game: DLAA and Quality/Balanced/Performance, with RenoDX on and GITC Uplift on/off.
+
+## 0.1.0 test (2026-11-14)
+
+DLSS ran with no errors: DLAA 3840x2160 (model K), 2561x1440, 2227x1252 (K), 1920x1080 (M) -> 3840x2160,
+switched live via the Lua render resolution dropdown (REFramework TDB 67 build works). RenoDX on.
+User: the lighting looks different at Performance. Screenshots (same spot): Performance mean
+luma 27.5 vs DLAA 31.1 (~12% darker), bloom present but the scene's lighting lower. Same as
+VillageDLSS 1.1.0: in-place bloom left the render-size TAA output without bloom, and the game
+reads it again (likely its exposure).
+
+0.1.1: kBloomAlsoAtRenderSize (Village's fix): bloom drawn into X by us, and the game's own draw still
+goes into its render-size image.

@@ -80,6 +80,10 @@ constexpr uint32_t kTaaDepth = 0, kTaaColor = 1, kTaaMotion = 3;
 constexpr int kTaaMask = -1;
 constexpr uint32_t kBloomPs = 0x629a5b35;    // bloom composite (cbSoftBloom), additive into the TAA output
 constexpr bool kBloomIntoTaaOnly = true;      // only its draw into the TAA output
+// The bloom is drawn into X as well, and the game's draw still goes into its render-size TAA
+// output (as VillageDLSS does). Moving it to X instead left that image without bloom, and the game
+// reads it again (likely for its exposure): 0.1.0 at Performance was ~12% darker than DLAA.
+constexpr bool kBloomAlsoAtRenderSize = true;
 constexpr uint32_t kTonemapPs = 0x25016cc3;  // tonemap (colour t0; RenoDX replaces it)
 constexpr uint32_t kTonemapPs2 = 0x00000006;  // none seen yet in another post format
 constexpr uint32_t kTonemapColor = 0;
@@ -1611,8 +1615,13 @@ void OnBloom(command_list* cl, ListState& s) {
     if (kBloomIntoTaaOnly && ViewResource(s.rtvs[0]) != g_up.taaOut) return;
     Transition(cl, g_x, resource_usage::render_target);
     BindFullTarget(cl, g_x.rtv, g_x.w, g_x.h);
-    s.redirected = true;
     g_up.bloomDone = true;
+    if (kBloomAlsoAtRenderSize) {  // drawn into X here; the game's own draw follows as usual
+        cl->draw(3, 1, 0, 0);
+        RestoreTargets(cl, s);
+        return;
+    }
+    s.redirected = true;
 }
 
 // Draws the game's bound full-screen pass at output size instead of render size: pixel shader
