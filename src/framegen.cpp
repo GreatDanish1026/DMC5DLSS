@@ -73,6 +73,10 @@ const char* const kModeNames[kModeCount] = {"Off", "2x", "3x", "4x", "Dynamic"};
 // Each replaces the game's swapchain, so the one picked at launch is used until a restart.
 enum Tech : int { kTechDlss, kTechFsr, kTechCount };
 const char* const kTechNames[kTechCount] = {"DLSS (NVIDIA RTX 40/50)", "FSR (any graphics card)"};
+// DMC5: FSR frame generation is hidden for now. Its picture came out three times side by side
+// (the ReShade overlay too, so at presentation; also borderless and with RenoDX off; cause not
+// found, docs/FINDINGS.md). A saved FrameGenTech=1 turns frame generation off at launch.
+constexpr bool kFsrFrameGen = false;
 
 struct Settings {
     int tech = kTechDlss;  // ini FrameGenTech
@@ -1631,6 +1635,12 @@ void RegisterFrameGen() {
     if (!(g_set.separation >= 1 && g_set.separation <= 100)) g_set.separation = 40;
     reshade::get_config_value(nullptr, RD_PRODUCT, "FrameGenTech", g_set.tech);
     if (g_set.tech < 0 || g_set.tech >= kTechCount) g_set.tech = kTechDlss;
+    if (!kFsrFrameGen && g_set.tech == kTechFsr) {
+        Log("frame generation: FSR frame generation isn't available in this game yet: off");
+        g_set.tech = kTechDlss, g_set.mode = kOff;
+        reshade::set_config_value(nullptr, RD_PRODUCT, "FrameGenMode", g_set.mode);
+        reshade::set_config_value(nullptr, RD_PRODUCT, "FrameGenTech", g_set.tech);
+    }
     reshade::get_config_value(nullptr, RD_PRODUCT, "FsrHudMode", g_set.fsrHud);
     if (g_set.fsrHud < 0 || g_set.fsrHud >= fsrfg::kHudModeCount) g_set.fsrHud = fsrfg::kHudComposite;
     g_activeTech = g_set.tech;  // until the next launch
@@ -1673,7 +1683,7 @@ void DrawFrameGenSettings() {
     int choice = g_set.mode == kOff ? 0 : g_set.tech == kTechFsr ? 5 : g_set.mode;
     ImGui::BeginDisabled(!kTsrMapped);
     ImGui::SetNextItemWidth(ControlWidth());
-    const bool picked = ImGui::Combo("Frame generation##framegen", &choice, kChoices, 6);
+    const bool picked = ImGui::Combo("Frame generation##framegen", &choice, kChoices, kFsrFrameGen ? 6 : 5);
     ImGui::EndDisabled();
     if (picked) {
         if (choice == 5) g_set.tech = kTechFsr, g_set.mode = k2x;
@@ -1684,13 +1694,18 @@ void DrawFrameGenSettings() {
         reshade::set_config_value(nullptr, RD_PRODUCT, "FrameGenTech", g_set.tech);
         Log("settings: frame generation %s", kChoices[choice]);
     }
-    Help("DLSS: NVIDIA's frame generation, RTX 40 and 50 series. 2x, 3x and 4x add 1, 2 or 3 generated frames per "
-         "rendered frame (3x and 4x need an RTX 50); Dynamic picks the multiplier to reach the display's refresh "
-         "rate. Uses NVIDIA Reflex for low latency.\n\nFSR: AMD's frame generation, any DirectX 12 graphics card "
-         "(FSR 4 on Radeon RX 9000 under Windows 11, FSR 3.1 elsewhere). 2x; no Reflex, so a little more "
-         "latency.\n\nNeeds the game's FSR 2 on (with or without the add-on's DLSS/FSR upscaling) and runs in game "
-         "only (not in menus). "
-         "Switching it on, or between DLSS and FSR, takes a game restart; DLSS's multipliers switch right away.");
+    if (kFsrFrameGen)
+        Help("DLSS: NVIDIA's frame generation, RTX 40 and 50 series. 2x, 3x and 4x add 1, 2 or 3 generated frames per "
+             "rendered frame (3x and 4x need an RTX 50); Dynamic picks the multiplier to reach the display's refresh "
+             "rate. Uses NVIDIA Reflex for low latency.\n\nFSR: AMD's frame generation, any DirectX 12 graphics card "
+             "(FSR 4 on Radeon RX 9000 under Windows 11, FSR 3.1 elsewhere). 2x; no Reflex, so a little more "
+             "latency.\n\n"
+             "Switching it on, or between DLSS and FSR, takes a game restart; DLSS's multipliers switch right away.");
+    else
+        Help("DLSS: NVIDIA's frame generation, RTX 40 and 50 series. 2x, 3x and 4x add 1, 2 or 3 generated frames per "
+             "rendered frame (3x and 4x need an RTX 50); Dynamic picks the multiplier to reach the display's refresh "
+             "rate. Uses NVIDIA Reflex for low latency.\n\nSwitching it on takes a game restart; the multipliers "
+             "switch right away.");
 
     {
         std::lock_guard<std::recursive_mutex> lock(g_mutex);
@@ -1706,15 +1721,17 @@ void DrawFrameGenSettings() {
 
 void DrawFrameGenAdvanced() {
     ImGui::SeparatorText("Frame generation");
-    ImGui::SetNextItemWidth(ControlWidth());
-    if (ImGui::Combo("FSR: HUD protection", &g_set.fsrHud, kFsrHudNames, fsrfg::kHudModeCount)) {
-        reshade::set_config_value(nullptr, RD_PRODUCT, "FsrHudMode", g_set.fsrHud);
-        Log("settings: FSR HUD protection %s", kFsrHudNames[g_set.fsrHud]);
+    if (kFsrFrameGen) {
+        ImGui::SetNextItemWidth(ControlWidth());
+        if (ImGui::Combo("FSR: HUD protection", &g_set.fsrHud, kFsrHudNames, fsrfg::kHudModeCount)) {
+            reshade::set_config_value(nullptr, RD_PRODUCT, "FsrHudMode", g_set.fsrHud);
+            Log("settings: FSR HUD protection %s", kFsrHudNames[g_set.fsrHud]);
+        }
+        Help("How FSR frame generation keeps the HUD and subtitles from warping: it compares the screen with the same "
+             "picture drawn without the HUD (the add-on repeats the game's last pass for it).\n\nOn: recommended.\n"
+             "Off: the HUD is generated like the rest of the picture and may wobble.\n\nSwitches right away. (DLSS "
+             "frame generation always gets the picture without the HUD.)");
     }
-    Help("How FSR frame generation keeps the HUD and subtitles from warping: it compares the screen with the same "
-         "picture drawn without the HUD (the add-on repeats the game's last pass for it).\n\nOn: recommended.\n"
-         "Off: the HUD is generated like the rest of the picture and may wobble.\n\nSwitches right away. (DLSS "
-         "frame generation always gets the picture without the HUD.)");
     float sep = g_set.separation;
     ImGui::SetNextItemWidth(ControlWidth());
     if (ImGui::SliderFloat("DLSS: object separation", &sep, 1, 40, "%.0f")) g_set.separation = sep;

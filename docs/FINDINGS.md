@@ -220,3 +220,6 @@ composite not used (no composite texture logged). Log: docs/captures/fsrfg-3colu
 Same log: tonemap matched by place again on ps133ccce0 (38.8 s) and ps79ea970b (48.1 s): g_afterBloom
 survived into the next frame when a chain ended after the bloom. 0.3.1: cleared on every draw and
 dispatch.
+0.3.2: FSR frame generation hidden (kFsrFrameGen = false in framegen.cpp): the list offers Off and
+DLSS 2x/3x/4x/Dynamic; a saved FrameGenTech=1 turns frame generation off at launch. FSR upscaling
+is unaffected.
