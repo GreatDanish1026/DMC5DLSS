@@ -198,3 +198,15 @@ still fall back to the game's upscaling.
 scene image, DLSS 1920x1080 -> 3840x2160 through the opening cutscene. User: looked right. Left:
 one "unknown pass" fallback during startup (logos/loading at 3728x2097) and the single
 "tonemap not found" frame at a scene change.
+
+## Frame generation (0.3.0, 2026-11-14)
+
+DLSS-G: user "everything worked great" (log overwritten by the next run).
+
+FSR FG (FrameGenTech FSR, 2x, after a restart): on screen the picture appeared **three times in
+three side-by-side columns**; FG off fixed it. ReShade screenshots look whole (taken before FSR's
+swapchain). Log (docs/captures/fsrfg-3columns.log): swapchain made through FSR; FSR FG context
+first 3840x2160 format 28 (the game's first back buffer, rgba8), the game then ResizeBuffers to
+format 24, briefly to **3840x2097** (render height) and back; contexts recreated each time, last
+3840x2160 format 24, "HUD told apart with the picture before the HUD", no errors. Colour space seen
+as SDR (ReShade enum 1), so FSR FG was set up SDR. Exclusive fullscreen on. Cause not known yet.
