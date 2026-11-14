@@ -79,6 +79,7 @@ constexpr uint32_t kTaaDepth = 0, kTaaColor = 1, kTaaMotion = 3;
 // No EffectMaskTex in DMC5's TAA. -1: none.
 constexpr int kTaaMask = -1;
 constexpr uint32_t kBloomPs = 0x629a5b35;    // bloom composite (cbSoftBloom), additive into the TAA output
+constexpr uint32_t kGlarePs = 0x8f6eaed0;    // title menu glare, added into the TAA output after the bloom
 constexpr bool kBloomIntoTaaOnly = true;      // only its draw into the TAA output
 // The bloom is drawn into X as well, and the game's draw still goes into its render-size TAA
 // output (as VillageDLSS does). Moving it to X instead left that image without bloom, and the game
@@ -1624,6 +1625,20 @@ void OnBloom(command_list* cl, ListState& s) {
     s.redirected = true;
 }
 
+// Other passes the game adds into its TAA output before the tonemap (the title menu's glare,
+// ps8f6eaed0: a 1024x512 streak texture by texture coordinates): drawn into X too, and the game's
+// own draw still goes into the render-size image, as for bloom.
+void OnAdditive(command_list* cl, ListState& s) {
+    std::lock_guard<std::mutex> lock(g_resMutex);
+    if (!g_up.active || g_up.tonemapDone || !g_x.rtv.handle || ViewResource(s.rtvs[0]) != g_up.taaOut) return;
+    Transition(cl, g_x, resource_usage::render_target);
+    BindFullTarget(cl, g_x.rtv, g_x.w, g_x.h);
+    cl->draw(3, 1, 0, 0);
+    RestoreTargets(cl, s);
+    static bool logged = false;
+    if (!logged) logged = true, Log("glare pass drawn into the DLSS/FSR image too");
+}
+
 // Draws the game's bound full-screen pass at output size instead of render size: pixel shader
 // register t<reg> rewritten (in its descriptor table) to src, SceneInfo replaced by a copy with
 // the output size, render target dst (created like the game's target). The game's render-size
@@ -1682,6 +1697,17 @@ bool RedrawAtOutputSize(command_list* cl, ListState& s, uint32_t reg, Texture& s
 bool OnTonemap(command_list* cl, ListState& s) {
     std::lock_guard<std::mutex> lock(g_resMutex);
     if (!g_up.active || g_up.tonemapDone || !g_x.srv.handle) return false;
+    // Cutscenes and menus run depth of field (ps58dcc2f3 and compute passes) between the TAA and
+    // the bloom: the tonemap then reads that image, not the TAA output, and tonemapping X would
+    // drop the depth of field. Those frames use the game's own upscaling for now.
+    if (PixelSrv(cl->get_device(), s.graphics, kTonemapColor) != g_up.taaOut) {
+        g_up.active = false;
+        static bool logged = false;
+        if (!logged)
+            logged = true, Log("passes between TAA and tonemap (depth of field: cutscene/menu): game's upscaling used "
+                               "for those frames");
+        return false;
+    }
     if (!RedrawAtOutputSize(cl, s, kTonemapColor, g_x, g_y, "tonemapped", true)) return false;
     g_up.tonemapDone = true;
     g_up.final = &g_y;
@@ -2145,11 +2171,12 @@ bool UpscalerOnDraw(command_list* cl, uint32_t vertices, uint32_t instances) {
     const uint32_t id = PipelinePs(s->pipe);
     if (id == kTaaPs) GiveFrameGen(cl, *s);
     if (id == kOutputPs) NoteOutputPass(cl, *s, vertices, instances);
-    const bool afterBloom = g_afterBloom.exchange(id == kBloomPs);
+    const bool afterBloom = g_afterBloom.exchange(id == kBloomPs || id == kGlarePs);
     if (!g_set.enabled) return false;
     switch (id) {
         case kTaaPs: return OnTaa(cl, *s);
         case kBloomPs: OnBloom(cl, *s); return false;
+        case kGlarePs: OnAdditive(cl, *s); return false;
         case kTonemapPs: return OnTonemap(cl, *s);
         case kTonemapPs2: return OnTonemap(cl, *s);
         case kSharpenPs: return OnSharpen(cl, *s);

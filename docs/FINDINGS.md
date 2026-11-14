@@ -160,3 +160,21 @@ and ps133ccce0, alternating, for ~4 s (some scene where the chain order differs;
 actually tonemaps there wasn't ps25016cc3). 0.1.5: the match must be the full-screen draw right
 after the bloom composite, reading the TAA output at t0 and writing another target of its size.
 Also one "tonemap not found" fallback earlier in that run.
+
+## Cutscene / title menu (2026-11-14, captures 4-5, Performance, RenoDX on)
+
+`docs/captures/DMC5DLSS-frame-4-menu.txt` (opening cutscene) and `-5-menu.txt` (title menu).
+Both use the game's own tonemap **ps04c20211** even with RenoDX on.
+
+- Cutscene: TAA -> #8fa3c, then **depth of field**: cs8be0eec5, csa9210538, csee42d8f1, csc2e129d2,
+  csbff83cd3, cs527426e9 (tiles, 960x540 near/far layers) and the composite **ps58dcc2f3** (t2 = TAA
+  output, t0/t1 960x540 layers, t3 1920x1080 rgba16f, t4 60x34 tiles, t5 960x540 r8) -> #8fc07. Bloom
+  is built from #8fc07 and composited into it, then a **glare** (csa2a251a3, csfe482a42, cs219a69ea on
+  1024x512 rgba16f -> **ps8f6eaed0** additive), then the tonemap reads #8fc07.
+- Title menu: no depth of field; bloom and glare go into the TAA output, then the tonemap.
+- ps133ccce0 runs before the TAA (reads the colour, writes #91356): not a post pass, so 0.1.3's match
+  on it was wrong.
+
+0.1.6: the glare is drawn into X as well (like bloom). Frames where the tonemap doesn't read the TAA
+output (depth of field) use the game's own upscaling for now (DLAA unaffected). ReShade.ini
+DumpShaders set for the DoF passes, glare, ps04c20211, ps133ccce0 (for depth of field at output size).

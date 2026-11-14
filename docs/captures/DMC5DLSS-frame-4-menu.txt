@@ -1,0 +1,3044 @@
+==== capture start (lists reset before this point are marked partial)
+EXECUTE list L1 on copy queue 00000257029D1C98 (not recorded)
+EXECUTE list L2 on graphics queue 00000257029D1BA8, 586 events (started before the capture: partial)
+  barrier #cfd7d buf 2621440: 0x1 -> uav
+  barrier #db1eb tex 1024x1024 r16_typeless x32: 0xe0 -> copy_dst
+  barrier #db1eb tex 1024x1024 r16_typeless x32: 0xe0 -> copy_dst
+  barrier #db1eb tex 1024x1024 r16_typeless x32: 0xe0 -> copy_dst
+  barrier #db1eb tex 1024x1024 r16_typeless x32: 0xe0 -> copy_dst
+  barrier #db1eb tex 1024x1024 r16_typeless x32: 0xe0 -> copy_dst
+  barrier #db1eb tex 1024x1024 r16_typeless x32: 0xe0 -> copy_dst
+  barrier #db1eb tex 1024x1024 r16_typeless x32: 0xe0 -> copy_dst
+  barrier #db1eb tex 1024x1024 r16_typeless x32: 0xe0 -> copy_dst
+  copy region #db40c tex 1024x1024 r16_typeless x32 -> #db1eb tex 1024x1024 r16_typeless x32
+  copy region #db40c tex 1024x1024 r16_typeless x32 -> #db1eb tex 1024x1024 r16_typeless x32
+  copy region #db40c tex 1024x1024 r16_typeless x32 -> #db1eb tex 1024x1024 r16_typeless x32
+  copy region #db40c tex 1024x1024 r16_typeless x32 -> #db1eb tex 1024x1024 r16_typeless x32
+  copy region #db40c tex 1024x1024 r16_typeless x32 -> #db1eb tex 1024x1024 r16_typeless x32
+  copy region #db40c tex 1024x1024 r16_typeless x32 -> #db1eb tex 1024x1024 r16_typeless x32
+  copy region #db40c tex 1024x1024 r16_typeless x32 -> #db1eb tex 1024x1024 r16_typeless x32
+  copy region #db40c tex 1024x1024 r16_typeless x32 -> #db1eb tex 1024x1024 r16_typeless x32
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 2 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 5 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 4 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 3 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 64 x 1 x 1
+      table param 0: u0 space0 = #db695 buf 131072
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 2 x 1 x 1
+      table param 0: u0 space0 = #f48aa buf 3856
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #f426f buf 400
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #f5129 buf 400
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 13 x 1 x 1
+      table param 0: u0 space0 = #cfd7d buf 2621440
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cfc5b buf 524288
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  barrier #f48aa buf 3856: uav -> srv
+  barrier null: uav -> uav
+  barrier #f4a5d buf 1770048: 0x1 -> uav
+  barrier #cf938 buf 25165824: uav -> srv
+  barrier #bfb5f buf 917504: uav -> srv
+  DISPATCH cs1b88ddf2 78 x 1 x 1
+      table param 1: t0 space0 = #cf938 buf 25165824
+      table param 1: t1 space0 = #bfb5f buf 917504
+      table param 1: t2 space0 = #f40bc buf 8039680 as r32_typeless
+      table param 2: u0 space0 = #f4a5d buf 1770048 as r32_typeless
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +391680
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +195328
+  DISPATCH cs55fa6a21 11 x 1 x 1
+      table param 1: t0 space0 = #cf938 buf 25165824
+      table param 1: t1 space0 = #bfb5f buf 917504
+      table param 1: t2 space0 = #f40bc buf 8039680 as r32_typeless
+      table param 2: u0 space0 = #f4a5d buf 1770048 as r32_typeless
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +391936
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +195584
+  DISPATCH cs55fa6a21 20 x 1 x 1
+      table param 1: t0 space0 = #cf938 buf 25165824
+      table param 1: t1 space0 = #bfb5f buf 917504
+      table param 1: t2 space0 = #f40bc buf 8039680 as r32_typeless
+      table param 2: u0 space0 = #f4a5d buf 1770048 as r32_typeless
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +392192
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +195840
+  DISPATCH cs1b88ddf2 68 x 1 x 1
+      table param 1: t0 space0 = #cf938 buf 25165824
+      table param 1: t1 space0 = #bfb5f buf 917504
+      table param 1: t2 space0 = #f40bc buf 8039680 as r32_typeless
+      table param 2: u0 space0 = #f4a5d buf 1770048 as r32_typeless
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +392448
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +196096
+  DISPATCH cs1b88ddf2 15 x 1 x 1
+      table param 1: t0 space0 = #cf938 buf 25165824
+      table param 1: t1 space0 = #bfb5f buf 917504
+      table param 1: t2 space0 = #f40bc buf 8039680 as r32_typeless
+      table param 2: u0 space0 = #f4a5d buf 1770048 as r32_typeless
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +392704
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +196352
+  DISPATCH cs1b88ddf2 2 x 1 x 1
+      table param 1: t0 space0 = #cf938 buf 25165824
+      table param 1: t1 space0 = #bfb5f buf 917504
+      table param 1: t2 space0 = #f40bc buf 8039680 as r32_typeless
+      table param 2: u0 space0 = #f4a5d buf 1770048 as r32_typeless
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +392960
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +196608
+  DISPATCH cs1b88ddf2 5 x 1 x 1
+      table param 1: t0 space0 = #cf938 buf 25165824
+      table param 1: t1 space0 = #bfb5f buf 917504
+      table param 1: t2 space0 = #f40bc buf 8039680 as r32_typeless
+      table param 2: u0 space0 = #f4a5d buf 1770048 as r32_typeless
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +393216
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +196864
+  DISPATCH cs3d8b51b6 28 x 1 x 1
+      table param 1: t0 space0 = #cf938 buf 25165824
+      table param 1: t1 space0 = #bfb5f buf 917504
+      table param 1: t2 space0 = #f46f7 buf 41414440 as r32_typeless
+      table param 2: u0 space0 = #f4b7f buf 905824 as r32_typeless
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +393472
+      root cbv param 5 (b1 space0): #bf6f1 buf 33554432 +642304
+  DISPATCH cs54444673 41 x 1 x 1
+      table param 1: t0 space0 = #cf938 buf 25165824
+      table param 1: t1 space0 = #bfb5f buf 917504
+      table param 1: t2 space0 = #f46f7 buf 41414440 as r32_typeless
+      table param 1: t3 space0 = #f48aa buf 3856
+      table param 2: u0 space0 = #f4b7f buf 905824 as r32_typeless
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +393728
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +194816
+  DISPATCH cs3d8b51b6 23 x 1 x 1
+      table param 1: t0 space0 = #cf938 buf 25165824
+      table param 1: t1 space0 = #bfb5f buf 917504
+      table param 1: t2 space0 = #f46f7 buf 41414440 as r32_typeless
+      table param 2: u0 space0 = #f4b7f buf 905824 as r32_typeless
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +393984
+      root cbv param 5 (b1 space0): #bf6f1 buf 33554432 +645888
+  DISPATCH cs54444673 21 x 1 x 1
+      table param 1: t0 space0 = #cf938 buf 25165824
+      table param 1: t1 space0 = #bfb5f buf 917504
+      table param 1: t2 space0 = #f46f7 buf 41414440 as r32_typeless
+      table param 1: t3 space0 = #f48aa buf 3856
+      table param 2: u0 space0 = #f4b7f buf 905824 as r32_typeless
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +394240
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +195072
+  barrier #f4a5d buf 1770048: uav -> 0x41
+  barrier #f4b7f buf 905824: uav -> 0x41
+  DISPATCH csf4c80ce3 14 x 1 x 1
+      table param 1: t0 space0 = #f4b7f buf 905824 as r32_typeless
+      table param 1: t1 space0 = #f4666 buf 503872 as r32_typeless
+      table param 2: u0 space0 = #f4c10 buf 339684 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +647424
+  DISPATCH csf4c80ce3 1 x 1 x 1
+      table param 1: t0 space0 = #f4b7f buf 905824 as r32_typeless
+      table param 1: t1 space0 = #f4666 buf 503872 as r32_typeless
+      table param 2: u0 space0 = #f4c10 buf 339684 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +647936
+  DISPATCH csf4c80ce3 41 x 1 x 1
+      table param 1: t0 space0 = #f4b7f buf 905824 as r32_typeless
+      table param 1: t1 space0 = #f4666 buf 503872 as r32_typeless
+      table param 2: u0 space0 = #f4c10 buf 339684 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +648448
+  DISPATCH csf4c80ce3 1 x 1 x 1
+      table param 1: t0 space0 = #f4b7f buf 905824 as r32_typeless
+      table param 1: t1 space0 = #f4666 buf 503872 as r32_typeless
+      table param 2: u0 space0 = #f4c10 buf 339684 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +650496
+  DISPATCH csf4c80ce3 1 x 1 x 1
+      table param 1: t0 space0 = #f4b7f buf 905824 as r32_typeless
+      table param 1: t1 space0 = #f4666 buf 503872 as r32_typeless
+      table param 2: u0 space0 = #f4c10 buf 339684 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +651008
+  DISPATCH csf4c80ce3 1 x 1 x 1
+      table param 1: t0 space0 = #f4b7f buf 905824 as r32_typeless
+      table param 1: t1 space0 = #f4666 buf 503872 as r32_typeless
+      table param 2: u0 space0 = #f4c10 buf 339684 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +652544
+  DISPATCH csf4c80ce3 5 x 1 x 1
+      table param 1: t0 space0 = #f4b7f buf 905824 as r32_typeless
+      table param 1: t1 space0 = #f4666 buf 503872 as r32_typeless
+      table param 2: u0 space0 = #f4c10 buf 339684 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +653056
+  DISPATCH csf4c80ce3 3 x 1 x 1
+      table param 1: t0 space0 = #f4b7f buf 905824 as r32_typeless
+      table param 1: t1 space0 = #f4666 buf 503872 as r32_typeless
+      table param 2: u0 space0 = #f4c10 buf 339684 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +653568
+  DISPATCH csf4c80ce3 2 x 1 x 1
+      table param 1: t0 space0 = #f4b7f buf 905824 as r32_typeless
+      table param 1: t1 space0 = #f4666 buf 503872 as r32_typeless
+      table param 2: u0 space0 = #f4c10 buf 339684 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +654080
+  DISPATCH csf4c80ce3 19 x 1 x 1
+      table param 1: t0 space0 = #f4b7f buf 905824 as r32_typeless
+      table param 1: t1 space0 = #f4666 buf 503872 as r32_typeless
+      table param 2: u0 space0 = #f4c10 buf 339684 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +654592
+  DISPATCH csf4c80ce3 64 x 1 x 1
+      table param 1: t0 space0 = #f4a5d buf 1770048 as r32_typeless
+      table param 1: t1 space0 = #f44b3 buf 1143760 as r32_typeless
+      table param 2: u0 space0 = #f4819 buf 663768 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +648960
+  DISPATCH csf4c80ce3 10 x 1 x 1
+      table param 1: t0 space0 = #f4a5d buf 1770048 as r32_typeless
+      table param 1: t1 space0 = #f44b3 buf 1143760 as r32_typeless
+      table param 2: u0 space0 = #f4819 buf 663768 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +649472
+  DISPATCH csf4c80ce3 18 x 1 x 1
+      table param 1: t0 space0 = #f4a5d buf 1770048 as r32_typeless
+      table param 1: t1 space0 = #f44b3 buf 1143760 as r32_typeless
+      table param 2: u0 space0 = #f4819 buf 663768 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +649984
+  DISPATCH csf4c80ce3 61 x 1 x 1
+      table param 1: t0 space0 = #f4a5d buf 1770048 as r32_typeless
+      table param 1: t1 space0 = #f44b3 buf 1143760 as r32_typeless
+      table param 2: u0 space0 = #f4819 buf 663768 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +651520
+  DISPATCH csf4c80ce3 14 x 1 x 1
+      table param 1: t0 space0 = #f4a5d buf 1770048 as r32_typeless
+      table param 1: t1 space0 = #f44b3 buf 1143760 as r32_typeless
+      table param 2: u0 space0 = #f4819 buf 663768 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +652032
+  DISPATCH csf4c80ce3 2 x 1 x 1
+      table param 1: t0 space0 = #f4a5d buf 1770048 as r32_typeless
+      table param 1: t1 space0 = #f44b3 buf 1143760 as r32_typeless
+      table param 2: u0 space0 = #f4819 buf 663768 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +655104
+  DISPATCH csf4c80ce3 5 x 1 x 1
+      table param 1: t0 space0 = #f4a5d buf 1770048 as r32_typeless
+      table param 1: t1 space0 = #f44b3 buf 1143760 as r32_typeless
+      table param 2: u0 space0 = #f4819 buf 663768 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +655616
+  barrier #f4b7f buf 905824: 0x41 -> uav
+  barrier #f4c10 buf 339684: uav -> srv
+  barrier #f4a5d buf 1770048: 0x41 -> uav
+  barrier #f4819 buf 663768: uav -> srv
+  DISPATCH csf5d34986 217 x 1 x 1
+      table param 1: t0 space0 = #f4819 buf 663768 as r32_typeless
+      table param 1: t1 space0 = #f41de buf 221256
+      table param 2: u0 space0 = #f4a5d buf 1770048 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +648960
+  DISPATCH cs9400ba67 111 x 1 x 1
+      table param 1: t0 space0 = #f4c10 buf 339684 as r32_typeless
+      table param 1: t1 space0 = #f4422 buf 113228
+      table param 2: u0 space0 = #f4b7f buf 905824 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +303360
+  barrier #f4c10 buf 339684: srv -> uav
+  barrier #f4819 buf 663768: srv -> uav
+  barrier null: uav -> uav
+  barrier #f5129 buf 400: uav -> srv
+  barrier null: uav -> uav
+  barrier #f426f buf 400: uav -> srv
+  DISPATCH cs3d3ff765 15 x 1 x 1
+      table param 1: t0 space0 = #f426f buf 400 as r32_typeless
+      table param 2: u0 space0 = #f3f09 buf 226560
+      table param 2: u1 space0 = #f414d buf 32
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +394496
+  DISPATCH cs3d3ff765 22 x 1 x 1
+      table param 1: t0 space0 = #f5129 buf 400 as r32_typeless
+      table param 2: u0 space0 = #f4300 buf 332288
+      table param 2: u1 space0 = #f536d buf 32
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +394752
+  barrier null: uav -> uav
+  barrier #8fc07 tex 1920x1080 r11g11b10f: srv -> rt
+  barrier null: uav -> uav
+  barrier null: uav -> uav
+  DISPATCH cs3187fcaf 15 x 1 x 1
+      table param 1: t0 space0 = #7ab84 tex 64x64 fmt71 x64 mips4
+      table param 1: t1 space0 = #f426f buf 400 as r32_typeless
+      table param 2: u0 space0 = #f3f09 buf 226560
+      table param 2: u1 space0 = #f3ba3 buf 76800
+      table param 2: u2 space0 = #f414d buf 32
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +394496
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +395008
+  DISPATCH cs3187fcaf 22 x 1 x 1
+      table param 1: t0 space0 = #7ab84 tex 64x64 fmt71 x64 mips4
+      table param 1: t1 space0 = #f5129 buf 400 as r32_typeless
+      table param 2: u0 space0 = #f4300 buf 332288
+      table param 2: u1 space0 = #f402b buf 112640
+      table param 2: u2 space0 = #f536d buf 32
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +394752
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +395264
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #d1792 buf 6144
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #d14bd buf 8192
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #d1b89 buf 196608
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 128 x 1 x 1
+      table param 0: u0 space0 = #bfe34 buf 262144
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #d1157 buf 40960
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #d1b89 buf 196608
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #d1279 buf 40960
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #d130a buf 40960
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 48 x 1 x 1
+      table param 0: u0 space0 = #bfd12 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfc81 buf 131072
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  barrier #d1b89 buf 196608: uav -> srv
+  barrier null: uav -> uav
+  DISPATCH cse010fe08 1 x 1 x 1
+      table param 2: u0 space0 = #d1f80 buf 32768
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +819968
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +821248
+      root cbv param 6 (b2 space0): #b96f4 buf 33554432 +396288
+  DISPATCH cs9ab23b45 1 x 1 x 1
+      table param 1: t0 space0 = #d1b89 buf 196608
+      table param 2: u0 space0 = #d1eef buf 196608
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +819968
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +821504
+  barrier null: uav -> uav
+  DISPATCH cs9ab23b45 1 x 1 x 1
+      table param 1: t0 space0 = #d1b89 buf 196608
+      table param 2: u0 space0 = #d1eef buf 196608
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +819968
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +821760
+  barrier #d27b4 tex 32x80 r32uint x32: srv -> uav
+  barrier null: uav -> uav
+  barrier #d1eef buf 196608: uav -> srv
+  DISPATCH csffa77535 32 x 16 x 1
+      table param 1: t0 space0 = #d1eef buf 196608
+      table param 2: u0 space0 = #d27b4 tex 32x80 r32uint x32 as r32uint
+      table param 2: u1 space0 = #d1af8 buf 1048576 as r32_typeless
+      table param 2: u2 space0 = #d1e5e buf 4 as r32_typeless
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +819968
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +822016
+  barrier null: uav -> uav
+  DISPATCH csffa77535 32 x 16 x 1
+      table param 1: t0 space0 = #d1eef buf 196608
+      table param 2: u0 space0 = #d27b4 tex 32x80 r32uint x32 as r32uint
+      table param 2: u1 space0 = #d1af8 buf 1048576 as r32_typeless
+      table param 2: u2 space0 = #d1e5e buf 4 as r32_typeless
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +819968
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +822272
+  barrier null: uav -> uav
+  DISPATCH csffa77535 32 x 16 x 1
+      table param 1: t0 space0 = #d1eef buf 196608
+      table param 2: u0 space0 = #d27b4 tex 32x80 r32uint x32 as r32uint
+      table param 2: u1 space0 = #d1af8 buf 1048576 as r32_typeless
+      table param 2: u2 space0 = #d1e5e buf 4 as r32_typeless
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +819968
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +822528
+  barrier null: uav -> uav
+  DISPATCH csffa77535 32 x 16 x 1
+      table param 1: t0 space0 = #d1eef buf 196608
+      table param 2: u0 space0 = #d27b4 tex 32x80 r32uint x32 as r32uint
+      table param 2: u1 space0 = #d1af8 buf 1048576 as r32_typeless
+      table param 2: u2 space0 = #d1e5e buf 4 as r32_typeless
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +819968
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +822784
+  barrier null: uav -> uav
+  barrier #d1f80 buf 32768: uav -> srv
+  DISPATCH cs03dc5fd4 32 x 16 x 1
+      table param 1: t0 space0 = #d1eef buf 196608
+      table param 1: t1 space0 = #d1f80 buf 32768
+      table param 2: u0 space0 = #d27b4 tex 32x80 r32uint x32 as r32uint
+      table param 2: u1 space0 = #d1af8 buf 1048576 as r32_typeless
+      table param 2: u2 space0 = #d1e5e buf 4 as r32_typeless
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +819968
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +823040
+  barrier #7b809 tex 1920x1080 rgba16f: srv -> rt
+  barrier null: uav -> uav
+  DISPATCH cs03dc5fd4 32 x 16 x 1
+      table param 1: t0 space0 = #d1eef buf 196608
+      table param 1: t1 space0 = #d1f80 buf 32768
+      table param 2: u0 space0 = #d27b4 tex 32x80 r32uint x32 as r32uint
+      table param 2: u1 space0 = #d1af8 buf 1048576 as r32_typeless
+      table param 2: u2 space0 = #d1e5e buf 4 as r32_typeless
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +819968
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +823296
+  DISPATCH cs62ed77d4 4096 x 1 x 1
+      table param 2: u0 space0 = #bff56 buf 5242880 as r32_typeless
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  barrier #90762 tex 1920x1080 r32_typeless: 0xe0 -> dsv
+  barrier null: uav -> uav
+  barrier #c0500 buf 98304: uav -> srv
+  DISPATCH csc992f421 1 x 1 x 1
+      table param 1: t0 space0 = #c0500 buf 98304
+      table param 2: u0 space0 = #bff56 buf 5242880 as r32_typeless
+      root cbv param 4 (b0 space0): #b96f4 buf 33554432 +825088
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #db726 buf 20
+      table param 1: t0 space0 = #b96f4 buf 33554432
+  barrier #f4a5d buf 1770048: uav -> 0x1
+  barrier #90df5 tex 1920x1080 rgba8srgb: srv -> rt
+  barrier #90af8 tex 1920x1080 rgb10a2unorm: srv -> rt
+  barrier #90e8e tex 1920x1080 rgba16snorm: srv -> rt
+  barrier #bfc81 buf 131072: uav -> srv
+  barrier #bff56 buf 5242880: uav -> indirect
+  render targets: #8fc07 tex 1920x1080 r11g11b10f #90df5 tex 1920x1080 rgba8srgb #90af8 tex 1920x1080 rgb10a2unorm #90e8e tex 1920x1080 rgba16snorm depth #90762 tex 1920x1080 r32_typeless
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 27
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 68
+  indirect type 0 count 13
+  indirect type 0 count 40
+  indirect type 0 count 57
+  indirect type 0 count 51
+  indirect type 0 count 17
+  indirect type 0 count 34
+  indirect type 0 count 116
+  indirect type 0 count 55
+  indirect type 0 count 2
+  indirect type 0 count 7
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+EXECUTE list L3 on graphics queue 00000257029D1BA8, 506 events (started before the capture: partial)
+  render targets: #8fc07 tex 1920x1080 r11g11b10f #90df5 tex 1920x1080 rgba8srgb #90af8 tex 1920x1080 rgb10a2unorm #90e8e tex 1920x1080 rgba16snorm depth #90762 tex 1920x1080 r32_typeless
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 6
+  indirect type 0 count 8
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 3
+  indirect type 0 count 2
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  barrier #90762 tex 1920x1080 r32_typeless: dsv -> 0xe0
+  render targets: #8fc07 tex 1920x1080 r11g11b10f #90df5 tex 1920x1080 rgba8srgb #90af8 tex 1920x1080 rgb10a2unorm depth #90762 tex 1920x1080 r32_typeless
+  indirect type 0 count 2
+  render targets: #8fc07 tex 1920x1080 r11g11b10f depth #90762 tex 1920x1080 r32_typeless
+  FULLSCREEN ps2680334e vsa60b7c3f draw 3 verts viewport 1920x1080 at 0,0 -> #8fc07 tex 1920x1080 r11g11b10f depth #90762 tex 1920x1080 r32_typeless
+      table param 0: t0 space0 = #35ae5 tex 4096x2048 fmt95
+      table param 6: t0 space0 = #35e7b tex 64x256 fmt99
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #bf6f1 buf 33554432 +522496
+      root cbv param 8 (b0 space0): #b96f4 buf 33554432 +182528
+      root cbv param 9 (b1 space0): #b9816 buf 33554432 +42240
+  render targets: #90e8e tex 1920x1080 rgba16snorm depth #90762 tex 1920x1080 r32_typeless
+  FULLSCREEN ps97bf3008 vsa60b7c3f draw 3 verts viewport 1920x1080 at 0,0 -> #90e8e tex 1920x1080 rgba16snorm depth #90762 tex 1920x1080 r32_typeless
+      table param 0: t0 space0 = #90762 tex 1920x1080 r32_typeless as r32f
+      table param 6: t0 space0 = #35e7b tex 64x256 fmt99
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 8 (b0 space0): #b96f4 buf 33554432 +182528
+  barrier #06fe1 tex 1920x1080 r32_typeless: srv -> rt
+  barrier null: uav -> uav
+  barrier #23a3d tex 1920x1080 r32uint: srv -> uav
+  barrier #90e8e tex 1920x1080 rgba16snorm: rt -> srv
+  DISPATCH cs94fc01c4 120 x 68 x 1
+      table param 1: t0 space0 = #90762 tex 1920x1080 r32_typeless as r32f
+      table param 1: t1 space0 = #90e8e tex 1920x1080 rgba16snorm as rgba16snorm
+      table param 2: u0 space0 = #23a3d tex 1920x1080 r32uint as r32uint
+      root cbv param 4 (b0 space0): #b9816 buf 33554432 +44032
+  render targets: #06fe1 tex 1920x1080 r32_typeless
+  FULLSCREEN ps47c00816 vs7c24ad34 draw 3 verts viewport 1920x1080 at 0,0 -> #06fe1 tex 1920x1080 r32_typeless
+      table param 0: t0 space0 = #90762 tex 1920x1080 r32_typeless as r32f
+      table param 6: t0 space0 = #35e7b tex 64x256 fmt99
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #06fe1 tex 1920x1080 r32_typeless: rt -> srv
+  render targets: #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16
+  FULLSCREEN pscc69a62f vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16
+      table param 0: t0 space0 = #06fe1 tex 1920x1080 r32_typeless as r32f
+      table param 6: t0 space0 = #35e7b tex 64x256 fmt99
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #bf6f1 buf 33554432 +215040
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+  render targets: #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16
+  FULLSCREEN pscc69a62f vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16
+      table param 0: t0 space0 = #06fe1 tex 1920x1080 r32_typeless as r32f
+      table param 6: t0 space0 = #35e7b tex 64x256 fmt99
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #bf6f1 buf 33554432 +275968
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a0928 tex 480x270 r8unorm x16: srv -> rt
+  barrier #90af8 tex 1920x1080 rgb10a2unorm: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  render targets: #a0928 tex 480x270 r8unorm x16
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      table param 6: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 6: t1 space0 = #35f14 tex 128x512 fmt98
+      table param 12: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 12: t1 space0 = #35f14 tex 128x512 fmt98
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9816 buf 33554432 +4864
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +215040
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +215040
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      table param 6: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 6: t1 space0 = #35f14 tex 128x512 fmt98
+      table param 12: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 12: t1 space0 = #35f14 tex 128x512 fmt98
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9816 buf 33554432 +4864
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +272384
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +272384
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      table param 6: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 6: t1 space0 = #35f14 tex 128x512 fmt98
+      table param 12: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 12: t1 space0 = #35f14 tex 128x512 fmt98
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9816 buf 33554432 +4864
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +272896
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +272896
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      table param 6: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 6: t1 space0 = #35f14 tex 128x512 fmt98
+      table param 12: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 12: t1 space0 = #35f14 tex 128x512 fmt98
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9816 buf 33554432 +4864
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +273408
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +273408
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      table param 6: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 6: t1 space0 = #35f14 tex 128x512 fmt98
+      table param 12: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 12: t1 space0 = #35f14 tex 128x512 fmt98
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9816 buf 33554432 +4864
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +273920
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +273920
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      table param 6: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 6: t1 space0 = #35f14 tex 128x512 fmt98
+      table param 12: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 12: t1 space0 = #35f14 tex 128x512 fmt98
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9816 buf 33554432 +4864
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +274432
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +274432
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      table param 6: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 6: t1 space0 = #35f14 tex 128x512 fmt98
+      table param 12: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 12: t1 space0 = #35f14 tex 128x512 fmt98
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9816 buf 33554432 +4864
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +274944
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +274944
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      table param 6: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 6: t1 space0 = #35f14 tex 128x512 fmt98
+      table param 12: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 12: t1 space0 = #35f14 tex 128x512 fmt98
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9816 buf 33554432 +4864
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +275456
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +275456
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      table param 6: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 6: t1 space0 = #35f14 tex 128x512 fmt98
+      table param 12: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 12: t1 space0 = #35f14 tex 128x512 fmt98
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9816 buf 33554432 +4864
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +275968
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +275968
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      table param 6: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 6: t1 space0 = #35f14 tex 128x512 fmt98
+      table param 12: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 12: t1 space0 = #35f14 tex 128x512 fmt98
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9816 buf 33554432 +4864
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +276480
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +276480
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      table param 6: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 6: t1 space0 = #35f14 tex 128x512 fmt98
+      table param 12: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 12: t1 space0 = #35f14 tex 128x512 fmt98
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9816 buf 33554432 +4864
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +276992
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +276992
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      table param 6: t0 space0 = #35e7b tex 64x256 fmt99
+      table param 6: t1 space0 = #35f14 tex 128x512 fmt98
+      table param 12: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 12: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9816 buf 33554432 +4864
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +277504
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +277504
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      table param 6: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 6: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      table param 12: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 12: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9816 buf 33554432 +4864
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +278016
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +278016
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      table param 6: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 6: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      table param 12: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 12: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9816 buf 33554432 +4864
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +278528
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +278528
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      table param 6: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 6: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      table param 12: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 12: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9816 buf 33554432 +4864
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +279040
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +279040
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      table param 6: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 6: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      table param 12: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 12: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9816 buf 33554432 +4864
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +279552
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +279552
+  barrier #a0535 tex 1920x1080 rg16f x16: srv -> rt
+  barrier #a0928 tex 480x270 r8unorm x16: rt -> srv
+  render targets: #a0535 tex 1920x1080 rg16f x16
+  FULLSCREEN ps61c21211 vs7c24ad34 draw 3 verts viewport 1920x1080 at 0,0 -> #a0535 tex 1920x1080 rg16f x16
+      table param 0: t0 space0 = #06fe1 tex 1920x1080 r32_typeless as r32f
+      table param 0: t1 space0 = #a0928 tex 480x270 r8unorm x16 as r8unorm
+      table param 6: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 6: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+  barrier #a0a79 tex 1920x1080 rg16f x16: srv -> rt
+  barrier #a0535 tex 1920x1080 rg16f x16: rt -> srv
+  render targets: #a0a79 tex 1920x1080 rg16f x16
+  FULLSCREEN ps55c36261 vs7c24ad34 draw 3 verts viewport 1920x1080 at 0,0 -> #a0a79 tex 1920x1080 rg16f x16
+      table param 0: t0 space0 = #a0535 tex 1920x1080 rg16f x16 as rg16f
+      table param 6: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9816 buf 33554432 +4864
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+  barrier #06d7d tex 1920x1088 r32_typeless: srv -> rt
+  barrier #a0a79 tex 1920x1080 rg16f x16: rt -> srv
+  render targets: #06d7d tex 1920x1088 r32_typeless
+  FULLSCREEN ps12d137f4 vs7c24ad34 draw 3 verts viewport 1920x1080 at 0,0 -> #06d7d tex 1920x1088 r32_typeless
+      table param 0: t0 space0 = #90e8e tex 1920x1080 rgba16snorm as rgba16snorm
+      table param 0: t1 space0 = #a0a79 tex 1920x1080 rg16f x16 as rg16f
+      table param 6: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 6: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9816 buf 33554432 +4864
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+  barrier #db1eb tex 1024x1024 r16_typeless x32: copy_dst -> dsv
+  barrier #db1eb tex 1024x1024 r16_typeless x32: copy_dst -> dsv
+  barrier #db1eb tex 1024x1024 r16_typeless x32: copy_dst -> dsv
+  barrier #db1eb tex 1024x1024 r16_typeless x32: copy_dst -> dsv
+  barrier #db1eb tex 1024x1024 r16_typeless x32: copy_dst -> dsv
+  barrier #db1eb tex 1024x1024 r16_typeless x32: copy_dst -> dsv
+  barrier #db1eb tex 1024x1024 r16_typeless x32: copy_dst -> dsv
+  barrier #db1eb tex 1024x1024 r16_typeless x32: copy_dst -> dsv
+  barrier null: uav -> uav
+  barrier #91488 tex 1920x1080 r32uint: srv -> uav
+  barrier #91521 tex 1920x1080 r32uint: srv -> uav
+  barrier #d27b4 tex 32x80 r32uint x32: uav -> srv
+  barrier #d1af8 buf 1048576: uav -> srv
+  barrier #90df5 tex 1920x1080 rgba8srgb: rt -> srv
+  barrier #06d7d tex 1920x1088 r32_typeless: rt -> srv
+  DISPATCH cs5db6cdd6 120 x 68 x 1
+      table param 0: b4 space0 = cbv #bf6f1 buf 33554432 +139776
+      table param 1: t0 space0 = #90762 tex 1920x1080 r32_typeless as r32f
+      table param 1: t1 space0 = #d27b4 tex 32x80 r32uint x32 as r32uint
+      table param 1: t2 space0 = #d1af8 buf 1048576 as r32_typeless
+      table param 1: t3 space0 = #90df5 tex 1920x1080 rgba8srgb as rgba8srgb
+      table param 1: t4 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 1: t5 space0 = #06d7d tex 1920x1088 r32_typeless as r32f
+      table param 1: t6 space0 = #8f6c8 buf 2668880 as r32_typeless
+      table param 1: t7 space0 = #8f3f3 buf 15183360
+      table param 1: t8 space0 = #d1670 buf 16777216 as r32_typeless
+      table param 1: t9 space0 = #d28e8 tex 512x512 r11g11b10f x128 mips5 as r11g11b10f
+      table param 1: t10 space0 = #d091d tex 256x256 r11g11b10f x6 mips5 as r11g11b10f
+      table param 2: u0 space0 = #91059 tex 1920x1080 r32uint as r32uint
+      table param 2: u1 space0 = #91488 tex 1920x1080 r32uint as r32uint
+      table param 2: u2 space0 = #91521 tex 1920x1080 r32uint as r32uint
+      root cbv param 4 (b0 space0): #b9816 buf 33554432 +44032
+      root cbv param 5 (b1 space0): #b9938 buf 33554432 +12544
+      root cbv param 6 (b2 space0): #b9816 buf 33554432 +44544
+      root cbv param 7 (b3 space0): #b96f4 buf 33554432 +62464
+  render targets: depth #db1eb tex 1024x1024 r16_typeless x32
+  indirect type 0 count 3
+  indirect type 0 count 1
+  indirect type 0 count 2
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+EXECUTE list L4 on graphics queue 00000257029D1BA8, 456 events (started before the capture: partial)
+  render targets: depth #db1eb tex 1024x1024 r16_typeless x32
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  render targets: depth #db1eb tex 1024x1024 r16_typeless x32
+  indirect type 0 count 3
+  indirect type 0 count 1
+  indirect type 0 count 2
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  render targets: depth #db1eb tex 1024x1024 r16_typeless x32
+  indirect type 0 count 3
+  indirect type 0 count 1
+  indirect type 0 count 2
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  render targets: depth #db1eb tex 1024x1024 r16_typeless x32
+  indirect type 0 count 3
+  indirect type 0 count 1
+  indirect type 0 count 2
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  render targets: depth #db1eb tex 1024x1024 r16_typeless x32
+  indirect type 0 count 3
+  indirect type 0 count 1
+  indirect type 0 count 2
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  render targets: depth #db1eb tex 1024x1024 r16_typeless x32
+  indirect type 0 count 3
+  indirect type 0 count 1
+  indirect type 0 count 2
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  render targets: depth #db1eb tex 1024x1024 r16_typeless x32
+  indirect type 0 count 3
+  indirect type 0 count 1
+  indirect type 0 count 2
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  render targets: depth #db1eb tex 1024x1024 r16_typeless x32
+  indirect type 0 count 3
+  indirect type 0 count 1
+  indirect type 0 count 2
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  barrier #8fa3c tex 1920x1080 r11g11b10f: srv -> rt
+  barrier #db1eb tex 1024x1024 r16_typeless x32: dsv -> 0xe0
+  barrier #db1eb tex 1024x1024 r16_typeless x32: dsv -> 0xe0
+  barrier #db1eb tex 1024x1024 r16_typeless x32: dsv -> 0xe0
+  barrier #db1eb tex 1024x1024 r16_typeless x32: dsv -> 0xe0
+  barrier #db1eb tex 1024x1024 r16_typeless x32: dsv -> 0xe0
+  barrier #db1eb tex 1024x1024 r16_typeless x32: dsv -> 0xe0
+  barrier #db1eb tex 1024x1024 r16_typeless x32: dsv -> 0xe0
+  barrier #db1eb tex 1024x1024 r16_typeless x32: dsv -> 0xe0
+  barrier #91488 tex 1920x1080 r32uint: uav -> srv
+  render targets: #8fc07 tex 1920x1080 r11g11b10f #8fa3c tex 1920x1080 r11g11b10f depth #90762 tex 1920x1080 r32_typeless
+  FULLSCREEN ps21d00dac vsa60b7c3f draw 3 verts viewport 1920x1080 at 0,0 -> #8fc07 tex 1920x1080 r11g11b10f #8fa3c tex 1920x1080 r11g11b10f depth #90762 tex 1920x1080 r32_typeless
+      table param 0: b4 space0 = cbv #b96f4 buf 33554432 +189440
+      table param 0: b5 space0 = cbv #b96f4 buf 33554432 +1280
+      table param 0: t0 space0 = #90762 tex 1920x1080 r32_typeless as r32f
+      table param 0: t1 space0 = #d27b4 tex 32x80 r32uint x32 as r32uint
+      table param 0: t2 space0 = #d1af8 buf 1048576 as r32_typeless
+      table param 0: t3 space0 = #90df5 tex 1920x1080 rgba8srgb as rgba8srgb
+      table param 0: t4 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t5 space0 = #06d7d tex 1920x1088 r32_typeless as r32f
+      table param 0: t6 space0 = #d0d29 tex 512x1 r16f x64 as r16f
+      table param 0: t7 space0 = #db1eb tex 1024x1024 r16_typeless x32 as r16unorm
+      table param 0: t8 space0 = #91488 tex 1920x1080 r32uint as r32uint
+      table param 6: t0 space0 = #89465 tex 256x512 fmt98 mips2
+      table param 6: t1 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 6: t2 space0 = #9b13a tex 256x256 fmt71 mips2
+      table param 6: t3 space0 = #90e8e tex 1920x1080 rgba16snorm as rgba16snorm
+      root cbv param 2 (b0 space0): #b9938 buf 33554432 +48384
+      root cbv param 3 (b1 space0): #b9938 buf 33554432 +12800
+      root cbv param 4 (b2 space0): #b96f4 buf 33554432 +181760
+      root cbv param 5 (b3 space0): #b96f4 buf 33554432 +121856
+      root cbv param 8 (b0 space0): #b9938 buf 33554432 +44288
+      root cbv param 9 (b1 space0): #b9938 buf 33554432 +44800
+      root cbv param 10 (b2 space0): #b9938 buf 33554432 +47104
+      root cbv param 11 (b3 space0): #bf6f1 buf 33554432 +0
+  barrier #91356 tex 1920x1080 r11g11b10f: srv -> rt
+  barrier #8fa3c tex 1920x1080 r11g11b10f: rt -> srv
+  barrier #23a3d tex 1920x1080 r32uint: uav -> srv
+  render targets: #91356 tex 1920x1080 r11g11b10f depth #90762 tex 1920x1080 r32_typeless
+  FULLSCREEN ps133ccce0 vsa60b7c3f draw 3 verts viewport 1920x1080 at 0,0 -> #91356 tex 1920x1080 r11g11b10f depth #90762 tex 1920x1080 r32_typeless
+      table param 0: t0 space0 = #8fa3c tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 0: t1 space0 = #23a3d tex 1920x1080 r32uint as r32uint
+      table param 0: t2 space0 = #d032c buf 2432
+      table param 6: t0 space0 = #89465 tex 256x512 fmt98 mips2
+      table param 6: t1 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 6: t2 space0 = #9b13a tex 256x256 fmt71 mips2
+      root cbv param 2 (b0 space0): #b9938 buf 33554432 +48384
+      root cbv param 8 (b0 space0): #b9938 buf 33554432 +44288
+  barrier #8fa3c tex 1920x1080 r11g11b10f: srv -> rt
+  barrier #8fc07 tex 1920x1080 r11g11b10f: rt -> srv
+  barrier #91356 tex 1920x1080 r11g11b10f: rt -> srv
+  render targets: #8fa3c tex 1920x1080 r11g11b10f depth #90762 tex 1920x1080 r32_typeless
+  FULLSCREEN ps858a0c9a vsa60b7c3f draw 3 verts viewport 1920x1080 at 0,0 -> #8fa3c tex 1920x1080 r11g11b10f depth #90762 tex 1920x1080 r32_typeless
+      table param 0: t0 space0 = #90762 tex 1920x1080 r32_typeless as r32f
+      table param 0: t1 space0 = #90df5 tex 1920x1080 rgba8srgb as rgba8srgb
+      table param 0: t2 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 0: t3 space0 = #91356 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 0: t4 space0 = #23a3d tex 1920x1080 r32uint as r32uint
+      table param 0: t5 space0 = #d032c buf 2432
+      table param 6: t0 space0 = #89465 tex 256x512 fmt98 mips2
+      table param 6: t1 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 6: t2 space0 = #9b13a tex 256x256 fmt71 mips2
+      table param 6: t3 space0 = #90e8e tex 1920x1080 rgba16snorm as rgba16snorm
+      root cbv param 2 (b0 space0): #b9938 buf 33554432 +48384
+      root cbv param 8 (b0 space0): #b9938 buf 33554432 +44288
+  barrier #cfc5b buf 524288: uav -> 0x2
+  barrier #cfd7d buf 2621440: uav -> 0x1
+  barrier #d14bd buf 8192: uav -> srv
+  barrier #8fc07 tex 1920x1080 r11g11b10f: srv -> rt
+  barrier #8fa3c tex 1920x1080 r11g11b10f: rt -> srv
+  barrier #91521 tex 1920x1080 r32uint: uav -> srv
+  render targets: #8fc07 tex 1920x1080 r11g11b10f depth #90762 tex 1920x1080 r32_typeless
+  FULLSCREEN ps23d0eaad vsa60b7c3f draw 3 verts viewport 1920x1080 at 0,0 -> #8fc07 tex 1920x1080 r11g11b10f depth #90762 tex 1920x1080 r32_typeless
+      table param 0: t0 space0 = #90762 tex 1920x1080 r32_typeless as r32f
+      table param 0: t1 space0 = #90df5 tex 1920x1080 rgba8srgb as rgba8srgb
+      table param 0: t2 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t3 space0 = #8fa3c tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 0: t4 space0 = #da525 tex 256x256 fmt95
+      table param 0: t5 space0 = #91521 tex 1920x1080 r32uint as r32uint
+      table param 6: t0 space0 = #89465 tex 256x512 fmt98 mips2
+      table param 6: t1 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 6: t2 space0 = #9b13a tex 256x256 fmt71 mips2
+      table param 6: t3 space0 = #90e8e tex 1920x1080 rgba16snorm as rgba16snorm
+      root cbv param 2 (b0 space0): #b9938 buf 33554432 +48384
+      root cbv param 3 (b1 space0): #b96f4 buf 33554432 +185600
+      root cbv param 8 (b0 space0): #b9938 buf 33554432 +44288
+      root cbv param 9 (b1 space0): #b9938 buf 33554432 +44800
+  indirect type 0 count 1
+  indirect type 0 count 1
+  render targets: #7b809 tex 1920x1080 rgba16f depth #90762 tex 1920x1080 r32_typeless
+  draw x3
+  barrier #8fa3c tex 1920x1080 r11g11b10f: srv -> rt
+  barrier #8fc07 tex 1920x1080 r11g11b10f: rt -> srv
+  barrier #90d5c tex 1920x1080 r11g11b10f: copy_dst -> srv
+  render targets: #8fa3c tex 1920x1080 r11g11b10f
+  FULLSCREEN ps321bf06e vs3f48df32 draw 3 verts viewport 1920x1080 at 0,0 -> #8fa3c tex 1920x1080 r11g11b10f
+      table param 0: t0 space0 = #90762 tex 1920x1080 r32_typeless as r32f
+      table param 0: t1 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 0: t2 space0 = #90d5c tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 0: t3 space0 = #90e8e tex 1920x1080 rgba16snorm as rgba16snorm
+      table param 6: t0 space0 = #d1dcd buf 36 as r32_typeless
+      table param 6: t1 space0 = #d1dcd buf 36 as r32_typeless
+      table param 6: t2 space0 = #73c2e tex 1024x1024 fmt99
+      root cbv param 2 (b0 space0): #b9938 buf 33554432 +55552
+      root cbv param 3 (b1 space0): #b96f4 buf 33554432 +186368
+      root cbv param 8 (b0 space0): #b9938 buf 33554432 +55552
+      root cbv param 9 (b1 space0): #b96f4 buf 33554432 +186368
+  barrier #c9150 tex 60x1080 r11g11b10f: srv -> uav
+  barrier #8fa3c tex 1920x1080 r11g11b10f: rt -> copy_src
+  barrier #90d5c tex 1920x1080 r11g11b10f: srv -> copy_dst
+  copy #8fa3c tex 1920x1080 r11g11b10f -> #90d5c tex 1920x1080 r11g11b10f
+  DISPATCH cs8be0eec5 8 x 1080 x 1
+      table param 1: t0 space0 = #90762 tex 1920x1080 r32_typeless as r32f
+      table param 2: u0 space0 = #c9150 tex 60x1080 r11g11b10f as r11g11b10f
+      root cbv param 4 (b0 space0): #b9938 buf 33554432 +55552
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +190208
+  barrier #c91e9 tex 60x34 r11g11b10f: srv -> uav
+  barrier #c9150 tex 60x1080 r11g11b10f: uav -> srv
+  DISPATCH csa9210538 60 x 5 x 1
+      table param 1: t0 space0 = #c9150 tex 60x1080 r11g11b10f as r11g11b10f
+      table param 2: u0 space0 = #c91e9 tex 60x34 r11g11b10f as r11g11b10f
+      root cbv param 4 (b0 space0): #b9938 buf 33554432 +55552
+  barrier #c93b4 tex 60x34 r11g11b10f: srv -> uav
+  barrier #c91e9 tex 60x34 r11g11b10f: uav -> srv
+  DISPATCH csee42d8f1 8 x 5 x 1
+      table param 1: t0 space0 = #c91e9 tex 60x34 r11g11b10f as r11g11b10f
+      table param 2: u0 space0 = #c93b4 tex 60x34 r11g11b10f as r11g11b10f
+  barrier #c931b tex 960x540 r11g11b10f: srv -> uav
+  barrier #c944d tex 960x540 r11g11b10f: srv -> uav
+  barrier #8fa3c tex 1920x1080 r11g11b10f: copy_src -> srv
+  barrier #c93b4 tex 60x34 r11g11b10f: uav -> srv
+  DISPATCH csc2e129d2 60 x 34 x 1
+      table param 1: t0 space0 = #90762 tex 1920x1080 r32_typeless as r32f
+      table param 1: t1 space0 = #8fa3c tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 1: t2 space0 = #c93b4 tex 60x34 r11g11b10f as r11g11b10f
+      table param 2: u0 space0 = #c931b tex 960x540 r11g11b10f as r11g11b10f
+      table param 2: u1 space0 = #c944d tex 960x540 r11g11b10f as r11g11b10f
+      root cbv param 4 (b0 space0): #b9938 buf 33554432 +55552
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +190208
+  barrier #26d8f tex 960x540 r32uint: srv -> uav
+  barrier #26b2b tex 960x540 r8unorm: srv -> uav
+  barrier #c931b tex 960x540 r11g11b10f: uav -> srv
+  barrier #c944d tex 960x540 r11g11b10f: uav -> srv
+  DISPATCH csbff83cd3 60 x 34 x 1
+      table param 1: t0 space0 = #c931b tex 960x540 r11g11b10f as r11g11b10f
+      table param 1: t1 space0 = #c944d tex 960x540 r11g11b10f as r11g11b10f
+      table param 1: t2 space0 = #c93b4 tex 60x34 r11g11b10f as r11g11b10f
+      table param 2: u0 space0 = #26d8f tex 960x540 r32uint as r32uint
+      table param 2: u1 space0 = #26b2b tex 960x540 r8unorm as r8unorm
+      root cbv param 4 (b0 space0): #b9938 buf 33554432 +55552
+      root cbv param 5 (b1 space0): #b96f4 buf 33554432 +190208
+  barrier #c944d tex 960x540 r11g11b10f: srv -> uav
+  barrier #26d8f tex 960x540 r32uint: uav -> srv
+  DISPATCH cs527426e9 60 x 34 x 1
+      table param 1: t0 space0 = #26d8f tex 960x540 r32uint as r32uint
+      table param 2: u0 space0 = #c944d tex 960x540 r11g11b10f as r11g11b10f
+  barrier #8fc07 tex 1920x1080 r11g11b10f: srv -> rt
+  barrier #c944d tex 960x540 r11g11b10f: uav -> srv
+  barrier #7b809 tex 1920x1080 rgba16f: rt -> srv
+  barrier #26b2b tex 960x540 r8unorm: uav -> srv
+  render targets: #8fc07 tex 1920x1080 r11g11b10f
+  FULLSCREEN ps58dcc2f3 vsa60b7c3f draw 3 verts viewport 1920x1080 at 0,0 -> #8fc07 tex 1920x1080 r11g11b10f
+      table param 0: t0 space0 = #c931b tex 960x540 r11g11b10f as r11g11b10f
+      table param 0: t1 space0 = #c944d tex 960x540 r11g11b10f as r11g11b10f
+      table param 0: t2 space0 = #8fa3c tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 0: t3 space0 = #7b809 tex 1920x1080 rgba16f as rgba16f
+      table param 0: t4 space0 = #c93b4 tex 60x34 r11g11b10f as r11g11b10f
+      table param 0: t5 space0 = #26b2b tex 960x540 r8unorm as r8unorm
+      table param 6: t0 space0 = #201ca tex 3840x2160 r11g11b10f as r11g11b10f
+      table param 6: t1 space0 = #c901e tex 960x540 r11g11b10f as r11g11b10f
+      table param 6: t2 space0 = #adcec tex 1024x1024 fmt80 mips4
+      table param 6: t3 space0 = #aa904 tex 1024x1024 fmt72 mips4
+      root cbv param 2 (b0 space0): #b9938 buf 33554432 +55552
+      root cbv param 3 (b1 space0): #b96f4 buf 33554432 +190208
+      root cbv param 8 (b0 space0): #b9938 buf 33554432 +55552
+      root cbv param 9 (b1 space0): #b96f4 buf 33554432 +186368
+  barrier #c901e tex 960x540 r11g11b10f: srv -> rt
+  barrier #8fc07 tex 1920x1080 r11g11b10f: rt -> srv
+  render targets: #c901e tex 960x540 r11g11b10f
+  FULLSCREEN pseb1e43cf vs7c24ad34 draw 3 verts viewport 960x540 at 0,0 -> #c901e tex 960x540 r11g11b10f
+      table param 0: t0 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #201ca tex 3840x2160 r11g11b10f as r11g11b10f
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +512
+      root cbv param 8 (b0 space0): #b9938 buf 33554432 +55552
+  barrier #9ec66 tex 480x270 r11g11b10f: srv -> rt
+  barrier #c901e tex 960x540 r11g11b10f: rt -> srv
+  render targets: #9ec66 tex 480x270 r11g11b10f
+  FULLSCREEN psf76db36a vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #9ec66 tex 480x270 r11g11b10f
+      table param 0: t0 space0 = #c901e tex 960x540 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #201ca tex 3840x2160 r11g11b10f as r11g11b10f
+  barrier #9f07c tex 240x135 r11g11b10f: srv -> rt
+  barrier #9ec66 tex 480x270 r11g11b10f: rt -> srv
+  render targets: #9f07c tex 240x135 r11g11b10f
+  FULLSCREEN psf76db36a vs7c24ad34 draw 3 verts viewport 240x135 at 0,0 -> #9f07c tex 240x135 r11g11b10f
+      table param 0: t0 space0 = #9ec66 tex 480x270 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #201ca tex 3840x2160 r11g11b10f as r11g11b10f
+  barrier #9f676 tex 120x67 r11g11b10f: srv -> rt
+  barrier #9f07c tex 240x135 r11g11b10f: rt -> srv
+  render targets: #9f676 tex 120x67 r11g11b10f
+  FULLSCREEN psf76db36a vs7c24ad34 draw 3 verts viewport 120x67 at 0,0 -> #9f676 tex 120x67 r11g11b10f
+      table param 0: t0 space0 = #9f07c tex 240x135 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #201ca tex 3840x2160 r11g11b10f as r11g11b10f
+  barrier #9f412 tex 60x33 r11g11b10f: srv -> rt
+  barrier #9f676 tex 120x67 r11g11b10f: rt -> srv
+  render targets: #9f412 tex 60x33 r11g11b10f
+  FULLSCREEN psf76db36a vs7c24ad34 draw 3 verts viewport 60x33 at 0,0 -> #9f412 tex 60x33 r11g11b10f
+      table param 0: t0 space0 = #9f676 tex 120x67 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #201ca tex 3840x2160 r11g11b10f as r11g11b10f
+  barrier #9f676 tex 120x67 r11g11b10f: srv -> rt
+  barrier #9f412 tex 60x33 r11g11b10f: rt -> srv
+  render targets: #9f676 tex 120x67 r11g11b10f
+  FULLSCREEN ps1e144d08 vs7c24ad34 draw 3 verts viewport 120x67 at 0,0 -> #9f676 tex 120x67 r11g11b10f
+      table param 0: t0 space0 = #9f412 tex 60x33 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #201ca tex 3840x2160 r11g11b10f as r11g11b10f
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +4352
+      root cbv param 8 (b0 space0): #b9938 buf 33554432 +55552
+  barrier #9f07c tex 240x135 r11g11b10f: srv -> rt
+  barrier #9f676 tex 120x67 r11g11b10f: rt -> srv
+  render targets: #9f07c tex 240x135 r11g11b10f
+  FULLSCREEN psbbca9350 vs7c24ad34 draw 3 verts viewport 240x135 at 0,0 -> #9f07c tex 240x135 r11g11b10f
+      table param 0: t0 space0 = #9f676 tex 120x67 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #201ca tex 3840x2160 r11g11b10f as r11g11b10f
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +4352
+      root cbv param 8 (b0 space0): #b9938 buf 33554432 +55552
+  barrier #9ec66 tex 480x270 r11g11b10f: srv -> rt
+  barrier #9f07c tex 240x135 r11g11b10f: rt -> srv
+  render targets: #9ec66 tex 480x270 r11g11b10f
+  FULLSCREEN ps22e6f49d vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #9ec66 tex 480x270 r11g11b10f
+      table param 0: t0 space0 = #9f07c tex 240x135 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #201ca tex 3840x2160 r11g11b10f as r11g11b10f
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +4352
+      root cbv param 8 (b0 space0): #b9938 buf 33554432 +55552
+  barrier #c901e tex 960x540 r11g11b10f: srv -> rt
+  barrier #9ec66 tex 480x270 r11g11b10f: rt -> srv
+  render targets: #c901e tex 960x540 r11g11b10f
+  FULLSCREEN psba7dcf1c vs7c24ad34 draw 3 verts viewport 960x540 at 0,0 -> #c901e tex 960x540 r11g11b10f
+      table param 0: t0 space0 = #9ec66 tex 480x270 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #201ca tex 3840x2160 r11g11b10f as r11g11b10f
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +4352
+      root cbv param 8 (b0 space0): #b9938 buf 33554432 +55552
+  barrier #8fc07 tex 1920x1080 r11g11b10f: srv -> rt
+  barrier #c901e tex 960x540 r11g11b10f: rt -> srv
+  render targets: #8fc07 tex 1920x1080 r11g11b10f
+  FULLSCREEN ps629a5b35 vs7c24ad34 draw 3 verts viewport 1920x1080 at 0,0 -> #8fc07 tex 1920x1080 r11g11b10f
+      table param 0: t0 space0 = #c901e tex 960x540 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #201ca tex 3840x2160 r11g11b10f as r11g11b10f
+      root cbv param 2 (b0 space0): #b9816 buf 33554432 +1280
+      root cbv param 3 (b1 space0): #b9816 buf 33554432 +2816
+      root cbv param 4 (b2 space0): #b9816 buf 33554432 +4352
+      root cbv param 8 (b0 space0): #b9938 buf 33554432 +55552
+      root cbv param 9 (b1 space0): #b96f4 buf 33554432 +186368
+      root cbv param 10 (b2 space0): #b9938 buf 33554432 +47104
+  barrier #83958 tex 1024x512 rgba16f: srv -> uav
+  barrier #8fc07 tex 1920x1080 r11g11b10f: rt -> srv
+  DISPATCH csa2a251a3 1 x 512 x 1
+      table param 1: t0 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 2: u0 space0 = #83958 tex 1024x512 rgba16f as rgba16f
+      root cbv param 4 (b0 space0): #b9938 buf 33554432 +56064
+      root cbv param 5 (b1 space0): #b9938 buf 33554432 +56320
+  barrier #83a8a tex 1024x512 rgba16f: srv -> uav
+  barrier #83958 tex 1024x512 rgba16f: uav -> srv
+  DISPATCH csfe482a42 1 x 1024 x 1
+      table param 1: t0 space0 = #83958 tex 1024x512 rgba16f as rgba16f
+      table param 1: t1 space0 = #9effc tex 1024x512 rgba16f as rgba16f
+      table param 2: u0 space0 = #83a8a tex 1024x512 rgba16f as rgba16f
+      root cbv param 4 (b0 space0): #b9938 buf 33554432 +56064
+  barrier #83958 tex 1024x512 rgba16f: srv -> uav
+  barrier #83a8a tex 1024x512 rgba16f: uav -> srv
+  DISPATCH cs219a69ea 1 x 512 x 1
+      table param 1: t0 space0 = #83a8a tex 1024x512 rgba16f as rgba16f
+      table param 2: u0 space0 = #83958 tex 1024x512 rgba16f as rgba16f
+  barrier #8fc07 tex 1920x1080 r11g11b10f: srv -> rt
+  barrier #83958 tex 1024x512 rgba16f: uav -> srv
+  FULLSCREEN ps8f6eaed0 vs7c24ad34 draw 3 verts viewport 1920x1080 at 0,0 -> #8fc07 tex 1920x1080 r11g11b10f
+      table param 0: t0 space0 = #83958 tex 1024x512 rgba16f as rgba16f
+      table param 6: t0 space0 = #201ca tex 3840x2160 r11g11b10f as r11g11b10f
+      root cbv param 2 (b0 space0): #b9938 buf 33554432 +56320
+      root cbv param 8 (b0 space0): #b9938 buf 33554432 +55552
+  barrier #8fa3c tex 1920x1080 r11g11b10f: srv -> rt
+  barrier #8fc07 tex 1920x1080 r11g11b10f: rt -> srv
+  render targets: #8fa3c tex 1920x1080 r11g11b10f
+  FULLSCREEN ps04c20211 vs3f48df32 draw 3 verts viewport 1920x1080 at 0,0 -> #8fa3c tex 1920x1080 r11g11b10f
+      table param 0: b4 space0 = cbv #bf6f1 buf 33554432 +192000
+      table param 0: b5 space0 = cbv #b9816 buf 33554432 +8192
+      table param 0: b6 space0 = cbv #b9816 buf 33554432 +8960
+      table param 0: b7 space0 = cbv #bf6f1 buf 33554432 +219648
+      table param 0: b8 space0 = cbv #bf6f1 buf 33554432 +190976
+      table param 0: b9 space0 = cbv #bf6f1 buf 33554432 +219392
+      table param 0: t0 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 0: t1 space0 = #dac63 buf 4
+      table param 0: t2 space0 = #3591a tex 32x32 rgba8srgb x32 as rgba8srgb
+      table param 0: t3 space0 = #3591a tex 32x32 rgba8srgb x32 as rgba8srgb
+      table param 0: t4 space0 = #f5aa7 tex 32x32 rgba8srgb x32 as rgba8srgb
+      table param 0: t5 space0 = #2db0d tex 8x8 fmt72
+      table param 0: t6 space0 = #2db0d tex 8x8 fmt72
+      table param 6: t0 space0 = #d1dcd buf 36 as r32_typeless
+      root cbv param 2 (b0 space0): #b9938 buf 33554432 +55552
+      root cbv param 3 (b1 space0): #b96f4 buf 33554432 +186368
+      root cbv param 4 (b2 space0): #b96f4 buf 33554432 +188672
+      root cbv param 5 (b3 space0): #b9816 buf 33554432 +7424
+      root cbv param 8 (b0 space0): #b9938 buf 33554432 +55552
+      root cbv param 9 (b1 space0): #b96f4 buf 33554432 +186368
+      root cbv param 10 (b2 space0): #b9938 buf 33554432 +47104
+      root cbv param 11 (b3 space0): #bf6f1 buf 33554432 +0
+  barrier #221bc tex 3840x2160 r8unorm: srv -> rt
+  barrier #201ca tex 3840x2160 r11g11b10f: srv -> rt
+  barrier #8fa3c tex 1920x1080 r11g11b10f: rt -> srv
+  render targets: #201ca tex 3840x2160 r11g11b10f depth #23146 tex 3840x2160 r32_typeless
+  FULLSCREEN psaff99b25 vsa60b7c3f draw 3 verts (replaced by DLSS) viewport 3840x2160 at 0,0 -> #201ca tex 3840x2160 r11g11b10f depth #23146 tex 3840x2160 r32_typeless
+      table param 0: t0 space0 = #90762 tex 1920x1080 r32_typeless as r32f
+      table param 0: t1 space0 = #8fa3c tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 6: t1 space0 = #dac63 buf 4
+      root cbv param 2 (b0 space0): #b9938 buf 33554432 +56576
+      root cbv param 8 (b0 space0): #b9938 buf 33554432 +55552
+  barrier #22255 tex 3840x2160 r11g11b10f: srv -> rt
+  barrier #201ca tex 3840x2160 r11g11b10f: rt -> srv
+  barrier #221bc tex 3840x2160 r8unorm: rt -> srv
+  render targets: #22255 tex 3840x2160 r11g11b10f depth #21c5b tex 3840x2160 r32_typeless
+  FULLSCREEN psae40e1ff vsa60b7c3f draw 3 verts viewport 3840x2160 at 0,0 -> #22255 tex 3840x2160 r11g11b10f depth #21c5b tex 3840x2160 r32_typeless
+      table param 0: t0 space0 = #201ca tex 3840x2160 r11g11b10f as r11g11b10f
+      table param 0: t1 space0 = #221bc tex 3840x2160 r8unorm as r8unorm
+      table param 6: t0 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 6: t1 space0 = #dac63 buf 4
+      root cbv param 2 (b0 space0): #b9938 buf 33554432 +56576
+      root cbv param 8 (b0 space0): #b9938 buf 33554432 +55552
+  barrier #201ca tex 3840x2160 r11g11b10f: srv -> rt
+  barrier #22255 tex 3840x2160 r11g11b10f: rt -> srv
+  render targets: #201ca tex 3840x2160 r11g11b10f depth #21c5b tex 3840x2160 r32_typeless
+  FULLSCREEN ps83760deb vsa60b7c3f draw 3 verts viewport 3840x2160 at 0,0 -> #201ca tex 3840x2160 r11g11b10f depth #21c5b tex 3840x2160 r32_typeless
+      table param 0: t0 space0 = #22255 tex 3840x2160 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+  barrier #0694e tex 3840x2160 rgb10a2unorm: general -> rt
+  barrier #201ca tex 3840x2160 r11g11b10f: rt -> srv
+  render targets: #0694e tex 3840x2160 rgb10a2unorm
+  FULLSCREEN ps4c582391 vs7c24ad34 draw 3 verts viewport 3840x2160 at 0,0 -> #0694e tex 3840x2160 rgb10a2unorm
+      table param 0: t0 space0 = #201ca tex 3840x2160 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      root cbv param 2 (b0 space0): #bf6f1 buf 33554432 +7424
+      root cbv param 8 (b0 space0): #b9938 buf 33554432 +55552
+  barrier #0694e tex 3840x2160 rgb10a2unorm: rt -> general
+EXECUTE list L5 on compute queue 00000257029D1E78, 0 events (started before the capture: partial)
+EXECUTE list L6 on compute queue 00000257029D1E78, 0 events (started before the capture: partial)
+EXECUTE list L7 on compute queue 00000257029D1E78, 0 events (started before the capture: partial)
+==== PRESENT (back buffer #0694e tex 3840x2160 rgb10a2unorm, colour space 1), 1 more
+EXECUTE list L1 on copy queue 00000257029D1C98, 0 events
+EXECUTE list L2 on graphics queue 00000257029D1BA8, 586 events
+  barrier #cfd7d buf 2621440: 0x1 -> uav
+  barrier #db1eb tex 1024x1024 r16_typeless x32: 0xe0 -> copy_dst
+  barrier #db1eb tex 1024x1024 r16_typeless x32: 0xe0 -> copy_dst
+  barrier #db1eb tex 1024x1024 r16_typeless x32: 0xe0 -> copy_dst
+  barrier #db1eb tex 1024x1024 r16_typeless x32: 0xe0 -> copy_dst
+  barrier #db1eb tex 1024x1024 r16_typeless x32: 0xe0 -> copy_dst
+  barrier #db1eb tex 1024x1024 r16_typeless x32: 0xe0 -> copy_dst
+  barrier #db1eb tex 1024x1024 r16_typeless x32: 0xe0 -> copy_dst
+  barrier #db1eb tex 1024x1024 r16_typeless x32: 0xe0 -> copy_dst
+  copy region #db40c tex 1024x1024 r16_typeless x32 -> #db1eb tex 1024x1024 r16_typeless x32
+  copy region #db40c tex 1024x1024 r16_typeless x32 -> #db1eb tex 1024x1024 r16_typeless x32
+  copy region #db40c tex 1024x1024 r16_typeless x32 -> #db1eb tex 1024x1024 r16_typeless x32
+  copy region #db40c tex 1024x1024 r16_typeless x32 -> #db1eb tex 1024x1024 r16_typeless x32
+  copy region #db40c tex 1024x1024 r16_typeless x32 -> #db1eb tex 1024x1024 r16_typeless x32
+  copy region #db40c tex 1024x1024 r16_typeless x32 -> #db1eb tex 1024x1024 r16_typeless x32
+  copy region #db40c tex 1024x1024 r16_typeless x32 -> #db1eb tex 1024x1024 r16_typeless x32
+  copy region #db40c tex 1024x1024 r16_typeless x32 -> #db1eb tex 1024x1024 r16_typeless x32
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 2 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 5 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 4 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 3 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfb5f buf 917504
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cf938 buf 25165824
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 64 x 1 x 1
+      table param 0: u0 space0 = #db695 buf 131072
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 2 x 1 x 1
+      table param 0: u0 space0 = #f48aa buf 3856
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #f426f buf 400
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #f5129 buf 400
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 13 x 1 x 1
+      table param 0: u0 space0 = #cfd7d buf 2621440
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #cfc5b buf 524288
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  barrier #f4a5d buf 1770048: 0x1 -> uav
+  barrier #f48aa buf 3856: uav -> srv
+  barrier null: uav -> uav
+  barrier #cf938 buf 25165824: uav -> srv
+  barrier #bfb5f buf 917504: uav -> srv
+  DISPATCH cs3d8b51b6 28 x 1 x 1
+      table param 1: t0 space0 = #cf938 buf 25165824
+      table param 1: t1 space0 = #bfb5f buf 917504
+      table param 1: t2 space0 = #f46f7 buf 41414440 as r32_typeless
+      table param 2: u0 space0 = #f4b7f buf 905824 as r32_typeless
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +391680
+      root cbv param 5 (b1 space0): #bf6f1 buf 33554432 +541440
+  DISPATCH cs54444673 41 x 1 x 1
+      table param 1: t0 space0 = #cf938 buf 25165824
+      table param 1: t1 space0 = #bfb5f buf 917504
+      table param 1: t2 space0 = #f46f7 buf 41414440 as r32_typeless
+      table param 1: t3 space0 = #f48aa buf 3856
+      table param 2: u0 space0 = #f4b7f buf 905824 as r32_typeless
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +391936
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +195584
+  DISPATCH cs3d8b51b6 23 x 1 x 1
+      table param 1: t0 space0 = #cf938 buf 25165824
+      table param 1: t1 space0 = #bfb5f buf 917504
+      table param 1: t2 space0 = #f46f7 buf 41414440 as r32_typeless
+      table param 2: u0 space0 = #f4b7f buf 905824 as r32_typeless
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +392192
+      root cbv param 5 (b1 space0): #bf6f1 buf 33554432 +302336
+  DISPATCH cs54444673 21 x 1 x 1
+      table param 1: t0 space0 = #cf938 buf 25165824
+      table param 1: t1 space0 = #bfb5f buf 917504
+      table param 1: t2 space0 = #f46f7 buf 41414440 as r32_typeless
+      table param 1: t3 space0 = #f48aa buf 3856
+      table param 2: u0 space0 = #f4b7f buf 905824 as r32_typeless
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +392448
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +195840
+  DISPATCH cs1b88ddf2 78 x 1 x 1
+      table param 1: t0 space0 = #cf938 buf 25165824
+      table param 1: t1 space0 = #bfb5f buf 917504
+      table param 1: t2 space0 = #f40bc buf 8039680 as r32_typeless
+      table param 2: u0 space0 = #f4a5d buf 1770048 as r32_typeless
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +392704
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +194560
+  DISPATCH cs55fa6a21 11 x 1 x 1
+      table param 1: t0 space0 = #cf938 buf 25165824
+      table param 1: t1 space0 = #bfb5f buf 917504
+      table param 1: t2 space0 = #f40bc buf 8039680 as r32_typeless
+      table param 2: u0 space0 = #f4a5d buf 1770048 as r32_typeless
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +392960
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +194816
+  DISPATCH cs55fa6a21 20 x 1 x 1
+      table param 1: t0 space0 = #cf938 buf 25165824
+      table param 1: t1 space0 = #bfb5f buf 917504
+      table param 1: t2 space0 = #f40bc buf 8039680 as r32_typeless
+      table param 2: u0 space0 = #f4a5d buf 1770048 as r32_typeless
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +393216
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +195072
+  DISPATCH cs1b88ddf2 68 x 1 x 1
+      table param 1: t0 space0 = #cf938 buf 25165824
+      table param 1: t1 space0 = #bfb5f buf 917504
+      table param 1: t2 space0 = #f40bc buf 8039680 as r32_typeless
+      table param 2: u0 space0 = #f4a5d buf 1770048 as r32_typeless
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +393472
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +196096
+  DISPATCH cs1b88ddf2 15 x 1 x 1
+      table param 1: t0 space0 = #cf938 buf 25165824
+      table param 1: t1 space0 = #bfb5f buf 917504
+      table param 1: t2 space0 = #f40bc buf 8039680 as r32_typeless
+      table param 2: u0 space0 = #f4a5d buf 1770048 as r32_typeless
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +393728
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +196352
+  DISPATCH cs1b88ddf2 2 x 1 x 1
+      table param 1: t0 space0 = #cf938 buf 25165824
+      table param 1: t1 space0 = #bfb5f buf 917504
+      table param 1: t2 space0 = #f40bc buf 8039680 as r32_typeless
+      table param 2: u0 space0 = #f4a5d buf 1770048 as r32_typeless
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +393984
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +196608
+  DISPATCH cs1b88ddf2 5 x 1 x 1
+      table param 1: t0 space0 = #cf938 buf 25165824
+      table param 1: t1 space0 = #bfb5f buf 917504
+      table param 1: t2 space0 = #f40bc buf 8039680 as r32_typeless
+      table param 2: u0 space0 = #f4a5d buf 1770048 as r32_typeless
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +394240
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +196864
+  barrier #f4a5d buf 1770048: uav -> 0x41
+  barrier #f4b7f buf 905824: uav -> 0x41
+  DISPATCH csf4c80ce3 14 x 1 x 1
+      table param 1: t0 space0 = #f4b7f buf 905824 as r32_typeless
+      table param 1: t1 space0 = #f4666 buf 503872 as r32_typeless
+      table param 2: u0 space0 = #f4c10 buf 339684 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +303360
+  DISPATCH csf4c80ce3 1 x 1 x 1
+      table param 1: t0 space0 = #f4b7f buf 905824 as r32_typeless
+      table param 1: t1 space0 = #f4666 buf 503872 as r32_typeless
+      table param 2: u0 space0 = #f4c10 buf 339684 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +542464
+  DISPATCH csf4c80ce3 41 x 1 x 1
+      table param 1: t0 space0 = #f4b7f buf 905824 as r32_typeless
+      table param 1: t1 space0 = #f4666 buf 503872 as r32_typeless
+      table param 2: u0 space0 = #f4c10 buf 339684 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +543488
+  DISPATCH csf4c80ce3 1 x 1 x 1
+      table param 1: t0 space0 = #f4b7f buf 905824 as r32_typeless
+      table param 1: t1 space0 = #f4666 buf 503872 as r32_typeless
+      table param 2: u0 space0 = #f4c10 buf 339684 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +544000
+  DISPATCH csf4c80ce3 1 x 1 x 1
+      table param 1: t0 space0 = #f4b7f buf 905824 as r32_typeless
+      table param 1: t1 space0 = #f4666 buf 503872 as r32_typeless
+      table param 2: u0 space0 = #f4c10 buf 339684 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +631040
+  DISPATCH csf4c80ce3 1 x 1 x 1
+      table param 1: t0 space0 = #f4b7f buf 905824 as r32_typeless
+      table param 1: t1 space0 = #f4666 buf 503872 as r32_typeless
+      table param 2: u0 space0 = #f4c10 buf 339684 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +631552
+  DISPATCH csf4c80ce3 5 x 1 x 1
+      table param 1: t0 space0 = #f4b7f buf 905824 as r32_typeless
+      table param 1: t1 space0 = #f4666 buf 503872 as r32_typeless
+      table param 2: u0 space0 = #f4c10 buf 339684 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +632064
+  DISPATCH csf4c80ce3 3 x 1 x 1
+      table param 1: t0 space0 = #f4b7f buf 905824 as r32_typeless
+      table param 1: t1 space0 = #f4666 buf 503872 as r32_typeless
+      table param 2: u0 space0 = #f4c10 buf 339684 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +633600
+  DISPATCH csf4c80ce3 2 x 1 x 1
+      table param 1: t0 space0 = #f4b7f buf 905824 as r32_typeless
+      table param 1: t1 space0 = #f4666 buf 503872 as r32_typeless
+      table param 2: u0 space0 = #f4c10 buf 339684 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +634112
+  DISPATCH csf4c80ce3 19 x 1 x 1
+      table param 1: t0 space0 = #f4b7f buf 905824 as r32_typeless
+      table param 1: t1 space0 = #f4666 buf 503872 as r32_typeless
+      table param 2: u0 space0 = #f4c10 buf 339684 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +634624
+  DISPATCH csf4c80ce3 64 x 1 x 1
+      table param 1: t0 space0 = #f4a5d buf 1770048 as r32_typeless
+      table param 1: t1 space0 = #f44b3 buf 1143760 as r32_typeless
+      table param 2: u0 space0 = #f4819 buf 663768 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +632576
+  DISPATCH csf4c80ce3 10 x 1 x 1
+      table param 1: t0 space0 = #f4a5d buf 1770048 as r32_typeless
+      table param 1: t1 space0 = #f44b3 buf 1143760 as r32_typeless
+      table param 2: u0 space0 = #f4819 buf 663768 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +633088
+  DISPATCH csf4c80ce3 18 x 1 x 1
+      table param 1: t0 space0 = #f4a5d buf 1770048 as r32_typeless
+      table param 1: t1 space0 = #f44b3 buf 1143760 as r32_typeless
+      table param 2: u0 space0 = #f4819 buf 663768 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +635136
+  DISPATCH csf4c80ce3 61 x 1 x 1
+      table param 1: t0 space0 = #f4a5d buf 1770048 as r32_typeless
+      table param 1: t1 space0 = #f44b3 buf 1143760 as r32_typeless
+      table param 2: u0 space0 = #f4819 buf 663768 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +635648
+  DISPATCH csf4c80ce3 14 x 1 x 1
+      table param 1: t0 space0 = #f4a5d buf 1770048 as r32_typeless
+      table param 1: t1 space0 = #f44b3 buf 1143760 as r32_typeless
+      table param 2: u0 space0 = #f4819 buf 663768 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +636160
+  DISPATCH csf4c80ce3 2 x 1 x 1
+      table param 1: t0 space0 = #f4a5d buf 1770048 as r32_typeless
+      table param 1: t1 space0 = #f44b3 buf 1143760 as r32_typeless
+      table param 2: u0 space0 = #f4819 buf 663768 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +636672
+  DISPATCH csf4c80ce3 5 x 1 x 1
+      table param 1: t0 space0 = #f4a5d buf 1770048 as r32_typeless
+      table param 1: t1 space0 = #f44b3 buf 1143760 as r32_typeless
+      table param 2: u0 space0 = #f4819 buf 663768 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +637184
+  barrier #f4a5d buf 1770048: 0x41 -> uav
+  barrier #f4819 buf 663768: uav -> srv
+  barrier #f4b7f buf 905824: 0x41 -> uav
+  barrier #f4c10 buf 339684: uav -> srv
+  DISPATCH cs9400ba67 111 x 1 x 1
+      table param 1: t0 space0 = #f4c10 buf 339684 as r32_typeless
+      table param 1: t1 space0 = #f4422 buf 113228
+      table param 2: u0 space0 = #f4b7f buf 905824 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +303360
+  DISPATCH csf5d34986 217 x 1 x 1
+      table param 1: t0 space0 = #f4819 buf 663768 as r32_typeless
+      table param 1: t1 space0 = #f41de buf 221256
+      table param 2: u0 space0 = #f4a5d buf 1770048 as r32_typeless
+      root cbv param 4 (b0 space0): #bf6f1 buf 33554432 +632576
+  barrier #f4819 buf 663768: srv -> uav
+  barrier #f4c10 buf 339684: srv -> uav
+  barrier null: uav -> uav
+  barrier #f5129 buf 400: uav -> srv
+  barrier null: uav -> uav
+  barrier #f426f buf 400: uav -> srv
+  DISPATCH cs3d3ff765 15 x 1 x 1
+      table param 1: t0 space0 = #f426f buf 400 as r32_typeless
+      table param 2: u0 space0 = #f3f09 buf 226560
+      table param 2: u1 space0 = #f414d buf 32
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +394496
+  DISPATCH cs3d3ff765 22 x 1 x 1
+      table param 1: t0 space0 = #f5129 buf 400 as r32_typeless
+      table param 2: u0 space0 = #f4300 buf 332288
+      table param 2: u1 space0 = #f536d buf 32
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +394752
+  barrier null: uav -> uav
+  barrier #8fc07 tex 1920x1080 r11g11b10f: srv -> rt
+  barrier null: uav -> uav
+  barrier null: uav -> uav
+  DISPATCH cs3187fcaf 15 x 1 x 1
+      table param 1: t0 space0 = #7ab84 tex 64x64 fmt71 x64 mips4
+      table param 1: t1 space0 = #f426f buf 400 as r32_typeless
+      table param 2: u0 space0 = #f3f09 buf 226560
+      table param 2: u1 space0 = #f3ba3 buf 76800
+      table param 2: u2 space0 = #f414d buf 32
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +394496
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +395008
+  DISPATCH cs3187fcaf 22 x 1 x 1
+      table param 1: t0 space0 = #7ab84 tex 64x64 fmt71 x64 mips4
+      table param 1: t1 space0 = #f5129 buf 400 as r32_typeless
+      table param 2: u0 space0 = #f4300 buf 332288
+      table param 2: u1 space0 = #f402b buf 112640
+      table param 2: u2 space0 = #f536d buf 32
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +394752
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +395264
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #d1792 buf 6144
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #d14bd buf 8192
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #d1b89 buf 196608
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 128 x 1 x 1
+      table param 0: u0 space0 = #bfe34 buf 262144
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #d1157 buf 40960
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #d1b89 buf 196608
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #d1279 buf 40960
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #d130a buf 40960
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 48 x 1 x 1
+      table param 0: u0 space0 = #bfd12 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #bfc81 buf 131072
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  barrier #d1b89 buf 196608: uav -> srv
+  barrier null: uav -> uav
+  DISPATCH cse010fe08 1 x 1 x 1
+      table param 2: u0 space0 = #d1f80 buf 32768
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +819968
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +821248
+      root cbv param 6 (b2 space0): #3ee68 buf 33554432 +396288
+  DISPATCH cs9ab23b45 1 x 1 x 1
+      table param 1: t0 space0 = #d1b89 buf 196608
+      table param 2: u0 space0 = #d1eef buf 196608
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +819968
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +821504
+  barrier null: uav -> uav
+  DISPATCH cs9ab23b45 1 x 1 x 1
+      table param 1: t0 space0 = #d1b89 buf 196608
+      table param 2: u0 space0 = #d1eef buf 196608
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +819968
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +821760
+  barrier #d27b4 tex 32x80 r32uint x32: srv -> uav
+  barrier null: uav -> uav
+  barrier #d1eef buf 196608: uav -> srv
+  DISPATCH csffa77535 32 x 16 x 1
+      table param 1: t0 space0 = #d1eef buf 196608
+      table param 2: u0 space0 = #d27b4 tex 32x80 r32uint x32 as r32uint
+      table param 2: u1 space0 = #d1af8 buf 1048576 as r32_typeless
+      table param 2: u2 space0 = #d1e5e buf 4 as r32_typeless
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +819968
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +822016
+  barrier null: uav -> uav
+  DISPATCH csffa77535 32 x 16 x 1
+      table param 1: t0 space0 = #d1eef buf 196608
+      table param 2: u0 space0 = #d27b4 tex 32x80 r32uint x32 as r32uint
+      table param 2: u1 space0 = #d1af8 buf 1048576 as r32_typeless
+      table param 2: u2 space0 = #d1e5e buf 4 as r32_typeless
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +819968
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +822272
+  barrier null: uav -> uav
+  DISPATCH csffa77535 32 x 16 x 1
+      table param 1: t0 space0 = #d1eef buf 196608
+      table param 2: u0 space0 = #d27b4 tex 32x80 r32uint x32 as r32uint
+      table param 2: u1 space0 = #d1af8 buf 1048576 as r32_typeless
+      table param 2: u2 space0 = #d1e5e buf 4 as r32_typeless
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +819968
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +822528
+  barrier null: uav -> uav
+  DISPATCH csffa77535 32 x 16 x 1
+      table param 1: t0 space0 = #d1eef buf 196608
+      table param 2: u0 space0 = #d27b4 tex 32x80 r32uint x32 as r32uint
+      table param 2: u1 space0 = #d1af8 buf 1048576 as r32_typeless
+      table param 2: u2 space0 = #d1e5e buf 4 as r32_typeless
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +819968
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +822784
+  barrier null: uav -> uav
+  barrier #d1f80 buf 32768: uav -> srv
+  DISPATCH cs03dc5fd4 32 x 16 x 1
+      table param 1: t0 space0 = #d1eef buf 196608
+      table param 1: t1 space0 = #d1f80 buf 32768
+      table param 2: u0 space0 = #d27b4 tex 32x80 r32uint x32 as r32uint
+      table param 2: u1 space0 = #d1af8 buf 1048576 as r32_typeless
+      table param 2: u2 space0 = #d1e5e buf 4 as r32_typeless
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +819968
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +823040
+  barrier #7b809 tex 1920x1080 rgba16f: srv -> rt
+  barrier null: uav -> uav
+  DISPATCH cs03dc5fd4 32 x 16 x 1
+      table param 1: t0 space0 = #d1eef buf 196608
+      table param 1: t1 space0 = #d1f80 buf 32768
+      table param 2: u0 space0 = #d27b4 tex 32x80 r32uint x32 as r32uint
+      table param 2: u1 space0 = #d1af8 buf 1048576 as r32_typeless
+      table param 2: u2 space0 = #d1e5e buf 4 as r32_typeless
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +819968
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +823296
+  DISPATCH cs62ed77d4 4096 x 1 x 1
+      table param 2: u0 space0 = #bff56 buf 5242880 as r32_typeless
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #c0500 buf 98304
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  barrier #90762 tex 1920x1080 r32_typeless: 0xe0 -> dsv
+  barrier null: uav -> uav
+  barrier #c0500 buf 98304: uav -> srv
+  DISPATCH csc992f421 1 x 1 x 1
+      table param 1: t0 space0 = #c0500 buf 98304
+      table param 2: u0 space0 = #bff56 buf 5242880 as r32_typeless
+      root cbv param 4 (b0 space0): #3ee68 buf 33554432 +825088
+  DISPATCH csf57f9abd 1 x 1 x 1
+      table param 0: u0 space0 = #db726 buf 20
+      table param 1: t0 space0 = #3ee68 buf 33554432
+  barrier #f4a5d buf 1770048: uav -> 0x1
+  barrier #90df5 tex 1920x1080 rgba8srgb: srv -> rt
+  barrier #90af8 tex 1920x1080 rgb10a2unorm: srv -> rt
+  barrier #90e8e tex 1920x1080 rgba16snorm: srv -> rt
+  barrier #bfc81 buf 131072: uav -> srv
+  barrier #bff56 buf 5242880: uav -> indirect
+  render targets: #8fc07 tex 1920x1080 r11g11b10f #90df5 tex 1920x1080 rgba8srgb #90af8 tex 1920x1080 rgb10a2unorm #90e8e tex 1920x1080 rgba16snorm depth #90762 tex 1920x1080 r32_typeless
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 27
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 68
+  indirect type 0 count 13
+  indirect type 0 count 40
+  indirect type 0 count 57
+  indirect type 0 count 51
+  indirect type 0 count 17
+  indirect type 0 count 34
+  indirect type 0 count 116
+  indirect type 0 count 55
+  indirect type 0 count 2
+  indirect type 0 count 7
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+EXECUTE list L3 on graphics queue 00000257029D1BA8, 432 events
+  render targets: #8fc07 tex 1920x1080 r11g11b10f #90df5 tex 1920x1080 rgba8srgb #90af8 tex 1920x1080 rgb10a2unorm #90e8e tex 1920x1080 rgba16snorm depth #90762 tex 1920x1080 r32_typeless
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 6
+  indirect type 0 count 8
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 3
+  indirect type 0 count 2
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  barrier #90762 tex 1920x1080 r32_typeless: dsv -> 0xe0
+  render targets: #8fc07 tex 1920x1080 r11g11b10f #90df5 tex 1920x1080 rgba8srgb #90af8 tex 1920x1080 rgb10a2unorm depth #90762 tex 1920x1080 r32_typeless
+  indirect type 0 count 2
+  render targets: #8fc07 tex 1920x1080 r11g11b10f depth #90762 tex 1920x1080 r32_typeless
+  FULLSCREEN ps2680334e vsa60b7c3f draw 3 verts viewport 1920x1080 at 0,0 -> #8fc07 tex 1920x1080 r11g11b10f depth #90762 tex 1920x1080 r32_typeless
+      table param 0: t0 space0 = #35ae5 tex 4096x2048 fmt95
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #bf6f1 buf 33554432 +522496
+      root cbv param 8 (b0 space0): #3ee68 buf 33554432 +182528
+      root cbv param 9 (b1 space0): #b9785 buf 33554432 +42240
+  render targets: #90e8e tex 1920x1080 rgba16snorm depth #90762 tex 1920x1080 r32_typeless
+  FULLSCREEN ps97bf3008 vsa60b7c3f draw 3 verts viewport 1920x1080 at 0,0 -> #90e8e tex 1920x1080 rgba16snorm depth #90762 tex 1920x1080 r32_typeless
+      table param 0: t0 space0 = #90762 tex 1920x1080 r32_typeless as r32f
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 8 (b0 space0): #3ee68 buf 33554432 +182528
+  barrier #06fe1 tex 1920x1080 r32_typeless: srv -> rt
+  barrier null: uav -> uav
+  barrier #23a3d tex 1920x1080 r32uint: srv -> uav
+  barrier #90e8e tex 1920x1080 rgba16snorm: rt -> srv
+  DISPATCH cs94fc01c4 120 x 68 x 1
+      table param 1: t0 space0 = #90762 tex 1920x1080 r32_typeless as r32f
+      table param 1: t1 space0 = #90e8e tex 1920x1080 rgba16snorm as rgba16snorm
+      table param 2: u0 space0 = #23a3d tex 1920x1080 r32uint as r32uint
+      root cbv param 4 (b0 space0): #b9785 buf 33554432 +44032
+  render targets: #06fe1 tex 1920x1080 r32_typeless
+  FULLSCREEN ps47c00816 vs7c24ad34 draw 3 verts viewport 1920x1080 at 0,0 -> #06fe1 tex 1920x1080 r32_typeless
+      table param 0: t0 space0 = #90762 tex 1920x1080 r32_typeless as r32f
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #a07d7 tex 480x270 r32f x16: srv -> rt
+  barrier #06fe1 tex 1920x1080 r32_typeless: rt -> srv
+  render targets: #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16
+  FULLSCREEN pscc69a62f vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16
+      table param 0: t0 space0 = #06fe1 tex 1920x1080 r32_typeless as r32f
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #bf6f1 buf 33554432 +215040
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+  render targets: #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16
+  FULLSCREEN pscc69a62f vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16 #a07d7 tex 480x270 r32f x16
+      table param 0: t0 space0 = #06fe1 tex 1920x1080 r32_typeless as r32f
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #bf6f1 buf 33554432 +275968
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  barrier #a0928 tex 480x270 r8unorm x16: srv -> rt
+  barrier #90af8 tex 1920x1080 rgb10a2unorm: rt -> srv
+  barrier #a07d7 tex 480x270 r32f x16: rt -> srv
+  render targets: #a0928 tex 480x270 r8unorm x16
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9785 buf 33554432 +6400
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +215040
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +215040
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9785 buf 33554432 +6400
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +272384
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +272384
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9785 buf 33554432 +6400
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +272896
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +272896
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9785 buf 33554432 +6400
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +273408
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +273408
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9785 buf 33554432 +6400
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +273920
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +273920
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9785 buf 33554432 +6400
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +274432
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +274432
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9785 buf 33554432 +6400
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +274944
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +274944
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9785 buf 33554432 +6400
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +275456
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +275456
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9785 buf 33554432 +6400
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +275968
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +275968
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9785 buf 33554432 +6400
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +276480
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +276480
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9785 buf 33554432 +6400
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +276992
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +276992
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9785 buf 33554432 +6400
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +277504
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +277504
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9785 buf 33554432 +6400
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +278016
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +278016
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9785 buf 33554432 +6400
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +278528
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +278528
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9785 buf 33554432 +6400
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +279040
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +279040
+  FULLSCREEN ps64730a33 vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #a0928 tex 480x270 r8unorm x16
+      table param 0: t0 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t1 space0 = #a07d7 tex 480x270 r32f x16 as r32f
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9785 buf 33554432 +6400
+      root cbv param 4 (b2 space0): #bf6f1 buf 33554432 +279552
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+      root cbv param 10 (b2 space0): #bf6f1 buf 33554432 +0
+      root cbv param 14 (b0 space0): #bf6f1 buf 33554432 +279552
+  barrier #a0535 tex 1920x1080 rg16f x16: srv -> rt
+  barrier #a0928 tex 480x270 r8unorm x16: rt -> srv
+  render targets: #a0535 tex 1920x1080 rg16f x16
+  FULLSCREEN ps61c21211 vs7c24ad34 draw 3 verts viewport 1920x1080 at 0,0 -> #a0535 tex 1920x1080 rg16f x16
+      table param 0: t0 space0 = #06fe1 tex 1920x1080 r32_typeless as r32f
+      table param 0: t1 space0 = #a0928 tex 480x270 r8unorm x16 as r8unorm
+  barrier #a0a79 tex 1920x1080 rg16f x16: srv -> rt
+  barrier #a0535 tex 1920x1080 rg16f x16: rt -> srv
+  render targets: #a0a79 tex 1920x1080 rg16f x16
+  FULLSCREEN ps55c36261 vs7c24ad34 draw 3 verts viewport 1920x1080 at 0,0 -> #a0a79 tex 1920x1080 rg16f x16
+      table param 0: t0 space0 = #a0535 tex 1920x1080 rg16f x16 as rg16f
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9785 buf 33554432 +6400
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+  barrier #06d7d tex 1920x1088 r32_typeless: srv -> rt
+  barrier #a0a79 tex 1920x1080 rg16f x16: rt -> srv
+  render targets: #06d7d tex 1920x1088 r32_typeless
+  FULLSCREEN ps12d137f4 vs7c24ad34 draw 3 verts viewport 1920x1080 at 0,0 -> #06d7d tex 1920x1088 r32_typeless
+      table param 0: t0 space0 = #90e8e tex 1920x1080 rgba16snorm as rgba16snorm
+      table param 0: t1 space0 = #a0a79 tex 1920x1080 rg16f x16 as rg16f
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 3 (b1 space0): #b9785 buf 33554432 +6400
+      root cbv param 8 (b0 space0): #bf6f1 buf 33554432 +0
+      root cbv param 9 (b1 space0): #bf6f1 buf 33554432 +0
+  barrier #db1eb tex 1024x1024 r16_typeless x32: copy_dst -> dsv
+  barrier #db1eb tex 1024x1024 r16_typeless x32: copy_dst -> dsv
+  barrier #db1eb tex 1024x1024 r16_typeless x32: copy_dst -> dsv
+  barrier #db1eb tex 1024x1024 r16_typeless x32: copy_dst -> dsv
+  barrier #db1eb tex 1024x1024 r16_typeless x32: copy_dst -> dsv
+  barrier #db1eb tex 1024x1024 r16_typeless x32: copy_dst -> dsv
+  barrier #db1eb tex 1024x1024 r16_typeless x32: copy_dst -> dsv
+  barrier #db1eb tex 1024x1024 r16_typeless x32: copy_dst -> dsv
+  barrier null: uav -> uav
+  barrier #91488 tex 1920x1080 r32uint: srv -> uav
+  barrier #91521 tex 1920x1080 r32uint: srv -> uav
+  barrier #d27b4 tex 32x80 r32uint x32: uav -> srv
+  barrier #d1af8 buf 1048576: uav -> srv
+  barrier #90df5 tex 1920x1080 rgba8srgb: rt -> srv
+  barrier #06d7d tex 1920x1088 r32_typeless: rt -> srv
+  DISPATCH cs5db6cdd6 120 x 68 x 1
+      table param 0: b4 space0 = cbv #bf6f1 buf 33554432 +139776
+      table param 1: t0 space0 = #90762 tex 1920x1080 r32_typeless as r32f
+      table param 1: t1 space0 = #d27b4 tex 32x80 r32uint x32 as r32uint
+      table param 1: t2 space0 = #d1af8 buf 1048576 as r32_typeless
+      table param 1: t3 space0 = #90df5 tex 1920x1080 rgba8srgb as rgba8srgb
+      table param 1: t4 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 1: t5 space0 = #06d7d tex 1920x1088 r32_typeless as r32f
+      table param 1: t6 space0 = #8f6c8 buf 2668880 as r32_typeless
+      table param 1: t7 space0 = #8f3f3 buf 15183360
+      table param 1: t8 space0 = #d1670 buf 16777216 as r32_typeless
+      table param 1: t9 space0 = #d28e8 tex 512x512 r11g11b10f x128 mips5 as r11g11b10f
+      table param 1: t10 space0 = #d091d tex 256x256 r11g11b10f x6 mips5 as r11g11b10f
+      table param 2: u0 space0 = #91059 tex 1920x1080 r32uint as r32uint
+      table param 2: u1 space0 = #91488 tex 1920x1080 r32uint as r32uint
+      table param 2: u2 space0 = #91521 tex 1920x1080 r32uint as r32uint
+      root cbv param 4 (b0 space0): #b9785 buf 33554432 +44032
+      root cbv param 5 (b1 space0): #b98a7 buf 33554432 +12544
+      root cbv param 6 (b2 space0): #b9785 buf 33554432 +44544
+      root cbv param 7 (b3 space0): #3ee68 buf 33554432 +62464
+  render targets: depth #db1eb tex 1024x1024 r16_typeless x32
+  indirect type 0 count 3
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 2
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+EXECUTE list L4 on graphics queue 00000257029D1BA8, 461 events
+  render targets: depth #db1eb tex 1024x1024 r16_typeless x32
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  render targets: depth #db1eb tex 1024x1024 r16_typeless x32
+  indirect type 0 count 3
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 2
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  render targets: depth #db1eb tex 1024x1024 r16_typeless x32
+  indirect type 0 count 3
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 2
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  render targets: depth #db1eb tex 1024x1024 r16_typeless x32
+  indirect type 0 count 3
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 2
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  render targets: depth #db1eb tex 1024x1024 r16_typeless x32
+  indirect type 0 count 3
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 2
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  render targets: depth #db1eb tex 1024x1024 r16_typeless x32
+  indirect type 0 count 3
+  indirect type 0 count 1
+  indirect type 0 count 2
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  render targets: depth #db1eb tex 1024x1024 r16_typeless x32
+  indirect type 0 count 3
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 2
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  render targets: depth #db1eb tex 1024x1024 r16_typeless x32
+  indirect type 0 count 3
+  indirect type 0 count 1
+  indirect type 0 count 2
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  indirect type 0 count 1
+  barrier #8fa3c tex 1920x1080 r11g11b10f: srv -> rt
+  barrier #db1eb tex 1024x1024 r16_typeless x32: dsv -> 0xe0
+  barrier #db1eb tex 1024x1024 r16_typeless x32: dsv -> 0xe0
+  barrier #db1eb tex 1024x1024 r16_typeless x32: dsv -> 0xe0
+  barrier #db1eb tex 1024x1024 r16_typeless x32: dsv -> 0xe0
+  barrier #db1eb tex 1024x1024 r16_typeless x32: dsv -> 0xe0
+  barrier #db1eb tex 1024x1024 r16_typeless x32: dsv -> 0xe0
+  barrier #db1eb tex 1024x1024 r16_typeless x32: dsv -> 0xe0
+  barrier #db1eb tex 1024x1024 r16_typeless x32: dsv -> 0xe0
+  barrier #91488 tex 1920x1080 r32uint: uav -> srv
+  render targets: #8fc07 tex 1920x1080 r11g11b10f #8fa3c tex 1920x1080 r11g11b10f depth #90762 tex 1920x1080 r32_typeless
+  FULLSCREEN ps21d00dac vsa60b7c3f draw 3 verts viewport 1920x1080 at 0,0 -> #8fc07 tex 1920x1080 r11g11b10f #8fa3c tex 1920x1080 r11g11b10f depth #90762 tex 1920x1080 r32_typeless
+      table param 0: b4 space0 = cbv #3ee68 buf 33554432 +187904
+      table param 0: b5 space0 = cbv #3ee68 buf 33554432 +1280
+      table param 0: t0 space0 = #90762 tex 1920x1080 r32_typeless as r32f
+      table param 0: t1 space0 = #d27b4 tex 32x80 r32uint x32 as r32uint
+      table param 0: t2 space0 = #d1af8 buf 1048576 as r32_typeless
+      table param 0: t3 space0 = #90df5 tex 1920x1080 rgba8srgb as rgba8srgb
+      table param 0: t4 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t5 space0 = #06d7d tex 1920x1088 r32_typeless as r32f
+      table param 0: t6 space0 = #d0d29 tex 512x1 r16f x64 as r16f
+      table param 0: t7 space0 = #db1eb tex 1024x1024 r16_typeless x32 as r16unorm
+      table param 0: t8 space0 = #91488 tex 1920x1080 r32uint as r32uint
+      table param 6: t0 space0 = #89465 tex 256x512 fmt98 mips2
+      table param 6: t1 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 6: t2 space0 = #9b13a tex 256x256 fmt71 mips2
+      table param 6: t3 space0 = #90e8e tex 1920x1080 rgba16snorm as rgba16snorm
+      table param 6: t5 space0 = #90d5c tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 6: t6 space0 = #21c5b tex 3840x2160 r32_typeless as r32f
+      table param 6: t7 space0 = #22255 tex 3840x2160 r11g11b10f as r11g11b10f
+      root cbv param 2 (b0 space0): #b98a7 buf 33554432 +48384
+      root cbv param 3 (b1 space0): #b98a7 buf 33554432 +12800
+      root cbv param 4 (b2 space0): #3ee68 buf 33554432 +181760
+      root cbv param 5 (b3 space0): #3ee68 buf 33554432 +121856
+      root cbv param 8 (b0 space0): #b98a7 buf 33554432 +44288
+      root cbv param 9 (b1 space0): #b98a7 buf 33554432 +44800
+      root cbv param 10 (b2 space0): #b98a7 buf 33554432 +47104
+      root cbv param 11 (b3 space0): #bf6f1 buf 33554432 +0
+  barrier #91356 tex 1920x1080 r11g11b10f: srv -> rt
+  barrier #8fa3c tex 1920x1080 r11g11b10f: rt -> srv
+  barrier #23a3d tex 1920x1080 r32uint: uav -> srv
+  render targets: #91356 tex 1920x1080 r11g11b10f depth #90762 tex 1920x1080 r32_typeless
+  FULLSCREEN ps133ccce0 vsa60b7c3f draw 3 verts viewport 1920x1080 at 0,0 -> #91356 tex 1920x1080 r11g11b10f depth #90762 tex 1920x1080 r32_typeless
+      table param 0: t0 space0 = #8fa3c tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 0: t1 space0 = #23a3d tex 1920x1080 r32uint as r32uint
+      table param 0: t2 space0 = #d032c buf 2432
+      table param 6: t0 space0 = #89465 tex 256x512 fmt98 mips2
+      table param 6: t1 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 6: t2 space0 = #9b13a tex 256x256 fmt71 mips2
+      root cbv param 2 (b0 space0): #b98a7 buf 33554432 +48384
+      root cbv param 8 (b0 space0): #b98a7 buf 33554432 +44288
+  barrier #8fa3c tex 1920x1080 r11g11b10f: srv -> rt
+  barrier #8fc07 tex 1920x1080 r11g11b10f: rt -> srv
+  barrier #91356 tex 1920x1080 r11g11b10f: rt -> srv
+  render targets: #8fa3c tex 1920x1080 r11g11b10f depth #90762 tex 1920x1080 r32_typeless
+  FULLSCREEN ps858a0c9a vsa60b7c3f draw 3 verts viewport 1920x1080 at 0,0 -> #8fa3c tex 1920x1080 r11g11b10f depth #90762 tex 1920x1080 r32_typeless
+      table param 0: t0 space0 = #90762 tex 1920x1080 r32_typeless as r32f
+      table param 0: t1 space0 = #90df5 tex 1920x1080 rgba8srgb as rgba8srgb
+      table param 0: t2 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 0: t3 space0 = #91356 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 0: t4 space0 = #23a3d tex 1920x1080 r32uint as r32uint
+      table param 0: t5 space0 = #d032c buf 2432
+      table param 6: t0 space0 = #89465 tex 256x512 fmt98 mips2
+      table param 6: t1 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 6: t2 space0 = #9b13a tex 256x256 fmt71 mips2
+      table param 6: t3 space0 = #90e8e tex 1920x1080 rgba16snorm as rgba16snorm
+      table param 6: t5 space0 = #90d5c tex 1920x1080 r11g11b10f as r11g11b10f
+      root cbv param 2 (b0 space0): #b98a7 buf 33554432 +48384
+      root cbv param 8 (b0 space0): #b98a7 buf 33554432 +44288
+  barrier #cfc5b buf 524288: uav -> 0x2
+  barrier #cfd7d buf 2621440: uav -> 0x1
+  barrier #d14bd buf 8192: uav -> srv
+  barrier #8fc07 tex 1920x1080 r11g11b10f: srv -> rt
+  barrier #8fa3c tex 1920x1080 r11g11b10f: rt -> srv
+  barrier #91521 tex 1920x1080 r32uint: uav -> srv
+  render targets: #8fc07 tex 1920x1080 r11g11b10f depth #90762 tex 1920x1080 r32_typeless
+  FULLSCREEN ps23d0eaad vsa60b7c3f draw 3 verts viewport 1920x1080 at 0,0 -> #8fc07 tex 1920x1080 r11g11b10f depth #90762 tex 1920x1080 r32_typeless
+      table param 0: t0 space0 = #90762 tex 1920x1080 r32_typeless as r32f
+      table param 0: t1 space0 = #90df5 tex 1920x1080 rgba8srgb as rgba8srgb
+      table param 0: t2 space0 = #90af8 tex 1920x1080 rgb10a2unorm as rgb10a2unorm
+      table param 0: t3 space0 = #8fa3c tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 0: t4 space0 = #da525 tex 256x256 fmt95
+      table param 0: t5 space0 = #91521 tex 1920x1080 r32uint as r32uint
+      table param 6: t0 space0 = #89465 tex 256x512 fmt98 mips2
+      table param 6: t1 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 6: t2 space0 = #9b13a tex 256x256 fmt71 mips2
+      table param 6: t3 space0 = #90e8e tex 1920x1080 rgba16snorm as rgba16snorm
+      table param 6: t5 space0 = #90d5c tex 1920x1080 r11g11b10f as r11g11b10f
+      root cbv param 2 (b0 space0): #b98a7 buf 33554432 +48384
+      root cbv param 3 (b1 space0): #3ee68 buf 33554432 +189440
+      root cbv param 8 (b0 space0): #b98a7 buf 33554432 +44288
+      root cbv param 9 (b1 space0): #b98a7 buf 33554432 +44800
+  indirect type 0 count 1
+  indirect type 0 count 1
+  render targets: #7b809 tex 1920x1080 rgba16f depth #90762 tex 1920x1080 r32_typeless
+  draw x3
+  barrier #8fa3c tex 1920x1080 r11g11b10f: srv -> rt
+  barrier #8fc07 tex 1920x1080 r11g11b10f: rt -> srv
+  barrier #90d5c tex 1920x1080 r11g11b10f: copy_dst -> srv
+  render targets: #8fa3c tex 1920x1080 r11g11b10f
+  FULLSCREEN ps321bf06e vs3f48df32 draw 3 verts viewport 1920x1080 at 0,0 -> #8fa3c tex 1920x1080 r11g11b10f
+      table param 0: t0 space0 = #90762 tex 1920x1080 r32_typeless as r32f
+      table param 0: t1 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 0: t2 space0 = #90d5c tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 0: t3 space0 = #90e8e tex 1920x1080 rgba16snorm as rgba16snorm
+      table param 6: t0 space0 = #d1dcd buf 36 as r32_typeless
+      table param 6: t1 space0 = #d1dcd buf 36 as r32_typeless
+      table param 6: t2 space0 = #73c2e tex 1024x1024 fmt99
+      root cbv param 2 (b0 space0): #b98a7 buf 33554432 +55552
+      root cbv param 3 (b1 space0): #3ee68 buf 33554432 +185600
+      root cbv param 8 (b0 space0): #b98a7 buf 33554432 +55552
+      root cbv param 9 (b1 space0): #3ee68 buf 33554432 +185600
+  barrier #c9150 tex 60x1080 r11g11b10f: srv -> uav
+  barrier #8fa3c tex 1920x1080 r11g11b10f: rt -> copy_src
+  barrier #90d5c tex 1920x1080 r11g11b10f: srv -> copy_dst
+  copy #8fa3c tex 1920x1080 r11g11b10f -> #90d5c tex 1920x1080 r11g11b10f
+  DISPATCH cs8be0eec5 8 x 1080 x 1
+      table param 1: t0 space0 = #90762 tex 1920x1080 r32_typeless as r32f
+      table param 2: u0 space0 = #c9150 tex 60x1080 r11g11b10f as r11g11b10f
+      root cbv param 4 (b0 space0): #b98a7 buf 33554432 +55552
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +188672
+  barrier #c91e9 tex 60x34 r11g11b10f: srv -> uav
+  barrier #c9150 tex 60x1080 r11g11b10f: uav -> srv
+  DISPATCH csa9210538 60 x 5 x 1
+      table param 1: t0 space0 = #c9150 tex 60x1080 r11g11b10f as r11g11b10f
+      table param 2: u0 space0 = #c91e9 tex 60x34 r11g11b10f as r11g11b10f
+      root cbv param 4 (b0 space0): #b98a7 buf 33554432 +55552
+  barrier #c93b4 tex 60x34 r11g11b10f: srv -> uav
+  barrier #c91e9 tex 60x34 r11g11b10f: uav -> srv
+  DISPATCH csee42d8f1 8 x 5 x 1
+      table param 1: t0 space0 = #c91e9 tex 60x34 r11g11b10f as r11g11b10f
+      table param 2: u0 space0 = #c93b4 tex 60x34 r11g11b10f as r11g11b10f
+  barrier #c931b tex 960x540 r11g11b10f: srv -> uav
+  barrier #c944d tex 960x540 r11g11b10f: srv -> uav
+  barrier #8fa3c tex 1920x1080 r11g11b10f: copy_src -> srv
+  barrier #c93b4 tex 60x34 r11g11b10f: uav -> srv
+  DISPATCH csc2e129d2 60 x 34 x 1
+      table param 1: t0 space0 = #90762 tex 1920x1080 r32_typeless as r32f
+      table param 1: t1 space0 = #8fa3c tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 1: t2 space0 = #c93b4 tex 60x34 r11g11b10f as r11g11b10f
+      table param 2: u0 space0 = #c931b tex 960x540 r11g11b10f as r11g11b10f
+      table param 2: u1 space0 = #c944d tex 960x540 r11g11b10f as r11g11b10f
+      root cbv param 4 (b0 space0): #b98a7 buf 33554432 +55552
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +188672
+  barrier #26d8f tex 960x540 r32uint: srv -> uav
+  barrier #26b2b tex 960x540 r8unorm: srv -> uav
+  barrier #c931b tex 960x540 r11g11b10f: uav -> srv
+  barrier #c944d tex 960x540 r11g11b10f: uav -> srv
+  DISPATCH csbff83cd3 60 x 34 x 1
+      table param 1: t0 space0 = #c931b tex 960x540 r11g11b10f as r11g11b10f
+      table param 1: t1 space0 = #c944d tex 960x540 r11g11b10f as r11g11b10f
+      table param 1: t2 space0 = #c93b4 tex 60x34 r11g11b10f as r11g11b10f
+      table param 2: u0 space0 = #26d8f tex 960x540 r32uint as r32uint
+      table param 2: u1 space0 = #26b2b tex 960x540 r8unorm as r8unorm
+      root cbv param 4 (b0 space0): #b98a7 buf 33554432 +55552
+      root cbv param 5 (b1 space0): #3ee68 buf 33554432 +188672
+  barrier #c944d tex 960x540 r11g11b10f: srv -> uav
+  barrier #26d8f tex 960x540 r32uint: uav -> srv
+  DISPATCH cs527426e9 60 x 34 x 1
+      table param 1: t0 space0 = #26d8f tex 960x540 r32uint as r32uint
+      table param 2: u0 space0 = #c944d tex 960x540 r11g11b10f as r11g11b10f
+  barrier #8fc07 tex 1920x1080 r11g11b10f: srv -> rt
+  barrier #c944d tex 960x540 r11g11b10f: uav -> srv
+  barrier #7b809 tex 1920x1080 rgba16f: rt -> srv
+  barrier #26b2b tex 960x540 r8unorm: uav -> srv
+  render targets: #8fc07 tex 1920x1080 r11g11b10f
+  FULLSCREEN ps58dcc2f3 vsa60b7c3f draw 3 verts viewport 1920x1080 at 0,0 -> #8fc07 tex 1920x1080 r11g11b10f
+      table param 0: t0 space0 = #c931b tex 960x540 r11g11b10f as r11g11b10f
+      table param 0: t1 space0 = #c944d tex 960x540 r11g11b10f as r11g11b10f
+      table param 0: t2 space0 = #8fa3c tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 0: t3 space0 = #7b809 tex 1920x1080 rgba16f as rgba16f
+      table param 0: t4 space0 = #c93b4 tex 60x34 r11g11b10f as r11g11b10f
+      table param 0: t5 space0 = #26b2b tex 960x540 r8unorm as r8unorm
+      table param 6: t0 space0 = #f8a33 tex 2048x2048 fmt80 mips5
+      table param 6: t1 space0 = #2e712 tex 1024x1024 fmt80 mips4
+      table param 6: t2 space0 = #adcec tex 1024x1024 fmt80 mips4
+      table param 6: t3 space0 = #aa904 tex 1024x1024 fmt72 mips4
+      root cbv param 2 (b0 space0): #b98a7 buf 33554432 +55552
+      root cbv param 3 (b1 space0): #3ee68 buf 33554432 +188672
+      root cbv param 8 (b0 space0): #b98a7 buf 33554432 +55552
+      root cbv param 9 (b1 space0): #3ee68 buf 33554432 +185600
+  barrier #c901e tex 960x540 r11g11b10f: srv -> rt
+  barrier #8fc07 tex 1920x1080 r11g11b10f: rt -> srv
+  render targets: #c901e tex 960x540 r11g11b10f
+  FULLSCREEN pseb1e43cf vs7c24ad34 draw 3 verts viewport 960x540 at 0,0 -> #c901e tex 960x540 r11g11b10f
+      table param 0: t0 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #f8a33 tex 2048x2048 fmt80 mips5
+      root cbv param 2 (b0 space0): #3ee68 buf 33554432 +190208
+      root cbv param 8 (b0 space0): #b98a7 buf 33554432 +55552
+  barrier #9ec66 tex 480x270 r11g11b10f: srv -> rt
+  barrier #c901e tex 960x540 r11g11b10f: rt -> srv
+  render targets: #9ec66 tex 480x270 r11g11b10f
+  FULLSCREEN psf76db36a vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #9ec66 tex 480x270 r11g11b10f
+      table param 0: t0 space0 = #c901e tex 960x540 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #f8a33 tex 2048x2048 fmt80 mips5
+  barrier #9f07c tex 240x135 r11g11b10f: srv -> rt
+  barrier #9ec66 tex 480x270 r11g11b10f: rt -> srv
+  render targets: #9f07c tex 240x135 r11g11b10f
+  FULLSCREEN psf76db36a vs7c24ad34 draw 3 verts viewport 240x135 at 0,0 -> #9f07c tex 240x135 r11g11b10f
+      table param 0: t0 space0 = #9ec66 tex 480x270 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #f8a33 tex 2048x2048 fmt80 mips5
+  barrier #9f676 tex 120x67 r11g11b10f: srv -> rt
+  barrier #9f07c tex 240x135 r11g11b10f: rt -> srv
+  render targets: #9f676 tex 120x67 r11g11b10f
+  FULLSCREEN psf76db36a vs7c24ad34 draw 3 verts viewport 120x67 at 0,0 -> #9f676 tex 120x67 r11g11b10f
+      table param 0: t0 space0 = #9f07c tex 240x135 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #f8a33 tex 2048x2048 fmt80 mips5
+  barrier #9f412 tex 60x33 r11g11b10f: srv -> rt
+  barrier #9f676 tex 120x67 r11g11b10f: rt -> srv
+  render targets: #9f412 tex 60x33 r11g11b10f
+  FULLSCREEN psf76db36a vs7c24ad34 draw 3 verts viewport 60x33 at 0,0 -> #9f412 tex 60x33 r11g11b10f
+      table param 0: t0 space0 = #9f676 tex 120x67 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #f8a33 tex 2048x2048 fmt80 mips5
+  barrier #9f676 tex 120x67 r11g11b10f: srv -> rt
+  barrier #9f412 tex 60x33 r11g11b10f: rt -> srv
+  render targets: #9f676 tex 120x67 r11g11b10f
+  FULLSCREEN ps1e144d08 vs7c24ad34 draw 3 verts viewport 120x67 at 0,0 -> #9f676 tex 120x67 r11g11b10f
+      table param 0: t0 space0 = #9f412 tex 60x33 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #f8a33 tex 2048x2048 fmt80 mips5
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +4352
+      root cbv param 8 (b0 space0): #b98a7 buf 33554432 +55552
+  barrier #9f07c tex 240x135 r11g11b10f: srv -> rt
+  barrier #9f676 tex 120x67 r11g11b10f: rt -> srv
+  render targets: #9f07c tex 240x135 r11g11b10f
+  FULLSCREEN psbbca9350 vs7c24ad34 draw 3 verts viewport 240x135 at 0,0 -> #9f07c tex 240x135 r11g11b10f
+      table param 0: t0 space0 = #9f676 tex 120x67 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #f8a33 tex 2048x2048 fmt80 mips5
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +4352
+      root cbv param 8 (b0 space0): #b98a7 buf 33554432 +55552
+  barrier #9ec66 tex 480x270 r11g11b10f: srv -> rt
+  barrier #9f07c tex 240x135 r11g11b10f: rt -> srv
+  render targets: #9ec66 tex 480x270 r11g11b10f
+  FULLSCREEN ps22e6f49d vs7c24ad34 draw 3 verts viewport 480x270 at 0,0 -> #9ec66 tex 480x270 r11g11b10f
+      table param 0: t0 space0 = #9f07c tex 240x135 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #f8a33 tex 2048x2048 fmt80 mips5
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +4352
+      root cbv param 8 (b0 space0): #b98a7 buf 33554432 +55552
+  barrier #c901e tex 960x540 r11g11b10f: srv -> rt
+  barrier #9ec66 tex 480x270 r11g11b10f: rt -> srv
+  render targets: #c901e tex 960x540 r11g11b10f
+  FULLSCREEN psba7dcf1c vs7c24ad34 draw 3 verts viewport 960x540 at 0,0 -> #c901e tex 960x540 r11g11b10f
+      table param 0: t0 space0 = #9ec66 tex 480x270 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #f8a33 tex 2048x2048 fmt80 mips5
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +4352
+      root cbv param 8 (b0 space0): #b98a7 buf 33554432 +55552
+  barrier #8fc07 tex 1920x1080 r11g11b10f: srv -> rt
+  barrier #c901e tex 960x540 r11g11b10f: rt -> srv
+  render targets: #8fc07 tex 1920x1080 r11g11b10f
+  FULLSCREEN ps629a5b35 vs7c24ad34 draw 3 verts viewport 1920x1080 at 0,0 -> #8fc07 tex 1920x1080 r11g11b10f
+      table param 0: t0 space0 = #c901e tex 960x540 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #f8a33 tex 2048x2048 fmt80 mips5
+      root cbv param 2 (b0 space0): #b9785 buf 33554432 +512
+      root cbv param 3 (b1 space0): #b9785 buf 33554432 +2048
+      root cbv param 4 (b2 space0): #b9785 buf 33554432 +4352
+      root cbv param 8 (b0 space0): #b98a7 buf 33554432 +55552
+      root cbv param 9 (b1 space0): #3ee68 buf 33554432 +185600
+      root cbv param 10 (b2 space0): #b98a7 buf 33554432 +47104
+  barrier #83958 tex 1024x512 rgba16f: srv -> uav
+  barrier #8fc07 tex 1920x1080 r11g11b10f: rt -> srv
+  DISPATCH csa2a251a3 1 x 512 x 1
+      table param 1: t0 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 2: u0 space0 = #83958 tex 1024x512 rgba16f as rgba16f
+      root cbv param 4 (b0 space0): #b98a7 buf 33554432 +56064
+      root cbv param 5 (b1 space0): #b98a7 buf 33554432 +56320
+  barrier #83a8a tex 1024x512 rgba16f: srv -> uav
+  barrier #83958 tex 1024x512 rgba16f: uav -> srv
+  DISPATCH csfe482a42 1 x 1024 x 1
+      table param 1: t0 space0 = #83958 tex 1024x512 rgba16f as rgba16f
+      table param 1: t1 space0 = #9effc tex 1024x512 rgba16f as rgba16f
+      table param 2: u0 space0 = #83a8a tex 1024x512 rgba16f as rgba16f
+      root cbv param 4 (b0 space0): #b98a7 buf 33554432 +56064
+  barrier #83958 tex 1024x512 rgba16f: srv -> uav
+  barrier #83a8a tex 1024x512 rgba16f: uav -> srv
+  DISPATCH cs219a69ea 1 x 512 x 1
+      table param 1: t0 space0 = #83a8a tex 1024x512 rgba16f as rgba16f
+      table param 2: u0 space0 = #83958 tex 1024x512 rgba16f as rgba16f
+  barrier #8fc07 tex 1920x1080 r11g11b10f: srv -> rt
+  barrier #83958 tex 1024x512 rgba16f: uav -> srv
+  FULLSCREEN ps8f6eaed0 vs7c24ad34 draw 3 verts viewport 1920x1080 at 0,0 -> #8fc07 tex 1920x1080 r11g11b10f
+      table param 0: t0 space0 = #83958 tex 1024x512 rgba16f as rgba16f
+      table param 6: t0 space0 = #f8a33 tex 2048x2048 fmt80 mips5
+      root cbv param 2 (b0 space0): #b98a7 buf 33554432 +56320
+      root cbv param 8 (b0 space0): #b98a7 buf 33554432 +55552
+  barrier #8fa3c tex 1920x1080 r11g11b10f: srv -> rt
+  barrier #8fc07 tex 1920x1080 r11g11b10f: rt -> srv
+  render targets: #8fa3c tex 1920x1080 r11g11b10f
+  FULLSCREEN ps04c20211 vs3f48df32 draw 3 verts viewport 1920x1080 at 0,0 -> #8fa3c tex 1920x1080 r11g11b10f
+      table param 0: b4 space0 = cbv #bf6f1 buf 33554432 +192000
+      table param 0: b5 space0 = cbv #b9785 buf 33554432 +8192
+      table param 0: b6 space0 = cbv #b9785 buf 33554432 +8960
+      table param 0: b7 space0 = cbv #bf6f1 buf 33554432 +219648
+      table param 0: b8 space0 = cbv #bf6f1 buf 33554432 +190976
+      table param 0: b9 space0 = cbv #bf6f1 buf 33554432 +219392
+      table param 0: t0 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 0: t1 space0 = #dac63 buf 4
+      table param 0: t2 space0 = #3591a tex 32x32 rgba8srgb x32 as rgba8srgb
+      table param 0: t3 space0 = #3591a tex 32x32 rgba8srgb x32 as rgba8srgb
+      table param 0: t4 space0 = #f5aa7 tex 32x32 rgba8srgb x32 as rgba8srgb
+      table param 0: t5 space0 = #2db0d tex 8x8 fmt72
+      table param 0: t6 space0 = #2db0d tex 8x8 fmt72
+      table param 6: t0 space0 = #d1dcd buf 36 as r32_typeless
+      root cbv param 2 (b0 space0): #b98a7 buf 33554432 +55552
+      root cbv param 3 (b1 space0): #3ee68 buf 33554432 +185600
+      root cbv param 4 (b2 space0): #3ee68 buf 33554432 +187136
+      root cbv param 5 (b3 space0): #b9785 buf 33554432 +7424
+      root cbv param 8 (b0 space0): #b98a7 buf 33554432 +55552
+      root cbv param 9 (b1 space0): #3ee68 buf 33554432 +185600
+      root cbv param 10 (b2 space0): #b98a7 buf 33554432 +47104
+      root cbv param 11 (b3 space0): #bf6f1 buf 33554432 +0
+  barrier #221bc tex 3840x2160 r8unorm: srv -> rt
+  barrier #201ca tex 3840x2160 r11g11b10f: srv -> rt
+  barrier #8fa3c tex 1920x1080 r11g11b10f: rt -> srv
+  render targets: #201ca tex 3840x2160 r11g11b10f depth #23146 tex 3840x2160 r32_typeless
+  FULLSCREEN psaff99b25 vsa60b7c3f draw 3 verts (replaced by DLSS) viewport 3840x2160 at 0,0 -> #201ca tex 3840x2160 r11g11b10f depth #23146 tex 3840x2160 r32_typeless
+      table param 0: t0 space0 = #90762 tex 1920x1080 r32_typeless as r32f
+      table param 0: t1 space0 = #8fa3c tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 6: t1 space0 = #dac63 buf 4
+      root cbv param 2 (b0 space0): #b98a7 buf 33554432 +56576
+      root cbv param 8 (b0 space0): #b98a7 buf 33554432 +55552
+  barrier #22255 tex 3840x2160 r11g11b10f: srv -> rt
+  barrier #201ca tex 3840x2160 r11g11b10f: rt -> srv
+  barrier #221bc tex 3840x2160 r8unorm: rt -> srv
+  render targets: #22255 tex 3840x2160 r11g11b10f depth #21c5b tex 3840x2160 r32_typeless
+  FULLSCREEN psae40e1ff vsa60b7c3f draw 3 verts viewport 3840x2160 at 0,0 -> #22255 tex 3840x2160 r11g11b10f depth #21c5b tex 3840x2160 r32_typeless
+      table param 0: t0 space0 = #201ca tex 3840x2160 r11g11b10f as r11g11b10f
+      table param 0: t1 space0 = #221bc tex 3840x2160 r8unorm as r8unorm
+      table param 6: t0 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      table param 6: t1 space0 = #dac63 buf 4
+      root cbv param 2 (b0 space0): #b98a7 buf 33554432 +56576
+      root cbv param 8 (b0 space0): #b98a7 buf 33554432 +55552
+  barrier #201ca tex 3840x2160 r11g11b10f: srv -> rt
+  barrier #22255 tex 3840x2160 r11g11b10f: rt -> srv
+  render targets: #201ca tex 3840x2160 r11g11b10f depth #21c5b tex 3840x2160 r32_typeless
+  FULLSCREEN ps83760deb vsa60b7c3f draw 3 verts viewport 3840x2160 at 0,0 -> #201ca tex 3840x2160 r11g11b10f depth #21c5b tex 3840x2160 r32_typeless
+      table param 0: t0 space0 = #22255 tex 3840x2160 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+  barrier #06651 tex 3840x2160 rgb10a2unorm: general -> rt
+  barrier #201ca tex 3840x2160 r11g11b10f: rt -> srv
+  render targets: #06651 tex 3840x2160 rgb10a2unorm
+  FULLSCREEN ps4c582391 vs7c24ad34 draw 3 verts viewport 3840x2160 at 0,0 -> #06651 tex 3840x2160 rgb10a2unorm
+      table param 0: t0 space0 = #201ca tex 3840x2160 r11g11b10f as r11g11b10f
+      table param 6: t0 space0 = #8fc07 tex 1920x1080 r11g11b10f as r11g11b10f
+      root cbv param 2 (b0 space0): #bf6f1 buf 33554432 +7424
+      root cbv param 8 (b0 space0): #b98a7 buf 33554432 +55552
+  barrier #06651 tex 3840x2160 rgb10a2unorm: rt -> general
+EXECUTE list L5 on compute queue 00000257029D1E78, 0 events
+EXECUTE list L6 on compute queue 00000257029D1E78, 0 events
+EXECUTE list L7 on compute queue 00000257029D1E78, 0 events
+==== PRESENT (back buffer #06651 tex 3840x2160 rgb10a2unorm, colour space 1), 0 more
