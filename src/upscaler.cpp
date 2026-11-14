@@ -85,7 +85,7 @@ constexpr bool kBloomIntoTaaOnly = true;      // only its draw into the TAA outp
 // reads it again (likely for its exposure): 0.1.0 at Performance was ~12% darker than DLAA.
 constexpr bool kBloomAlsoAtRenderSize = true;
 constexpr uint32_t kTonemapPs = 0x25016cc3;  // tonemap (colour t0; RenoDX replaces it)
-constexpr uint32_t kTonemapPs2 = 0x00000006;  // none seen yet in another post format
+constexpr uint32_t kTonemapPs2 = 0x04c20211;  // the game's own tonemap (RenoDX off, 0.1.3 log)
 constexpr uint32_t kTonemapColor = 0;
 constexpr uint32_t kCopyPs = 0xaff99b25;      // stretch: t0 depth, t1 SrcImage -> output size colour + SV_Depth
 constexpr uint32_t kSharpenPs = 2;            // the game's sharpen (psae40e1ff) runs at output size: left alone

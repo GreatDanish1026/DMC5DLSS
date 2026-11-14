@@ -144,3 +144,8 @@ made no difference to NGX (DLSS also ran with it on).
 0.1.3: the tonemap is also recognised by its place in the chain (first full-screen draw after the
 bloom composite reading the TAA output at t0); its id is logged once. The fallback log line is
 logged once instead of every frame.
+
+0.1.3 test (RenoDX off): tonemap found by place = **ps04c20211** (the game's own); DLSS upscaling
+1920x1080 -> 3840x2160 ran with it. One "not found" right at the first 50% frame (a single
+fallback frame on the switch). 0.1.4: ps04c20211 added as kTonemapPs2 (the structural match stays
+as a fallback).
