@@ -210,3 +210,5 @@ first 3840x2160 format 28 (the game's first back buffer, rgba8), the game then R
 format 24, briefly to **3840x2097** (render height) and back; contexts recreated each time, last
 3840x2160 format 24, "HUD told apart with the picture before the HUD", no errors. Colour space seen
 as SDR (ReShade enum 1), so FSR FG was set up SDR. Exclusive fullscreen on. Cause not known yet.
+User: the ReShade overlay was tripled too, so the fault is at presentation (FSR's swapchain / the
+real swapchain or display mode), not in the generated frames or our inputs.
