@@ -53,17 +53,40 @@ Notes:
 - The output pass also reads the render-size tonemapped image (t1). It may only be declared, not
   sampled; check from the bytecode. If it is sampled, upscaling must leave it valid.
 
-## Still to do (before 0.1.0 code)
+## Shader dump (2026-11-14, capture 3: 100%, gameplay with HUD)
 
-`ReShade.ini [DMC5DLSS] DumpShaders` is now set (backup `ReShade.ini.bak-dmc5probe`) for
-ps321bf06e, ps629a5b35, ps25016cc3, psaff99b25, psae40e1ff, ps83760deb, psca880db5, vs3f48df32 and
-vsa60b7c3f. One game run with a capture writes their bytecode (`DMC5DLSS-<id>.cso`) and constant
-buffers. These things need confirming from that run:
-- the TAA's entry name (PreTonemap2_PS?), its register names, and the velocity / exposure maths;
-- the **SceneInfo layout** (the size of b0; projElement[0] jitter at byte 160, screenSize at 368,
-  cameraNearPlane at 392 as in RE2), and that jitter is non-zero;
-- whether the Tonemap cb (b1) has AABlend / exposure;
-- what the stretch's depth output and the output pass's t1 are used for.
+`docs/shaders/DMC5DLSS-<id>.cso` + `fxc /dumpbin` listings (`.txt`); capture
+`docs/captures/DMC5DLSS-frame-3-dump.txt`. The DumpShaders line has been removed from ReShade.ini again.
+
+- **TAA ps321bf06e** has the same maths as RE2's PreTonemap2_PS, with different registers:
+  `t0 ReadonlyDepth` (float), `t1 HDRImage`, `t2 PrevHDRImage`, `t3 Velocity`; `cb0 SceneInfo`,
+  `cb1 Tonemap` (preTonemapRange, AABlend used; ResponsiveAARate declared but unused, no mask).
+  Colour is multiplied by the VS's `Exposure` (v2.x) and unjittered by
+  `projElement[0].zw * screenInverseSize * 0.5`. Velocity is read at the nearest-depth pixel of a
+  5-tap cross (reverse Z: min of 1 - depth), and prevUV = uv + (v.x * 0.5, -v.y * 0.5): the same
+  mvScale as RE2 (0.5, -0.5).
+- **SceneInfo is 512 bytes**, with RE2's layout and offsets. Values in this frame: projElement[0] at
+  byte 160 = (1.5697, 2.7906, **jitter 4.56e-5, -1.26e-4** clip), screenSize at 368 = 3840 2160 (render
+  size), cameraNearPlane at 392 = 0.2, far 1000. RE2DLSS's kSceneInfoFloats 132 (528 bytes) becomes 128.
+- **Stretch psaff99b25**: `t0 ReadonlyDepth`, `t1 SrcImage`, SceneInfo; writes SV_Target + SV_Depth (the
+  4K depth the HUD tests against). So it must still run; then our image goes over its colour.
+- **Sharpen psae40e1ff**: `t0 HDRImage`, `t1 tUIMask` (r8, written by the HUD draws), SceneInfo only
+  (no sharpness value in a cb). It sharpens the scene and leaves pixels under the HUD alone.
+- **Output psca880db5** (and tonemap ps25016cc3): the dumped bytecode has no RDEF (these are RenoDX's
+  replacements). The output samples only t0, so the render-size t1 in the captures is unused.
+- Bloom composite ps629a5b35: `t0 texSrc`, cbSoftBloom / cbCone / cbSoftBloomScale.
+
+### HUD (capture 3)
+
+After the tonemap (into the output-size target #dd009):
+1. ps83760deb copies #dd009 to #d294e, which is a **pre-HUD snapshot** (useful for frame generation's HUD-less
+   image later).
+2. HUD draws (5-index quads) go into #dd009 plus the r8 UI mask #daafb: psb175f8ff, ps146ff5e5,
+   pse9a72b8b, ps5225e81f.
+3. Sharpen psae40e1ff (t1 = UI mask) writes #25904, ps83760deb copies it back to #dd009, then the
+   output pass runs.
+
+The HUD is drawn at output size after the stretch, so it needs nothing from us when upscaling.
 
 ## Plan for 0.1.0 (DLSS)
 
@@ -76,7 +99,8 @@ but on D3D12, so it needs no new hook core.
    variant: let the stretch draw run (it writes 4K depth), then blit DLSS's tonemapped output-size
    image over its colour target, as RE2DLSS-DX11 does. kOutputPs psca880db5.
 2. Depth SRV format r32_float for r32_typeless (RE7's RtDepthSrvFormat path), so it's not the
-   r32g8 view.
+   r32g8 view. SceneInfo: kSceneInfoFloats 128 (512 bytes); the other offsets stay as RE2's.
+   Motion vectors scale (0.5, -0.5) as RE2.
 3. DLAA: DLSS → X, then copied into the TAA target #ef6c7. The TAA draw is skipped.
 4. Upscaling: DLSS → X at output size, game TAA skipped; bloom composite and tonemap redirected to
    output size (in place, RE2DLSS's design, with a SceneInfo copy whose screenSize is the output size);
