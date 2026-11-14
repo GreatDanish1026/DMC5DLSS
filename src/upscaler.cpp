@@ -59,6 +59,7 @@
 #include "../third_party/reshade/utils/descriptor_tracking.hpp"
 #include "blit_ps.h"  // kBlitPs, kBlitVs: blit.hlsl compiled by build.ps1
 #include "blit_vs.h"
+#include "blit_down_ps.h"  // kBlitDownPs: blit.hlsl PsDown
 #include "guide_cs.h"       // kGuideCs: guide.hlsl (Ray Reconstruction guides from the G-buffer)
 #include "guide_view_cs.h"  // kGuideViewCs: guide_view.hlsl (guide debug view)
 #include "rcas_cs.h"        // kRcasCs: rcas.hlsl (sharpening after DLSS)
@@ -80,6 +81,8 @@ constexpr uint32_t kTaaDepth = 0, kTaaColor = 1, kTaaMotion = 3;
 constexpr int kTaaMask = -1;
 constexpr uint32_t kBloomPs = 0x629a5b35;    // bloom composite (cbSoftBloom), additive into the TAA output
 constexpr uint32_t kGlarePs = 0x8f6eaed0;    // title menu glare, added into the TAA output after the bloom
+constexpr uint32_t kDofPs = 0x58dcc2f3;      // depth of field composite (cutscenes): t2 HDRImage = TAA output
+constexpr uint32_t kDofSharp = 2;
 constexpr bool kBloomIntoTaaOnly = true;      // only its draw into the TAA output
 // The bloom is drawn into X as well, and the game's draw still goes into its render-size TAA
 // output (as VillageDLSS does). Moving it to X instead left that image without bloom, and the game
@@ -599,6 +602,7 @@ struct Texture {
 Texture g_x;  // DLSS output (UAV, render target for bloom, shader resource for the tonemap)
 Texture g_y;  // tonemapped output size image (upscaling)
 Texture g_z;  // sharpened output size image
+Texture g_w;  // depth of field at output size (cutscenes)
 
 struct Old {
     resource res;
@@ -680,6 +684,11 @@ struct UpscaleFrame {
     Texture* final = nullptr;  // what goes over the game's stretch
     uint64_t lastFrame = UINT64_MAX;  // last present count with upscaling
     resource taaOut = {0};     // the game's TAA target (bloom's last upsample adds into it)
+    // The game's render-size scene image that the next passes (bloom, glare) add into and the
+    // tonemap reads: the TAA output, or the depth of field's target in cutscenes. scene is our
+    // output-size counterpart (X, or W after depth of field).
+    resource sceneOut = {0};
+    Texture* scene = nullptr;
 } g_up;
 
 // Descriptor slots rewritten for the tonemap, put back when upscaling stops in case the game
@@ -1581,6 +1590,8 @@ bool OnTaa(command_list* cl, ListState& s) {
         g_up.final = nullptr;
         g_up.lastFrame = g_frame;
         g_up.taaOut = target;
+        g_up.sceneOut = target;
+        g_up.scene = &g_x;
         replaced = false;
     } else {
         Transition(cl, g_x, resource_usage::copy_source);
@@ -1612,10 +1623,11 @@ bool OnTaa(command_list* cl, ListState& s) {
 // Bloom (additive, texture coordinates): the game's draw into its TAA output goes into X.
 void OnBloom(command_list* cl, ListState& s) {
     std::lock_guard<std::mutex> lock(g_resMutex);
-    if (!g_up.active || g_up.bloomDone || !g_x.rtv.handle) return;
-    if (kBloomIntoTaaOnly && ViewResource(s.rtvs[0]) != g_up.taaOut) return;
-    Transition(cl, g_x, resource_usage::render_target);
-    BindFullTarget(cl, g_x.rtv, g_x.w, g_x.h);
+    if (!g_up.active || g_up.bloomDone || !g_up.scene || !g_up.scene->rtv.handle) return;
+    if (kBloomIntoTaaOnly && ViewResource(s.rtvs[0]) != g_up.sceneOut) return;
+    Texture& dst = *g_up.scene;
+    Transition(cl, dst, resource_usage::render_target);
+    BindFullTarget(cl, dst.rtv, dst.w, dst.h);
     g_up.bloomDone = true;
     if (kBloomAlsoAtRenderSize) {  // drawn into X here; the game's own draw follows as usual
         cl->draw(3, 1, 0, 0);
@@ -1630,9 +1642,12 @@ void OnBloom(command_list* cl, ListState& s) {
 // own draw still goes into the render-size image, as for bloom.
 void OnAdditive(command_list* cl, ListState& s) {
     std::lock_guard<std::mutex> lock(g_resMutex);
-    if (!g_up.active || g_up.tonemapDone || !g_x.rtv.handle || ViewResource(s.rtvs[0]) != g_up.taaOut) return;
-    Transition(cl, g_x, resource_usage::render_target);
-    BindFullTarget(cl, g_x.rtv, g_x.w, g_x.h);
+    if (!g_up.active || g_up.tonemapDone || !g_up.scene || !g_up.scene->rtv.handle ||
+        ViewResource(s.rtvs[0]) != g_up.sceneOut)
+        return;
+    Texture& dst = *g_up.scene;
+    Transition(cl, dst, resource_usage::render_target);
+    BindFullTarget(cl, dst.rtv, dst.w, dst.h);
     cl->draw(3, 1, 0, 0);
     RestoreTargets(cl, s);
     static bool logged = false;
@@ -1696,19 +1711,18 @@ bool RedrawAtOutputSize(command_list* cl, ListState& s, uint32_t reg, Texture& s
 // Tonemap (reads t0) at output size into Y, from X: the game's draw, redirected.
 bool OnTonemap(command_list* cl, ListState& s) {
     std::lock_guard<std::mutex> lock(g_resMutex);
-    if (!g_up.active || g_up.tonemapDone || !g_x.srv.handle) return false;
-    // Cutscenes and menus run depth of field (ps58dcc2f3 and compute passes) between the TAA and
-    // the bloom: the tonemap then reads that image, not the TAA output, and tonemapping X would
-    // drop the depth of field. Those frames use the game's own upscaling for now.
-    if (PixelSrv(cl->get_device(), s.graphics, kTonemapColor) != g_up.taaOut) {
+    if (!g_up.active || g_up.tonemapDone || !g_up.scene || !g_up.scene->srv.handle) return false;
+    // The tonemap must read the image we have an output-size counterpart of (the TAA output, or
+    // the depth of field's target, OnDof). Anything else between TAA and tonemap that we don't
+    // follow would be lost: those frames use the game's own upscaling.
+    if (PixelSrv(cl->get_device(), s.graphics, kTonemapColor) != g_up.sceneOut) {
         g_up.active = false;
         static bool logged = false;
         if (!logged)
-            logged = true, Log("passes between TAA and tonemap (depth of field: cutscene/menu): game's upscaling used "
-                               "for those frames");
+            logged = true, Log("unknown pass between TAA and tonemap: game's upscaling used for those frames");
         return false;
     }
-    if (!RedrawAtOutputSize(cl, s, kTonemapColor, g_x, g_y, "tonemapped", true)) return false;
+    if (!RedrawAtOutputSize(cl, s, kTonemapColor, *g_up.scene, g_y, "tonemapped", true)) return false;
     g_up.tonemapDone = true;
     g_up.final = &g_y;
     return false;  // the game's draw runs, at output size
@@ -1734,9 +1748,10 @@ bool OnSharpen(command_list* cl, ListState& s) {
 // write converts formats. g_resMutex held for these.
 
 pipeline_layout g_blitLayout = {0};
-std::map<format, pipeline> g_blitPipes;  // one per render target format
+std::map<format, pipeline> g_blitPipes;      // one per render target format
+std::map<format, pipeline> g_blitDownPipes;  // PsDown (averaging, into a smaller target)
 
-pipeline BlitPipeline(device* dev, format fmt) {
+pipeline BlitPipeline(device* dev, format fmt, bool down = false) {
     if (!g_blitLayout.handle) {
         descriptor_range r = {};
         r.count = 1;
@@ -1750,11 +1765,13 @@ pipeline BlitPipeline(device* dev, format fmt) {
             return {0};
         }
     }
-    auto it = g_blitPipes.find(fmt);
-    if (it != g_blitPipes.end()) return it->second;
+    std::map<format, pipeline>& pipes = down ? g_blitDownPipes : g_blitPipes;
+    auto it = pipes.find(fmt);
+    if (it != pipes.end()) return it->second;
     shader_desc vs = {}, ps = {};
     vs.code = kBlitVs, vs.code_size = sizeof(kBlitVs);
-    ps.code = kBlitPs, ps.code_size = sizeof(kBlitPs);
+    if (down) ps.code = kBlitDownPs, ps.code_size = sizeof(kBlitDownPs);
+    else ps.code = kBlitPs, ps.code_size = sizeof(kBlitPs);
     rasterizer_desc rs = {};
     rs.cull_mode = cull_mode::none;
     depth_stencil_desc ds = {};
@@ -1770,11 +1787,51 @@ pipeline BlitPipeline(device* dev, format fmt) {
                                        {pipeline_subobject_type::render_target_formats, 1, &rt}};
     pipeline p = {0};
     if (!dev->create_pipeline(g_blitLayout, 6, subs, &p)) {
-        Log("couldn't create the blit pipeline for format %u", static_cast<unsigned>(fmt));
+        Log("couldn't create the blit pipeline for format %u%s", static_cast<unsigned>(fmt), down ? " (downscale)" : "");
         p = {0};
     }
-    g_blitPipes[fmt] = p;
+    pipes[fmt] = p;
     return p;
+}
+
+// Depth of field (cutscenes; ps58dcc2f3 composites the sharp image t2 = TAA output, read by pixel,
+// with half-resolution blur layers sampled by texture coordinates from SceneInfo's
+// screenInverseSize). Drawn here at output size from the scene image (X) into W, with SceneInfo
+// at output size; then W is averaged down into the game's render-size target, so the game's bloom
+// pyramid (built from that target) sees the depth of field too. The game's own draw is skipped.
+bool OnDof(command_list* cl, ListState& s) {
+    std::lock_guard<std::mutex> lock(g_resMutex);
+    if (!g_up.active || g_up.tonemapDone || !g_up.scene || !g_up.scene->srv.handle) return false;
+    device* dev = cl->get_device();
+    if (PixelSrv(dev, s.graphics, kDofSharp) != g_up.sceneOut) return false;
+    const resource target = ViewResource(s.rtvs[0]);
+    const resource_view targetRtv = s.rtvs[0];
+    if (!target.handle) return false;
+    const resource_desc td = dev->get_resource_desc(target);
+    const pipeline down = BlitPipeline(dev, td.texture.format, true);
+    if (!down.handle) return false;
+    Texture& src = *g_up.scene;
+    if (!RedrawAtOutputSize(cl, s, kDofSharp, src, g_w, "depth of field")) return false;  // draws, restores
+    // W -> the game's target (render size, in render target state: the game bound it for its draw).
+    Transition(cl, g_w, resource_usage::shader_resource);
+    cl->bind_pipeline(pipeline_stage::all_graphics, down);
+    const dynamic_state topoState = dynamic_state::primitive_topology;
+    const uint32_t topo = static_cast<uint32_t>(primitive_topology::triangle_list);
+    cl->bind_pipeline_states(1, &topoState, &topo);
+    descriptor_table_update u = {};
+    u.count = 1;
+    u.type = descriptor_type::texture_shader_resource_view;
+    u.descriptors = &g_w.srv;
+    cl->push_descriptors(shader_stage::pixel, g_blitLayout, 0, u);
+    BindFullTarget(cl, targetRtv, td.texture.width, td.texture.height);
+    cl->draw(3, 1, 0, 0);
+    Restore(cl, s);
+    RestoreTargets(cl, s);
+    g_up.scene = &g_w;
+    g_up.sceneOut = target;
+    static bool logged = false;
+    if (!logged) logged = true, Log("depth of field drawn at output size (%ux%u)", g_w.w, g_w.h);
+    return true;  // the game's render-size draw is skipped (its result came from W)
 }
 
 bool OnCopy(command_list* cl, ListState& s) {
@@ -1894,7 +1951,7 @@ void DestroyAll(device* dev) {
     g_targetRtvs.clear();
     dlss::Shutdown();
     fsr::Shutdown();
-    for (Texture* t : {&g_x, &g_xs, &g_y, &g_z, &g_hudScene}) Retire(*t);
+    for (Texture* t : {&g_x, &g_xs, &g_y, &g_z, &g_w, &g_hudScene}) Retire(*t);
     if (g_xUav.handle) dev->destroy_resource_view(g_xUav);
     g_xUav = {0}, g_xUavOf = 0;
     if (g_rcasPipe.handle) dev->destroy_pipeline(g_rcasPipe);
@@ -1914,9 +1971,11 @@ void DestroyAll(device* dev) {
     }
     g_cb = {0};
     g_cbData = nullptr;
-    for (auto& [fmt, p] : g_blitPipes)
-        if (p.handle) dev->destroy_pipeline(p);
-    g_blitPipes.clear();
+    for (auto* pipes : {&g_blitPipes, &g_blitDownPipes}) {
+        for (auto& [fmt, p] : *pipes)
+            if (p.handle) dev->destroy_pipeline(p);
+        pipes->clear();
+    }
     if (g_blitLayout.handle) dev->destroy_pipeline_layout(g_blitLayout);
     g_blitLayout = {0};
     g_dev = nullptr;
@@ -2146,13 +2205,13 @@ bool MaybeTonemap(command_list* cl, ListState& s, uint32_t id, bool afterBloom) 
     if (!afterBloom) return false;
     {
         std::lock_guard<std::mutex> lock(g_resMutex);
-        if (!g_up.active || !g_up.bloomDone || g_up.tonemapDone || !g_up.taaOut.handle) return false;
+        if (!g_up.active || !g_up.bloomDone || g_up.tonemapDone || !g_up.sceneOut.handle) return false;
     }
     device* dev = cl->get_device();
-    if (PixelSrv(dev, s.graphics, kTonemapColor) != g_up.taaOut) return false;
+    if (PixelSrv(dev, s.graphics, kTonemapColor) != g_up.sceneOut) return false;
     const resource target = ViewResource(s.rtvs[0]);
-    if (!target.handle || target == g_up.taaOut) return false;
-    const resource_desc td = dev->get_resource_desc(target), ad = dev->get_resource_desc(g_up.taaOut);
+    if (!target.handle || target == g_up.sceneOut) return false;
+    const resource_desc td = dev->get_resource_desc(target), ad = dev->get_resource_desc(g_up.sceneOut);
     if (td.texture.width != ad.texture.width || td.texture.height != ad.texture.height) return false;
     static std::atomic<uint32_t> logged{0};
     if (logged.exchange(id) != id) Log("tonemap found by its place in the chain: ps%08x", id);
@@ -2177,6 +2236,7 @@ bool UpscalerOnDraw(command_list* cl, uint32_t vertices, uint32_t instances) {
         case kTaaPs: return OnTaa(cl, *s);
         case kBloomPs: OnBloom(cl, *s); return false;
         case kGlarePs: OnAdditive(cl, *s); return false;
+        case kDofPs: return OnDof(cl, *s);
         case kTonemapPs: return OnTonemap(cl, *s);
         case kTonemapPs2: return OnTonemap(cl, *s);
         case kSharpenPs: return OnSharpen(cl, *s);

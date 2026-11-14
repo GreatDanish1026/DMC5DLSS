@@ -178,3 +178,18 @@ Both use the game's own tonemap **ps04c20211** even with RenoDX on.
 0.1.6: the glare is drawn into X as well (like bloom). Frames where the tonemap doesn't read the TAA
 output (depth of field) use the game's own upscaling for now (DLAA unaffected). ReShade.ini
 DumpShaders set for the DoF passes, glare, ps04c20211, ps133ccce0 (for depth of field at output size).
+
+## 0.1.6 test and depth of field at output size (0.2.0)
+
+0.1.6 log: the cutscene used the fallback, the title menu ran DLSS upscaling with the glare drawn
+into X. DoF shaders dumped (docs/shaders): **ps58dcc2f3** = DoF composite: t0 CoC, t1 Image (blurred,
+960x540), **t2 HDRImage (TAA output, `ld` at the pixel)**, t3 BlendImage, t4 Neighbor, t5 DOFAImage;
+cb0 SceneInfo, cb1 dof. UV = (pixel + 0.5) * SceneInfo.screenInverseSize for everything but t2,
+so it runs at output size with an output-size SceneInfo. Glare ps8f6eaed0 samples its 1024x512
+texture by texture coordinates (TexturePosScaleFactor).
+
+0.2.0: OnDof draws the DoF composite at output size from X into W (SceneInfo copy, t2 -> X), then
+averages W down (blit.hlsl PsDown) into the game's render-size target for its bloom pyramid, and
+skips the game's draw. Bloom, glare and the tonemap follow the "scene" image (g_up.scene /
+sceneOut: the TAA output or the DoF target). Frames with an unknown pass between TAA and tonemap
+still fall back to the game's upscaling.
