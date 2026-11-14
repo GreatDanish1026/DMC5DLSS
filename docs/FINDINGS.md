@@ -125,3 +125,11 @@ reads it again (likely its exposure).
 
 0.1.1: kBloomAlsoAtRenderSize (Village's fix): bloom drawn into X by us, and the game's own draw still
 goes into its render-size image.
+
+## 0.1.1 test (2026-11-14)
+
+Clean log (DLAA, 67%, 50% switched live). User: bloom brighter at Performance than DLAA, but
+Performance with DLSS and Performance with F9 off (game's own TAA + stretch at 50%) look the same.
+So the stronger bloom at low render scales is the game's own behaviour, and 0.1.1 is right. (The
+game's exposure is measured by csc4ba72ae -> cs4b2f7214 from the TAA history copy, which is made
+before bloom; the render-size image after bloom is read only by the tonemap.)
