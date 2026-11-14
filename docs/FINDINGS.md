@@ -133,3 +133,14 @@ Performance with DLSS and Performance with F9 off (game's own TAA + stretch at 5
 So the stronger bloom at low render scales is the game's own behaviour, and 0.1.1 is right. (The
 game's exposure is measured by csc4ba72ae -> cs4b2f7214 from the TAA history copy, which is made
 before bloom; the render-size image after bloom is read only by the tonemap.)
+
+## RenoDX / GITC Uplift off (2026-11-14, 0.1.2)
+
+Only DMC5DLSS loaded (RenoDX and GITC Uplift both off). DLAA fine. Upscaling: "tonemap pass not
+found": without RenoDX the game's own tonemap has another id (ps25016cc3 is RenoDX's replacement),
+so the game's own upscaling was used (looked fine, but no DLSS upscaling). GITC Uplift being off
+made no difference to NGX (DLSS also ran with it on).
+
+0.1.3: the tonemap is also recognised by its place in the chain (first full-screen draw after the
+bloom composite reading the TAA output at t0); its id is logged once. The fallback log line is
+logged once instead of every frame.

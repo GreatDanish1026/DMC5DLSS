@@ -1755,7 +1755,8 @@ bool OnCopy(command_list* cl, ListState& s) {
     std::lock_guard<std::mutex> lock(g_resMutex);
     if (g_up.active && !g_up.tonemapDone) {  // e.g. the tonemap shader has another id (RenoDX off?)
         g_up.active = false;
-        Fail("tonemap pass not found while upscaling: game's upscaling used (capture a frame for the log)");
+        static bool logged = false;  // once: Fail every frame would log every upscaled frame
+        if (!logged) logged = true, Log("Upscaler: tonemap pass not found while upscaling: game's upscaling used");
         return false;
     }
     if (!g_up.active || !g_up.final || !g_up.final->srv.handle) return false;
@@ -2108,6 +2109,20 @@ void UpscalerBeforeDraw(command_list* cl) {
     }
 }
 
+// The tonemap by its place in the chain: the first full-screen draw after the bloom composite
+// that reads the TAA output at t0. Its shader id depends on RenoDX (ps25016cc3 is RenoDX's
+// replacement; with RenoDX off the game's own tonemap has another id, 0.1.2 test).
+bool MaybeTonemap(command_list* cl, ListState& s, uint32_t id) {
+    {
+        std::lock_guard<std::mutex> lock(g_resMutex);
+        if (!g_up.active || !g_up.bloomDone || g_up.tonemapDone || !g_up.taaOut.handle) return false;
+    }
+    if (PixelSrv(cl->get_device(), s.graphics, kTonemapColor) != g_up.taaOut) return false;
+    static std::atomic<uint32_t> logged{0};
+    if (logged.exchange(id) != id) Log("tonemap found by its place in the chain: ps%08x", id);
+    return OnTonemap(cl, s);
+}
+
 bool UpscalerOnDraw(command_list* cl, uint32_t vertices, uint32_t instances) {
     ListState* s = State(cl);
     if (!s) return false;
@@ -2128,7 +2143,7 @@ bool UpscalerOnDraw(command_list* cl, uint32_t vertices, uint32_t instances) {
         case kTonemapPs2: return OnTonemap(cl, *s);
         case kSharpenPs: return OnSharpen(cl, *s);
         case kCopyPs: return OnCopy(cl, *s);
-        default: return false;
+        default: return MaybeTonemap(cl, *s, id);
     }
 }
 
