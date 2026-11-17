@@ -65,6 +65,7 @@
 #include "guide_view_cs.h"  // kGuideViewCs: guide_view.hlsl (guide debug view)
 #include "rcas_cs.h"        // kRcasCs: rcas.hlsl (sharpening after DLSS)
 #include "mvfix_cs.h"       // kMvFixCs: mvfix.hlsl (motion vectors without the jitter)
+#include "effmask_cs.h"     // kEffMaskCs: effmask.hlsl (effect mask from the colour before the effects)
 #include "dlss.hpp"
 #include "fsr.hpp"
 #include "version.h"
@@ -85,6 +86,13 @@ constexpr int kTaaMask = -1;
 // t3.yz (dumped 2026-11-17). DLSS/FSR read .xy, so 1.0.0 gave them a constant 1 as the x motion;
 // the motion vectors always go through mvfix.hlsl now (the jitter taken out only with MotionFix).
 constexpr bool kVelocityYz = true;
+// Effect mask (the add-on makes one, see "effect mask" below; capture 2026-11-17, combat): after
+// the last full-screen lighting pass ps8148b08f the game draws its effects into the scene colour
+// (ps041d96bf / ps77a5021e quads, other draws, GPU particles, psc060a249), then a quarter-size layer
+// (640x360) and ps90adeb83 blends something in just before the TAA. The mask is made at the TAA
+// (kEffEndPs 0); if the mask view shows that late layer is fog, set kEffEndPs to 0x90adeb83.
+constexpr uint32_t kComposePs = 0x8148b08f;
+constexpr uint32_t kEffEndPs = 0;
 constexpr uint32_t kBloomPs = 0x629a5b35;    // bloom composite (cbSoftBloom), additive into the TAA output
 constexpr uint32_t kGlarePs = 0x8f6eaed0;    // title menu glare, added into the TAA output after the bloom
 constexpr uint32_t kDofPs = 0x58dcc2f3;      // depth of field composite (cutscenes): t2 HDRImage = TAA output
@@ -1314,6 +1322,189 @@ bool FixMotion(command_list* cl, device* dev, resource velocity, uint32_t w, uin
     return true;
 }
 
+// ---------------------------------------------------------------- effect mask (made by the add-on)
+//
+// This game's TAA has no effect mask. The game draws its effects (particles, fire, smoke,
+// refraction) into the scene colour after the lighting compose (kComposePs) and before the TAA, so:
+// at the compose draw the colour is noted; at the first later draw into that colour alone (after the
+// forward G-buffer draws, which have motion vectors) it is copied (g_effBefore); at the TAA
+// effmask.hlsl compares the copy with the colour the TAA gets and writes how much the effects
+// changed each pixel (g_effMask, r8) for DLSS / Ray Reconstruction (bias current colour) and FSR
+// (reactive). g_resMutex held.
+Texture g_effBefore, g_effMask;
+resource g_effColor = {0};          // the scene colour to copy at its next colour-only draw
+uint64_t g_effArmed = ~0ull;        // g_frame when the compose ran
+uint64_t g_effSnapped = ~0ull;      // g_frame when the colour was copied
+uint64_t g_effMade = ~0ull;         // g_frame when the mask was made
+resource_view g_effMaskUav = {0}, g_effAfterSrv = {0};
+uint64_t g_effMaskUavOf = 0, g_effAfterSrvOf = 0;
+pipeline_layout g_effLayout = {0}, g_effViewLayout = {0};
+pipeline g_effPipe = {0}, g_effViewPipe = {0};
+bool g_effFailed = false;
+constexpr float kEffThreshold = 0.05f, kEffGain = 4.0f;  // relative change 5% -> 0, 30% -> 1
+
+bool EffPipelines(device* dev) {
+    if (g_effPipe.handle) return true;
+    if (g_effFailed) return false;
+    constant_range c = {};
+    c.count = 8;
+    c.visibility = shader_stage::all_compute;
+    descriptor_range srv = {};
+    srv.count = 2;
+    srv.visibility = shader_stage::all_compute;
+    srv.type = descriptor_type::shader_resource_view;
+    descriptor_range uav = srv;
+    uav.count = 1;
+    uav.type = descriptor_type::unordered_access_view;
+    const pipeline_layout_param params[3] = {pipeline_layout_param(c), pipeline_layout_param(srv), pipeline_layout_param(uav)};
+    shader_desc cs = {};
+    cs.code = kEffMaskCs;
+    cs.code_size = sizeof(kEffMaskCs);
+    pipeline_subobject sub = {pipeline_subobject_type::compute_shader, 1, &cs};
+    // The debug view: guide_view.hlsl (one SRV) in mode 1 shows the mask in red.
+    descriptor_range one = srv;
+    one.count = 1;
+    const pipeline_layout_param vparams[3] = {pipeline_layout_param(c), pipeline_layout_param(one), pipeline_layout_param(uav)};
+    shader_desc vcs = {};
+    vcs.code = kGuideViewCs;
+    vcs.code_size = sizeof(kGuideViewCs);
+    pipeline_subobject vsub = {pipeline_subobject_type::compute_shader, 1, &vcs};
+    if (!dev->create_pipeline_layout(3, params, &g_effLayout) || !dev->create_pipeline(g_effLayout, 1, &sub, &g_effPipe) ||
+        !dev->create_pipeline_layout(3, vparams, &g_effViewLayout) ||
+        !dev->create_pipeline(g_effViewLayout, 1, &vsub, &g_effViewPipe)) {
+        g_effFailed = true;
+        g_effPipe = {0};
+        Log("couldn't create the effect mask shader: no effect mask");
+        return false;
+    }
+    return true;
+}
+
+// At the compose draw.
+void EffArm(const ListState& s) {
+    if (!g_set.enabled || !g_set.effectMask || !s.rtvCount) return;
+    std::lock_guard<std::mutex> lock(g_resMutex);
+    g_effColor = ViewResource(s.rtvs[0]);
+    g_effArmed = g_frame;
+}
+
+// Before every draw: the first draw into the noted colour alone gets the copy first.
+void EffSnapshot(command_list* cl, const ListState& s) {
+    if (g_effArmed != g_frame || !g_effColor.handle || s.rtvCount != 1) return;
+    std::lock_guard<std::mutex> lock(g_resMutex);
+    if (g_effArmed != g_frame || !g_effColor.handle || ViewResource(s.rtvs[0]) != g_effColor) return;
+    const resource color = g_effColor;
+    g_effColor = {0};
+    device* dev = cl->get_device();
+    const resource_desc d = dev->get_resource_desc(color);
+    if (!Ensure(dev, g_effBefore, d.texture.width, d.texture.height, d.texture.format,
+                resource_usage::shader_resource | resource_usage::copy_dest, resource_usage::copy_dest,
+                "scene colour before the effects"))
+        return;
+    Transition(cl, g_effBefore, resource_usage::copy_dest);
+    cl->barrier(color, resource_usage::render_target, resource_usage::copy_source);
+    cl->copy_resource(color, g_effBefore.res);
+    cl->barrier(color, resource_usage::copy_source, resource_usage::render_target);
+    Transition(cl, g_effBefore, resource_usage::shader_resource);
+    g_effSnapped = g_frame;
+}
+
+// At the TAA: the mask from the copy and the colour the TAA reads. False: no mask this frame.
+bool EffMake(command_list* cl, device* dev, resource color, uint32_t w, uint32_t h) {
+    if (!g_set.effectMask || g_effSnapped != g_frame || !EffPipelines(dev)) return false;
+    if (g_effBefore.w != dev->get_resource_desc(color).texture.width) return false;
+    const resource_usage usage = resource_usage::unordered_access | resource_usage::shader_resource;
+    if (!Ensure(dev, g_effMask, g_effBefore.w, g_effBefore.h, format::r8_unorm, usage, resource_usage::unordered_access,
+                "effect mask"))
+        return false;
+    if (g_effMaskUavOf != g_effMask.res.handle) {
+        if (g_effMaskUav.handle) dev->destroy_resource_view(g_effMaskUav);
+        g_effMaskUav = {0};
+        dev->create_resource_view(g_effMask.res, resource_usage::unordered_access, resource_view_desc(format::r8_unorm), &g_effMaskUav);
+        g_effMaskUavOf = g_effMask.res.handle;
+    }
+    if (g_effAfterSrvOf != color.handle) {
+        if (g_effAfterSrv.handle) dev->destroy_resource_view(g_effAfterSrv);
+        g_effAfterSrv = {0};
+        const format f = format_to_default_typed(dev->get_resource_desc(color).texture.format);
+        dev->create_resource_view(color, resource_usage::shader_resource,
+                                  resource_view_desc(resource_view_type::texture_2d, f, 0, 1, 0, 1), &g_effAfterSrv);
+        g_effAfterSrvOf = color.handle;
+    }
+    if (!g_effMaskUav.handle || !g_effAfterSrv.handle || !g_effBefore.srv.handle) return false;
+    Transition(cl, g_effMask, resource_usage::unordered_access);
+    struct {
+        float threshold, gain;
+        uint32_t w, h, pad[4];
+    } p = {kEffThreshold, kEffGain, w, h, {}};
+    cl->bind_pipeline(pipeline_stage::all_compute, g_effPipe);
+    cl->push_constants(shader_stage::all_compute, g_effLayout, 0, 0, 8, &p);
+    const resource_view srvs[2] = {g_effBefore.srv, g_effAfterSrv};
+    descriptor_table_update u = {};
+    u.count = 2;
+    u.type = descriptor_type::shader_resource_view;
+    u.descriptors = srvs;
+    cl->push_descriptors(shader_stage::all_compute, g_effLayout, 1, u);
+    u.count = 1;
+    u.type = descriptor_type::unordered_access_view;
+    u.descriptors = &g_effMaskUav;
+    cl->push_descriptors(shader_stage::all_compute, g_effLayout, 2, u);
+    cl->dispatch((w + 7) / 8, (h + 7) / 8, 1);
+    Transition(cl, g_effMask, resource_usage::shader_resource);
+    g_effMade = g_frame;
+    static bool logged = false;
+    if (!logged) logged = true, Log("effect mask: made from the scene colour before and after the effects (%ux%u)", w, h);
+    return true;
+}
+
+// The mask made at kEffEndPs's draw, before the game blends in its volumetric fog: its render
+// target 0 is the scene colour (render target state); the game's bindings are put back after.
+void EffMakeBefore(command_list* cl, const ListState& s) {
+    if (!g_set.enabled || !g_set.effectMask || g_effSnapped != g_frame || !s.rtvCount) return;
+    device* dev = cl->get_device();
+    const resource color = ViewResource(s.rtvs[0]);
+    if (!color.handle) return;
+    const resource_desc d = dev->get_resource_desc(color);
+    std::lock_guard<std::mutex> lock(g_resMutex);
+    cl->barrier(color, resource_usage::render_target, resource_usage::shader_resource);
+    const bool made = EffMake(cl, dev, color, d.texture.width, d.texture.height);
+    cl->barrier(color, resource_usage::shader_resource, resource_usage::render_target);
+    if (made) Restore(cl, s);
+}
+
+// Debug view (Advanced, not saved): the mask in red over the upscaled image.
+bool g_effView = false;
+resource_view g_effViewUav = {0};
+uint64_t g_effViewUavOf = 0;
+
+void EffShow(command_list* cl, device* dev, Texture& out, uint32_t renderW, uint32_t renderH) {
+    if (!g_effView || g_effMade != g_frame || !g_effViewPipe.handle || !g_effMask.srv.handle) return;
+    if (g_effViewUavOf != out.res.handle) {
+        if (g_effViewUav.handle) dev->destroy_resource_view(g_effViewUav);
+        g_effViewUav = {0};
+        dev->create_resource_view(out.res, resource_usage::unordered_access, resource_view_desc(out.fmt), &g_effViewUav);
+        g_effViewUavOf = out.res.handle;
+    }
+    if (!g_effViewUav.handle) return;
+    Transition(cl, out, resource_usage::unordered_access);
+    float params[8] = {static_cast<float>(out.w), static_cast<float>(out.h), static_cast<float>(renderW) / out.w,
+                       static_cast<float>(renderH) / out.h};
+    const uint32_t mode = 1;
+    memcpy(&params[4], &mode, 4);
+    cl->bind_pipeline(pipeline_stage::all_compute, g_effViewPipe);
+    cl->push_constants(shader_stage::all_compute, g_effViewLayout, 0, 0, 8, params);
+    descriptor_table_update u = {};
+    u.count = 1;
+    u.type = descriptor_type::shader_resource_view;
+    u.descriptors = &g_effMask.srv;
+    cl->push_descriptors(shader_stage::all_compute, g_effViewLayout, 1, u);
+    u.type = descriptor_type::unordered_access_view;
+    u.descriptors = &g_effViewUav;
+    cl->push_descriptors(shader_stage::all_compute, g_effViewLayout, 2, u);
+    cl->dispatch((out.w + 7) / 8, (out.h + 7) / 8, 1);
+    cl->barrier(out.res, resource_usage::unordered_access, resource_usage::unordered_access);
+}
+
 // Frame generation's inputs, at the TAA draw (whoever upscales): the depth (depth read + shader
 // resource, 0xE0), the velocity (shader resource, 0xC0; NDC offsets, y up: UV = (0.5, -0.5) x),
 // SceneInfo, jitter, camera cut.
@@ -1548,7 +1739,9 @@ ID3D12Resource* ExposureOne(device* dev) {
 
 // The TAA's effect mask, if this game has one and it's wanted.
 ID3D12Resource* EffectMask(device* dev, const ListState& s) {
-    if (kTaaMask < 0 || !g_set.effectMask) return nullptr;
+    if (!g_set.effectMask) return nullptr;
+    if (kTaaMask < 0)  // the add-on's own (EffMake), when it made one this frame
+        return g_effMade == g_frame ? reinterpret_cast<ID3D12Resource*>(g_effMask.res.handle) : nullptr;
     const resource m = PixelSrv(dev, s.graphics, static_cast<uint32_t>(kTaaMask));
     static bool logged = false;
     if (!logged) logged = true, Log("DLSS/FSR effect mask: %s", m.handle ? "the TAA's EffectMaskTex" : "not found");
@@ -1647,6 +1840,8 @@ bool OnTaa(command_list* cl, ListState& s) {
             mvScaleX = mvScaleY = 1.0f;
         }
     }
+    // EffectMask() hands it over; made earlier in the frame when kEffEndPs ran.
+    if (kTaaMask < 0 && g_effMade != g_frame) EffMake(cl, dev, color, renderW, renderH);
     bool ok;
     bool usedRr = false;
     if (tech == Tech::Dlss) {
@@ -1722,6 +1917,7 @@ bool OnTaa(command_list* cl, ListState& s) {
         Fail(err);
         return false;
     }
+    EffShow(cl, dev, g_x, renderW, renderH);
 
     std::string mode = std::string(usedRr ? "DLSS Ray Reconstruction " : tech == Tech::Dlss ? "DLSS " : "FSR ") +
                        (upscale ? std::to_string(renderW) + "x" + std::to_string(renderH) + " -> " + std::to_string(outW) +
@@ -2099,7 +2295,16 @@ void DestroyAll(device* dev) {
     g_targetRtvs.clear();
     dlss::Shutdown();
     fsr::Shutdown();
-    for (Texture* t : {&g_x, &g_xs, &g_y, &g_z, &g_w, &g_hudScene, &g_mv}) Retire(*t);
+    for (Texture* t : {&g_x, &g_xs, &g_y, &g_z, &g_w, &g_hudScene, &g_mv, &g_effBefore, &g_effMask}) Retire(*t);
+    for (resource_view v : {g_effMaskUav, g_effAfterSrv, g_effViewUav})
+        if (v.handle) dev->destroy_resource_view(v);
+    g_effMaskUav = {0}, g_effAfterSrv = {0}, g_effViewUav = {0}, g_effMaskUavOf = g_effAfterSrvOf = g_effViewUavOf = 0;
+    if (g_effPipe.handle) dev->destroy_pipeline(g_effPipe);
+    if (g_effViewPipe.handle) dev->destroy_pipeline(g_effViewPipe);
+    if (g_effLayout.handle) dev->destroy_pipeline_layout(g_effLayout);
+    if (g_effViewLayout.handle) dev->destroy_pipeline_layout(g_effViewLayout);
+    g_effPipe = {0}, g_effViewPipe = {0}, g_effLayout = {0}, g_effViewLayout = {0};
+    g_effColor = {0};
     if (g_xUav.handle) dev->destroy_resource_view(g_xUav);
     g_xUav = {0}, g_xUavOf = 0;
     if (g_mvUav.handle) dev->destroy_resource_view(g_mvUav);
@@ -2353,6 +2558,7 @@ void UpscalerBeforeDraw(command_list* cl) {  // indexed and indirect draws
         RunPending(cl, *s, false);
         EndRedirect(cl, *s);
         SnapshotBeforeHud(cl, *s);
+        EffSnapshot(cl, *s);
     }
 }
 
@@ -2384,12 +2590,15 @@ bool UpscalerOnDraw(command_list* cl, uint32_t vertices, uint32_t instances) {
     if (!s) return false;
     RunPending(cl, *s, false);
     EndRedirect(cl, *s);
+    EffSnapshot(cl, *s);
     if (vertices != 3 || instances != 1) {
         g_afterBloom = false;
         SnapshotBeforeHud(cl, *s);
         return false;
     }
     const uint32_t id = PipelinePs(s->pipe);
+    if (kTaaMask < 0 && id == kComposePs) EffArm(*s);
+    if (kTaaMask < 0 && kEffEndPs && id == kEffEndPs) EffMakeBefore(cl, *s);
     if (id == kOutputPs) NoteOutputPass(cl, *s, vertices, instances);
     const bool afterBloom = g_afterBloom.exchange(id == kBloomPs || id == kGlarePs);
     if (id == kTaaPs) {  // the upscaler first: frame generation can then get its motion vectors
@@ -2677,6 +2886,17 @@ void UpscalerOverlay() {
             ImGui::EndDisabled();
             Help("Frame generation (DLSS-G) gets the same motion vectors without the jitter, as NVIDIA wants. "
                  "Off: the game's own, with the jitter.");
+        }
+        if (kTaaMask < 0) {
+            changed |= ImGui::Checkbox("Effect mask", &g_set.effectMask);
+            Help("The game's anti-aliasing has no mask for particles, sparks, slashes and other effects, so the "
+                 "add-on makes one: it compares the picture just before the game draws its effects with the "
+                 "picture after. DLSS and FSR then trust the current frame more there, against ghosting and "
+                 "smearing on effects (they have no motion vectors of their own).");
+            ImGui::BeginDisabled(!g_set.effectMask);
+            ImGui::Checkbox("Show the effect mask (testing)", &g_effView);
+            ImGui::EndDisabled();
+            Help("Shows the mask in red instead of the picture (not saved).");
         }
         if (kRayTracing) {
         ImGui::SeparatorText("Ray Reconstruction testing");
