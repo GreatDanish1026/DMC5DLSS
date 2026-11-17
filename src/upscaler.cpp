@@ -144,7 +144,9 @@ struct Settings {
     bool gameExposure = false;
     float sharpness = 0;        // extra sharpening after DLSS/FSR (RCAS), 0 = off
     bool fullResReflections = false;  // REFramework script: ray traced reflections at full resolution
-    bool effectMask = true;     // DLSS/FSR get the TAA's effect mask (games that have one)
+    // DLSS/FSR get the add-on's effect mask (ini EffectMaskMade). Off by default in DMC5: the game
+    // draws ambient mist as particles too, and the mask covered whole backgrounds (2026-11-17).
+    bool effectMask = false;
     int mode = 0;          // DLSS mode setting the render scale through DMC5DLSS.lua (0: the game's slider)
     // DLSS Ray Reconstruction in place of Super Resolution while the game ray traces (ini
     // RayReconstruction; off by default). rrPreset: NVSDK_NGX_RayReconstruction_Hint_Render_Preset_*
@@ -186,7 +188,7 @@ void LoadSettings() {
     reshade::get_config_value(nullptr, RD_PRODUCT, "Sharpness", g_set.sharpness);
     if (!(g_set.sharpness >= 0 && g_set.sharpness <= 1)) g_set.sharpness = 0;
     reshade::get_config_value(nullptr, RD_PRODUCT, "FullResReflections", g_set.fullResReflections);
-    reshade::get_config_value(nullptr, RD_PRODUCT, "EffectMask", g_set.effectMask);
+    reshade::get_config_value(nullptr, RD_PRODUCT, "EffectMaskMade", g_set.effectMask);
     reshade::get_config_value(nullptr, RD_PRODUCT, "Mode", g_set.mode);
     if (g_set.mode < 0 || g_set.mode >= kModeCount) g_set.mode = 0;
     reshade::get_config_value(nullptr, RD_PRODUCT, "RayReconstruction", g_set.rr);
@@ -211,7 +213,7 @@ void SaveSettings() {
     reshade::set_config_value(nullptr, RD_PRODUCT, "GameExposure", g_set.gameExposure);
     reshade::set_config_value(nullptr, RD_PRODUCT, "Sharpness", g_set.sharpness);
     reshade::set_config_value(nullptr, RD_PRODUCT, "FullResReflections", g_set.fullResReflections);
-    reshade::set_config_value(nullptr, RD_PRODUCT, "EffectMask", g_set.effectMask);
+    reshade::set_config_value(nullptr, RD_PRODUCT, "EffectMaskMade", g_set.effectMask);
     reshade::set_config_value(nullptr, RD_PRODUCT, "Mode", g_set.mode);
     reshade::set_config_value(nullptr, RD_PRODUCT, "RayReconstruction", g_set.rr);
     reshade::set_config_value(nullptr, RD_PRODUCT, "RrModel", g_set.rrPreset);
@@ -2906,11 +2908,12 @@ void UpscalerOverlay() {
                  "Off: the game's own, with the jitter.");
         }
         if (kTaaMask < 0) {
-            changed |= ImGui::Checkbox("Effect mask", &g_set.effectMask);
+            changed |= ImGui::Checkbox("Effect mask (experimental)", &g_set.effectMask);
             Help("The game's anti-aliasing has no mask for particles, sparks, slashes and other effects, so the "
-                 "add-on makes one: it compares the picture just before the game draws its effects with the "
+                 "add-on can make one: it compares the picture just before the game draws its effects with the "
                  "picture after. DLSS and FSR then trust the current frame more there, against ghosting and "
-                 "smearing on effects (they have no motion vectors of their own).");
+                 "smearing on effects (they have no motion vectors of their own). Off by default: this game also "
+                 "draws ambient mist as particles, so the mask can cover whole backgrounds and cost detail there.");
             ImGui::BeginDisabled(!g_set.effectMask);
             static const char* const kViews[] = {"Off", "The mask (red: strong, yellow: weak)", "The picture before the effects"};
             ImGui::SetNextItemWidth(ControlWidth());

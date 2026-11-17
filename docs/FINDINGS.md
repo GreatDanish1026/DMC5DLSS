@@ -223,3 +223,18 @@ dispatch.
 0.3.2: FSR frame generation hidden (kFsrFrameGen = false in framegen.cpp): the list offers Off and
 DLSS 2x/3x/4x/Dynamic; a saved FrameGenTech=1 turns frame generation off at launch. FSR upscaling
 is unaffected.
+
+## 1.1.0: motion vectors, DLSS mode, effect mask (2026-11-17)
+
+- Velocity pass ps97bf3008 (docs/shaders/mv): rebuilds positions with the jittered viewProjInvMat
+  and projects them with prevViewProjMat (velocity includes the jitter, as in the RE games), and
+  writes **(1, x, y, 1)**: the TAA reads t3.yz. 1.0.0 handed the texture to DLSS/FSR/frame
+  generation as it was (x motion = 1, y motion = the real x). mvfix.hlsl (YzChannels) now always
+  converts it; the jitter is taken out with MotionFix on.
+- DLSS mode by the closest optimal render size (was Quality at every scale). Logged: Balanced at
+  2227x1252, Performance at 1920x1080. The game cycles 16 jitter positions.
+- Effect mask (from RE7DLSS 1.3.3): copy after the last lighting pass ps8148b08f, mask made before
+  the atmospheric haze psc060a249 (a one-vertex draw that arrives through the indexed-draw hook).
+  The level view (red >= 0.5) still showed the whole distant background marked: ambient mist is
+  drawn as particles in the same stretch as combat effects. Off by default (ini EffectMaskMade),
+  marked experimental.

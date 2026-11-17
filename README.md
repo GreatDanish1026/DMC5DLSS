@@ -1,4 +1,4 @@
-# DMC5DLSS 1.0.0
+# DMC5DLSS 1.1.0
 
 ReShade add-on for **Devil May Cry 5** (DirectX 12) that replaces the game's TAA with
 **NVIDIA DLSS** or **AMD FSR 3.1 / FSR 4**, and adds **DLSS frame generation**. The game has no
@@ -15,6 +15,13 @@ support, and REFramework for the render resolution dropdown.
 - **DLSS or FSR 3/4 in place of TAA** (F9 to switch on and off): DLSS Super Resolution 310.9.16,
   or AMD FSR (SDK 2.4.0: FSR 4 where the GPU supports it, FSR 3.1 elsewhere), takes the game's own
   colour, depth, motion vectors and camera jitter.
+- **Correct motion vectors** (1.1.0): Devil May Cry 5 keeps its motion vectors in different channels
+  from the Resident Evil games; 1.0.0 handed them to DLSS, FSR and frame generation as they were,
+  so the motion they got was wrong (DLSS found almost no usable history). They're now converted,
+  and the camera jitter the game leaves in them is taken out, as DLSS and FSR expect (Advanced tab,
+  "Motion vectors without the camera jitter", on).
+- **DLSS mode matches the render resolution** (1.1.0): DLSS was created in Quality mode at every
+  render resolution; Balanced and Performance now run as Balanced and Performance.
 - **Upscaler**: Auto (default: DLSS on RTX cards, FSR otherwise), DLSS, or FSR 3.1 / FSR 4.
 - **Render resolution**: Native (100%: DLAA, or FSR's native anti-aliasing), Quality (67%),
   Balanced (58%) or Performance (50%) set the game's render scale (its Image Quality setting) while
@@ -38,13 +45,17 @@ support, and REFramework for the render resolution dropdown.
   image (AMD's RCAS): after DLSS, or FSR's own for FSR.
 - **Game exposure** (off by default, Advanced tab): gives DLSS and FSR 3.1 the picture's real
   exposure instead of letting them estimate it.
+- **Effect mask** (experimental, off by default, Advanced tab; 1.1.0): the game's anti-aliasing has
+  no mask for particles and effects, so the add-on can make one from the picture before and after
+  the game draws its effects, for DLSS and FSR to trust the current frame more there. It's off
+  because the game also draws ambient mist as particles, which the mask then covers too.
 
 Settings are in ReShade's Add-ons tab (Home key) under DMC5DLSS: what's running at the top, then
 Settings, Status and Advanced tabs. They're saved in `ReShade.ini` under `[DMC5DLSS]`.
 
 ## Install
 
-**With Fluffy Mod Manager**: put `DMC5DLSS-1.0.0.zip` in Fluffy Mod Manager's Devil May Cry 5
+**With Fluffy Mod Manager**: put `DMC5DLSS-1.1.0.zip` in Fluffy Mod Manager's Devil May Cry 5
 `Mods` folder (or drag it onto the manager) and enable it. It installs into the game folder:
 
 - `DMC5DLSS.addon64` (the add-on) and `nvngx_dlss.dll` (NVIDIA's DLSS runtime, 310.9.16)
@@ -77,6 +88,8 @@ If the NVIDIA App has a DLSS model override for the game, it takes precedence ov
   cutscenes; FSR 3.1 upscaling at every render resolution; DLSS frame generation 2x. Also tested
   with RenoDX off.
 - FSR 3.1/4 through this add-on is untested on Radeon cards so far.
+- 1.1.0 was tested at 3840x2160 with DLSS at DLAA, Quality, Balanced and Performance and DLSS frame
+  generation.
 - Bloom looks a little stronger at low render resolutions; the game does the same with its own
   upscaling (F9 off), so that's expected.
 - A few frames during loading may show the game's own upscaling; that's expected.
