@@ -89,10 +89,11 @@ constexpr bool kVelocityYz = true;
 // Effect mask (the add-on makes one, see "effect mask" below; capture 2026-11-17, combat): after
 // the last full-screen lighting pass ps8148b08f the game draws its effects into the scene colour
 // (ps041d96bf / ps77a5021e quads, other draws, GPU particles, psc060a249), then a quarter-size layer
-// (640x360) and ps90adeb83 blends something in just before the TAA. The mask is made at the TAA
-// (kEffEndPs 0); if the mask view shows that late layer is fog, set kEffEndPs to 0x90adeb83.
+// (640x360) and ps90adeb83 blends it in just before the TAA. Made at the TAA, the mask covered the
+// whole background (user screenshot 2026-11-17): that layer is haze / fog, so the mask is made just
+// before ps90adeb83's draw, as RE7DLSS does before its fog.
 constexpr uint32_t kComposePs = 0x8148b08f;
-constexpr uint32_t kEffEndPs = 0;
+constexpr uint32_t kEffEndPs = 0x90adeb83;
 constexpr uint32_t kBloomPs = 0x629a5b35;    // bloom composite (cbSoftBloom), additive into the TAA output
 constexpr uint32_t kGlarePs = 0x8f6eaed0;    // title menu glare, added into the TAA output after the bloom
 constexpr uint32_t kDofPs = 0x58dcc2f3;      // depth of field composite (cutscenes): t2 HDRImage = TAA output
