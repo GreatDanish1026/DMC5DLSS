@@ -81,6 +81,10 @@ constexpr uint32_t kTaaPs = 0x321bf06e;      // PreTonemap2_PS maths: t0 depth, 
 constexpr uint32_t kTaaDepth = 0, kTaaColor = 1, kTaaMotion = 3;
 // No EffectMaskTex in DMC5's TAA. -1: none.
 constexpr int kTaaMask = -1;
+// DMC5's velocity is in .yz: its velocity pass ps97bf3008 writes (1, x, y, 1) and its TAA reads
+// t3.yz (dumped 2026-11-17). DLSS/FSR read .xy, so 1.0.0 gave them a constant 1 as the x motion;
+// the motion vectors always go through mvfix.hlsl now (the jitter taken out only with MotionFix).
+constexpr bool kVelocityYz = true;
 constexpr uint32_t kBloomPs = 0x629a5b35;    // bloom composite (cbSoftBloom), additive into the TAA output
 constexpr uint32_t kGlarePs = 0x8f6eaed0;    // title menu glare, added into the TAA output after the bloom
 constexpr uint32_t kDofPs = 0x58dcc2f3;      // depth of field composite (cutscenes): t2 HDRImage = TAA output
@@ -1291,7 +1295,7 @@ bool FixMotion(command_list* cl, device* dev, resource velocity, uint32_t w, uin
     struct {
         float scaleX, scaleY, offsetX, offsetY;
         uint32_t w, h, pad0, pad1;
-    } p = {0.5f * w, -0.5f * h, jitterPxX, jitterPxY, w, h, 0, 0};
+    } p = {0.5f * w, -0.5f * h, jitterPxX, jitterPxY, w, h, kVelocityYz ? 1u : 0u, 0};
     cl->bind_pipeline(pipeline_stage::all_compute, g_mvPipe);
     cl->push_constants(shader_stage::all_compute, g_mvLayout, 0, 0, 8, &p);
     descriptor_table_update u = {};
@@ -1330,7 +1334,7 @@ void GiveFrameGen(command_list* cl, ListState& s) {
     constexpr unsigned kDepthRead = 0x20 | 0x40 | 0x80, kShaderResource = 0x40 | 0x80;  // D3D12 resource states
     ID3D12Resource* mv = reinterpret_cast<ID3D12Resource*>(motion.handle);
     float scaleX = 0.5f, scaleY = -0.5f;  // NDC offsets, y up -> UV offsets
-    if (g_set.fgMvFix && g_set.mvFix) {
+    if ((g_set.fgMvFix && g_set.mvFix) || kVelocityYz) {  // DMC5: the game's own are in .yz
         std::lock_guard<std::mutex> lock(g_resMutex);
         if (g_mvFrame == g_frame && g_mv.res.handle && g_mv.w == w && g_mv.h == h) {
             mv = reinterpret_cast<ID3D12Resource*>(g_mv.res.handle);  // shader resource state after FixMotion
@@ -1635,8 +1639,9 @@ bool OnTaa(command_list* cl, ListState& s) {
     // pixels), else the velocity as it is, scaled by the upscaler.
     ID3D12Resource* motionIn = reinterpret_cast<ID3D12Resource*>(motion.handle);
     float mvScaleX = 0.5f * renderW, mvScaleY = -0.5f * renderH;  // NDC offsets, y up -> render pixels, y down
-    if (g_set.mvFix) {
-        const float rawJx = -scene[kProjElement0 + 2] * renderW * 0.5f, rawJy = scene[kProjElement0 + 3] * renderH * 0.5f;
+    if (g_set.mvFix || kVelocityYz) {  // DMC5: always converted (.yz); the jitter left in when MotionFix is off
+        const float rawJx = g_set.mvFix ? -scene[kProjElement0 + 2] * renderW * 0.5f : 0.0f;
+        const float rawJy = g_set.mvFix ? scene[kProjElement0 + 3] * renderH * 0.5f : 0.0f;
         if (FixMotion(cl, dev, motion, renderW, renderH, rawJx, rawJy)) {
             motionIn = reinterpret_cast<ID3D12Resource*>(g_mv.res.handle);
             mvScaleX = mvScaleY = 1.0f;
@@ -2666,11 +2671,13 @@ void UpscalerOverlay() {
         changed |= ImGui::Checkbox("Motion vectors without the camera jitter", &g_set.mvFix);
         Help("The game's motion vectors include each frame's camera jitter; DLSS and FSR want them without it. "
              "With the jitter, DLSS can leave soft striped patches on still surfaces such as faces at Performance.");
-        ImGui::BeginDisabled(!g_set.mvFix);
-        changed |= ImGui::Checkbox("Frame generation uses them too", &g_set.fgMvFix);
-        ImGui::EndDisabled();
-        Help("Frame generation (DLSS-G) gets the same motion vectors without the jitter, as NVIDIA wants. "
-             "Off: the game's own, with the jitter.");
+        if (!kVelocityYz) {  // DMC5: frame generation always gets the converted motion vectors
+            ImGui::BeginDisabled(!g_set.mvFix);
+            changed |= ImGui::Checkbox("Frame generation uses them too", &g_set.fgMvFix);
+            ImGui::EndDisabled();
+            Help("Frame generation (DLSS-G) gets the same motion vectors without the jitter, as NVIDIA wants. "
+                 "Off: the game's own, with the jitter.");
+        }
         if (kRayTracing) {
         ImGui::SeparatorText("Ray Reconstruction testing");
         ImGui::SetNextItemWidth(ControlWidth() * 1.4f);
