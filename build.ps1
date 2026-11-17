@@ -40,6 +40,7 @@ $cmd = @(
     "fxc /nologo /T cs_5_1 /E main /O3 /Vn kGuideCs /Fh `"$obj\guide_cs.h`" `"$root\src\guide.hlsl`" >nul",
     "fxc /nologo /T cs_5_1 /E main /O3 /Vn kGuideViewCs /Fh `"$obj\guide_view_cs.h`" `"$root\src\guide_view.hlsl`" >nul",
     "fxc /nologo /T cs_5_1 /E main /O3 /Vn kRcasCs /Fh `"$obj\rcas_cs.h`" `"$root\src\rcas.hlsl`" >nul",
+    "fxc /nologo /T cs_5_1 /E main /O3 /Vn kMvFixCs /Fh `"$obj\mvfix_cs.h`" `"$root\src\mvfix.hlsl`" >nul",
     ("cl /nologo /std:c++17 /O2 /EHsc /MT /W3 /D_CRT_SECURE_NO_WARNINGS /DNOMINMAX " +
      "/I `"$obj`" /I `"$root\third_party\imgui`" /I `"$root\third_party\reshade\include`" /I `"$root\third_party\dlss\include`" " +
      "/I `"$root\third_party\streamline\include`" " +
@@ -115,7 +116,7 @@ if ($Package) {
         "name=DMC5DLSS - DLSS, FSR 3/4 and DLSS frame generation for Devil May Cry 5",
         "version=v$version",
         "description=Replaces the game's TAA with NVIDIA DLSS or AMD FSR 3.1 / FSR 4: native anti-aliasing (DLAA), or upscaling with the game's bloom, depth of field, tonemapping (RenoDX HDR works) and HUD on top at full resolution; adds DLSS frame generation. DLSS needs an NVIDIA RTX card (frame generation RTX 40/50); FSR runs on any DirectX 12 GPU. Needs ReShade 6.8+ with add-on support, and REFramework for the render resolution dropdown. Settings: ReShade overlay (Home), Add-ons tab, DMC5DLSS; F9 switches upscaling on and off.",
-        "author=Scott Dinwiddie"
+        "author=GreatDanish"
     ) | Set-Content "$mod\modinfo.ini" -Encoding ascii
 
     # Zip with forward-slash entry names (Compress-Archive in PowerShell 5.1 writes backslashes,
