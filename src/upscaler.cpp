@@ -88,12 +88,14 @@ constexpr int kTaaMask = -1;
 constexpr bool kVelocityYz = true;
 // Effect mask (the add-on makes one, see "effect mask" below; capture 2026-11-17, combat): after
 // the last full-screen lighting pass ps8148b08f the game draws its effects into the scene colour
-// (ps041d96bf / ps77a5021e quads, other draws, GPU particles, psc060a249), then a quarter-size layer
-// (640x360) and ps90adeb83 blends it in just before the TAA. Made at the TAA, the mask covered the
-// whole background (user screenshot 2026-11-17): that layer is haze / fog, so the mask is made just
-// before ps90adeb83's draw, as RE7DLSS does before its fog.
+// (ps041d96bf / ps77a5021e particle quads reading depth and an atlas, other draws, GPU particles),
+// then psc060a249 (one vertex, reads depth, noise and the sky cube maps: atmospheric haze over the
+// whole screen), a quarter-size layer (640x360) and ps90adeb83 blending it in just before the TAA.
+// Made at the TAA, and then before ps90adeb83, the mask covered the whole background (user
+// screenshots 2026-11-17): the mask is made just before psc060a249's draw, as RE7DLSS does before
+// its fog.
 constexpr uint32_t kComposePs = 0x8148b08f;
-constexpr uint32_t kEffEndPs = 0x90adeb83;
+constexpr uint32_t kEffEndPs = 0xc060a249;
 constexpr uint32_t kBloomPs = 0x629a5b35;    // bloom composite (cbSoftBloom), additive into the TAA output
 constexpr uint32_t kGlarePs = 0x8f6eaed0;    // title menu glare, added into the TAA output after the bloom
 constexpr uint32_t kDofPs = 0x58dcc2f3;      // depth of field composite (cutscenes): t2 HDRImage = TAA output
@@ -2592,6 +2594,9 @@ bool UpscalerOnDraw(command_list* cl, uint32_t vertices, uint32_t instances) {
     RunPending(cl, *s, false);
     EndRedirect(cl, *s);
     EffSnapshot(cl, *s);
+    // The mask's end (DMC5: psc060a249, a one-vertex draw) is checked before the full-screen test.
+    if (kTaaMask < 0 && kEffEndPs && g_effSnapped == g_frame && g_effMade != g_frame && PipelinePs(s->pipe) == kEffEndPs)
+        EffMakeBefore(cl, *s);
     if (vertices != 3 || instances != 1) {
         g_afterBloom = false;
         SnapshotBeforeHud(cl, *s);
@@ -2599,7 +2604,6 @@ bool UpscalerOnDraw(command_list* cl, uint32_t vertices, uint32_t instances) {
     }
     const uint32_t id = PipelinePs(s->pipe);
     if (kTaaMask < 0 && id == kComposePs) EffArm(*s);
-    if (kTaaMask < 0 && kEffEndPs && id == kEffEndPs) EffMakeBefore(cl, *s);
     if (id == kOutputPs) NoteOutputPass(cl, *s, vertices, instances);
     const bool afterBloom = g_afterBloom.exchange(id == kBloomPs || id == kGlarePs);
     if (id == kTaaPs) {  // the upscaler first: frame generation can then get its motion vectors
