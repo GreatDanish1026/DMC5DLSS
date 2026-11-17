@@ -1473,6 +1473,14 @@ void EffMakeBefore(command_list* cl, const ListState& s) {
     const bool made = EffMake(cl, dev, color, d.texture.width, d.texture.height);
     cl->barrier(color, resource_usage::shader_resource, resource_usage::render_target);
     if (made) Restore(cl, s);
+    static bool logged = false;
+    if (!logged) logged = true, Log("effect mask: %s before ps%08x", made ? "made" : "NOT made", kEffEndPs);
+}
+
+// The end pass, from either draw hook (full-screen, one-vertex or indexed draws).
+void EffEndCheck(command_list* cl, const ListState& s) {
+    if (kTaaMask < 0 && kEffEndPs && g_effSnapped == g_frame && g_effMade != g_frame && PipelinePs(s.pipe) == kEffEndPs)
+        EffMakeBefore(cl, s);
 }
 
 // Debug view (Advanced, not saved): 1 the mask in red, 2 the picture before the effects (the copy
@@ -1845,7 +1853,11 @@ bool OnTaa(command_list* cl, ListState& s) {
         }
     }
     // EffectMask() hands it over; made earlier in the frame when kEffEndPs ran.
-    if (kTaaMask < 0 && g_effMade != g_frame) EffMake(cl, dev, color, renderW, renderH);
+    if (kTaaMask < 0 && g_effMade != g_frame && EffMake(cl, dev, color, renderW, renderH)) {
+        static uint64_t count = 0;  // logged at 1, 100, 10000: the end pass didn't run in these frames
+        if (++count == 1 || count == 100 || count == 10000)
+            Log("effect mask: made at the TAA (%llu frames): ps%08x didn't run first", count, kEffEndPs);
+    }
     bool ok;
     bool usedRr = false;
     if (tech == Tech::Dlss) {
@@ -2563,6 +2575,7 @@ void UpscalerBeforeDraw(command_list* cl) {  // indexed and indirect draws
         EndRedirect(cl, *s);
         SnapshotBeforeHud(cl, *s);
         EffSnapshot(cl, *s);
+        EffEndCheck(cl, *s);
     }
 }
 
@@ -2596,8 +2609,7 @@ bool UpscalerOnDraw(command_list* cl, uint32_t vertices, uint32_t instances) {
     EndRedirect(cl, *s);
     EffSnapshot(cl, *s);
     // The mask's end (DMC5: psc060a249, a one-vertex draw) is checked before the full-screen test.
-    if (kTaaMask < 0 && kEffEndPs && g_effSnapped == g_frame && g_effMade != g_frame && PipelinePs(s->pipe) == kEffEndPs)
-        EffMakeBefore(cl, *s);
+    EffEndCheck(cl, *s);
     if (vertices != 3 || instances != 1) {
         g_afterBloom = false;
         SnapshotBeforeHud(cl, *s);
