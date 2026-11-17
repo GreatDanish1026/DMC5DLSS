@@ -1501,7 +1501,7 @@ void EffShow(command_list* cl, device* dev, Texture& out, uint32_t renderW, uint
     Transition(cl, out, resource_usage::unordered_access);
     float params[8] = {static_cast<float>(out.w), static_cast<float>(out.h), static_cast<float>(renderW) / out.w,
                        static_cast<float>(renderH) / out.h};
-    const uint32_t mode = 1;
+    const uint32_t mode = g_effView == 2 ? 1 : 4;  // 4: mask levels, unaffected by the game's exposure
     memcpy(&params[4], &mode, 4);
     cl->bind_pipeline(pipeline_stage::all_compute, g_effViewPipe);
     cl->push_constants(shader_stage::all_compute, g_effViewLayout, 0, 0, 8, params);
@@ -2912,7 +2912,7 @@ void UpscalerOverlay() {
                  "picture after. DLSS and FSR then trust the current frame more there, against ghosting and "
                  "smearing on effects (they have no motion vectors of their own).");
             ImGui::BeginDisabled(!g_set.effectMask);
-            static const char* const kViews[] = {"Off", "The mask (red)", "The picture before the effects"};
+            static const char* const kViews[] = {"Off", "The mask (red: strong, yellow: weak)", "The picture before the effects"};
             ImGui::SetNextItemWidth(ControlWidth());
             ImGui::Combo("Effect mask view (testing)", &g_effView, kViews, 3);
             ImGui::EndDisabled();
