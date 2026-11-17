@@ -1475,8 +1475,9 @@ void EffMakeBefore(command_list* cl, const ListState& s) {
     if (made) Restore(cl, s);
 }
 
-// Debug view (Advanced, not saved): the mask in red over the upscaled image.
-bool g_effView = false;
+// Debug view (Advanced, not saved): 1 the mask in red, 2 the picture before the effects (the copy
+// the mask compares against), in place of the upscaled image.
+int g_effView = 0;
 resource_view g_effViewUav = {0};
 uint64_t g_effViewUavOf = 0;
 
@@ -1499,7 +1500,7 @@ void EffShow(command_list* cl, device* dev, Texture& out, uint32_t renderW, uint
     descriptor_table_update u = {};
     u.count = 1;
     u.type = descriptor_type::shader_resource_view;
-    u.descriptors = &g_effMask.srv;
+    u.descriptors = g_effView == 2 ? &g_effBefore.srv : &g_effMask.srv;
     cl->push_descriptors(shader_stage::all_compute, g_effViewLayout, 1, u);
     u.type = descriptor_type::unordered_access_view;
     u.descriptors = &g_effViewUav;
@@ -2899,9 +2900,12 @@ void UpscalerOverlay() {
                  "picture after. DLSS and FSR then trust the current frame more there, against ghosting and "
                  "smearing on effects (they have no motion vectors of their own).");
             ImGui::BeginDisabled(!g_set.effectMask);
-            ImGui::Checkbox("Show the effect mask (testing)", &g_effView);
+            static const char* const kViews[] = {"Off", "The mask (red)", "The picture before the effects"};
+            ImGui::SetNextItemWidth(ControlWidth());
+            ImGui::Combo("Effect mask view (testing)", &g_effView, kViews, 3);
             ImGui::EndDisabled();
-            Help("Shows the mask in red instead of the picture (not saved).");
+            Help("Shows the mask in red, or the copy of the picture taken before the effects (what the mask "
+                 "compares against), instead of the picture (not saved).");
         }
         if (kRayTracing) {
         ImGui::SeparatorText("Ray Reconstruction testing");
